@@ -10,7 +10,6 @@ header, section, article, nav, footer
 nav
 {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     flex-basis: 120px;
     text-align: center;
