@@ -28,3 +28,16 @@ section
     display: flex;
     flex-direction: row;
 }
+
+article
+{
+    min-width: 150px;
+    min-height: 200px;
+}
+
+.ShowMore
+{
+    background-color: azure;
+    font-size: 1em;
+    box-shadow: 0em 0em 0em 0em rgba(20, 20, 20, 0.8);
+}
