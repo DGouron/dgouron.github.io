@@ -7,9 +7,14 @@ header, section, article, nav, footer
     border: 0.1em rgb(30, 30, 30) solid;
     margin: auto;
 }
-
+nav
+{
+    display: flex;
+    flex-direction: row;
+}
 ul
 {
+    display: block;
     text-decoration: none ;
 }
 
@@ -20,5 +25,6 @@ li
 
 section
 {
+    display: flex;
     flex-direction: row;
 }
