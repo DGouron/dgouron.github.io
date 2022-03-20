@@ -12,3 +12,8 @@ ul
 {
     text-decoration: none ;
 }
+
+li
+{
+    text-decoration-style: none;
+}
