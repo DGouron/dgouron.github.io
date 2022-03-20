@@ -26,6 +26,7 @@ li
 section
 {
     display: flex;
+    flex: auto;
     flex-direction: row;
 }
 
