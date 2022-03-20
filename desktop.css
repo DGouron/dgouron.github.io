@@ -17,3 +17,8 @@ li
 {
     text-decoration-style: none;
 }
+
+section
+{
+    flex-direction: row;
+}
