@@ -2,7 +2,13 @@ body
 {
     background-color: rgb(180, 178, 175);
 }
-header, section, article
+header, section, article, nav, footer
 {
-    border: 0.5em rgb(30, 30, 30) solid;
+    border: 0.1em rgb(30, 30, 30) solid;
+    margin: auto;
+}
+
+ul
+{
+    text-decoration: none ;
 }
