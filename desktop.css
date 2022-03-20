@@ -4,5 +4,5 @@ body
 }
 header, section, article
 {
-    border: 1em solid black;
+    border: 0.1em rgb(30, 30, 30) solid;
 }
