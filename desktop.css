@@ -11,16 +11,43 @@ nav
 {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    flex-basis: 120px;
+    text-align: center;
+    gap: 0.3rem;
+}
+nav a
+{
+    display: block;
+    padding: 0.5rem;
+    background-color: #aaa;
+    text-decoration: none;
+    color: #111;
+    border-bottom: 3px solid #333;
+}
+nav a:hover
+{
+    color: #9e7f02;
+    background-color: #f5e49f;
+    border-color: #9e7f02;
+}
+nav a.active
+{
+    color: #00b5a9;
+    background-color: #e3fffd;
+    border-color: #00b5a9;
 }
 ul
 {
     display: block;
-    text-decoration: none ;
 }
 
 li
 {
-    text-decoration-style: none;
+    border: 1px solid red;
+    list-style-type: none;
+    display: block;
+    padding: 0.5rem;
 }
 
 section
