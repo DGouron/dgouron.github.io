@@ -1,16 +1,27 @@
 body
 {
-    background-color: rgba(50, 54, 54, 0.74);
+    background-color: rgb(248, 248, 248);
 }
 header
 {
-    border: 0.1em rgb(30, 30, 30) solid;
+    color: rgb(63, 58, 58);
     margin: auto;
+    width: 50%;
+    float: left;
+}
+
+nav, ul, section
+{
+    @media(max-width: 450px) {
+        flex-flow: column wrap;
+      }
 }
 nav
-{
+{  
+    margin: 1em;
     display: flex;
     justify-content: center;
+    flex-direction : row;
     flex-basis: 120px;
     text-align: center;
     gap: 0.3rem;
@@ -21,7 +32,7 @@ nav a
     padding: 0.5rem;
     background-color: #aaa;
     text-decoration: none;
-    color: #111;
+    color: rgb(255, 255, 255);
     border-bottom: 3px solid #333;
 }
 nav a:hover
@@ -32,39 +43,57 @@ nav a:hover
 }
 nav a.active
 {
-    color: #00b5a9;
+    color: #f4fffe;
     background-color: #e3fffd;
     border-color: #00b5a9;
 }
-ul
-{
-    display: block;
+nav ul {
+    margin: 0px;
+    padding: 0px;
+    list-style:none;
+    display: flex;
+    flex-direction : row;
+    justify-content: center;
 }
 
 li
 {
-    border: 1px solid red;
     list-style-type: none;
-    display: block;
     padding: 0.5rem;
 }
 
 section
 {
+    width: 100%;
+    margin: auto;
     display: flex;
-    flex: auto;
     flex-direction: row;
 }
 
 article
 {
+    border: 0.1em rgb(30, 30, 30) solid;
+    background-color: rgb(85, 94, 94);
+    color: white;
     display: block;
-    min-width: 150px;
-    min-height: 200px;
-    margin: auto;
+    min-width: 180px;
+    min-height: 350px;
+    margin: 30px;
     padding: auto;
 }
+article p
+{
+    height: 90%;
+}
 
+footer
+{
+    border: 0.1em rgb(30, 30, 30) solid;
+    background-color: rgb(85, 94, 94);
+    margin-top: 5em;
+}
+
+/*Custom class and animations */
 .buttonBase {
       position: relative;
       box-sizing: border-box;
@@ -73,9 +102,9 @@ article
       padding: 8px 20px;
       margin: 0px 3px 6px;
       text-align: center;
-      border: 2px solid rgb(255, 255, 255);
+      border: 2px solid rgb(48, 45, 45);
       text-decoration: none;
-      color: rgb(255, 255, 255);
+      color: rgb(51, 48, 48);
       white-space: nowrap;
       z-index: 0;
 } 
@@ -89,14 +118,14 @@ article
 .animatedButton::before {
       position: absolute;
       content: "";
-      background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+      background: rgb(51, 50, 50) none repeat scroll 0% 0%;
       transition-duration: 0.3s;
       z-index: -1;
       inset: 0px 0px auto auto;
       width: 50%;
       height: 100%;
       opacity: 1;
-      border: 2px solid rgb(255, 255, 255);
+      border: 2px solid rgb(46, 46, 46);
 } 
  
 
@@ -108,15 +137,15 @@ article
  
 
 .animatedButton {
-      background: rgb(255, 255, 255) none repeat scroll 0% 0%;
-      color: rgb(0, 0, 0);
+      background: rgb(48, 44, 44) none repeat scroll 0% 0%;
+      color: rgb(255, 223, 223);
       transition: color 0.3s ease 0s, background 0s ease 0.3s;
 } 
  
 
 .animatedButton:hover {
       background: transparent none repeat scroll 0% 0%;
-      color: rgb(255, 255, 255);
+      color: rgb(8, 8, 8);
       transition: color 0.3s ease 0s, background 0s ease 0s;
 } 
  
@@ -124,14 +153,14 @@ article
 .animatedButton::after {
       position: absolute;
       content: "";
-      background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+      background: rgb(51, 49, 49) none repeat scroll 0% 0%;
       transition-duration: 0.3s;
       z-index: -1;
       inset: 0px auto auto 0px;
       width: 50%;
       height: 100%;
       opacity: 1;
-      border: 2px solid rgb(255, 255, 255);
+      border: 2px solid rgb(51, 50, 50);
 } 
  
 
