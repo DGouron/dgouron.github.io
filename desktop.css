@@ -1,4 +1,8 @@
-*
+body
 {
-    border: 2em solid black;
+    background-color: bisque;
+}
+header, section, article
+{
+    border: 1em solid black;
 }
