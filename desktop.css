@@ -1,8 +1,8 @@
 body
 {
-    background-color: rgb(132, 134, 134);
+    background-color: rgba(50, 54, 54, 0.74);
 }
-header, section, article, nav, footer
+header
 {
     border: 0.1em rgb(30, 30, 30) solid;
     margin: auto;
