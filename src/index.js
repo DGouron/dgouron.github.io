@@ -1,8 +1,14 @@
 const mainContent = document.getElementById('MainContent');
-let numberOfTiles = 6;
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
+
 /* Populate the main section*/
+
+let numberOfTiles = 4;
+
+let mainContentHeader = document.createElement('header');
+    mainContentHeader.textContent = 'Nombre de tuiles affichées : '+numberOfTiles;
+mainContent.appendChild(mainContentHeader);
 
 for (let index = 0; index < numberOfTiles; index++) {
     const newTile = document.createElement("article");
