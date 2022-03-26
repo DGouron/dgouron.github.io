@@ -13,7 +13,7 @@ mainContent.appendChild(mainContentHeader);
 for (let index = 0; index < numberOfTiles; index++) {
     const newTile = document.createElement("article");
     let tileContent = document.createElement("p");
-        tileContent.textContent = 'Page random numéro ' + (index + 1) + '. '+ loremIpsum;
+        tileContent.innerHTML = 'Page random numéro ' + (index + 1) + '. <br />'+ loremIpsum;
     let tileButton = document.createElement("a");
         tileButton.setAttribute("href", "#");
         tileButton.classList.add('buttonBase');
