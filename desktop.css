@@ -9,13 +9,6 @@ header
     width: 50%;
     float: left;
 }
-
-nav, ul, section
-{
-    @media(max-width: 450px) {
-        flex-flow: column wrap;
-      }
-}
 nav
 {  
     margin: 1em;
