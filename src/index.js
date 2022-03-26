@@ -25,4 +25,5 @@ for (let index = 0; index < numberOfTiles; index++) {
 
 
     mainContent.appendChild(newTile);
+    console.log('Tile '+index+' generated with success.');
 }
