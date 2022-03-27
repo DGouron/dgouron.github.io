@@ -58,9 +58,10 @@ li
 section
 {
     width: 100%;
+    height: auto;
     margin: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction:row;
 }
 
 article
