@@ -2,14 +2,6 @@
 var configNavLink = './config/config_nav.json';
 var configNavData;
 
-$.getJSON(configNavLink,
-    function(data){
-        configNavData = data;
-    }
-    );
-
-    console.log(configNavData);
-    
 var mainContent = document.getElementById('MainContent');
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
