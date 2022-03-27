@@ -5,12 +5,19 @@ var configNavData;
 var mainContent = document.getElementById('MainContent');
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
+
+/* Binding for galery */
+
+var   numberOfTiles = 2;
+var   numberOfTilesRange = [1, 7];
+var   changeTileNumberField = document.getElementById('modifyNumberOfTiles');
+
 if (document.readyState === 'complete') {
-    createMainContent(); //Init the main content
 } else {
     document.addEventListener('DOMContentLoaded', function() {
         createMainContent();
-    });
+        modifyNumberOfTilesEventHandler();
+    }, false);
 }
 
 /*Button binding for main menu */
@@ -55,13 +62,22 @@ function removeMainContent(){
 }
 
 function showGalery(){
+
     removeMainContent();
 
-    let numberOfTiles = 4;
-
     let mainContentHeader = document.createElement('header');
-        mainContentHeader.textContent = 'Nombre de tuiles affichées : '+numberOfTiles;
+        mainContentHeader.textContent = 'Nombre de tuiles affichées : ';
     mainContent.appendChild(mainContentHeader);
+
+    changeTileNumberField = document.createElement('input');
+        changeTileNumberField.setAttribute('name', 'modifyNumberOfTiles');
+        changeTileNumberField.setAttribute('id', 'modifyNumberOfTiles');
+        changeTileNumberField.setAttribute('type', 'number');
+        changeTileNumberField.setAttribute('value', numberOfTiles);
+        changeTileNumberField.setAttribute('min', numberOfTilesRange[0]);
+        changeTileNumberField.setAttribute('max', numberOfTilesRange[1]);
+    mainContentHeader.appendChild(changeTileNumberField);
+    refreshModifyNumberOfTilesBinding();
 
     for (let index = 0; index < numberOfTiles; index++) {
         const newTile = document.createElement("article");
@@ -84,3 +100,21 @@ function showGalery(){
 function showTicTacToe(){
     removeMainContent();
 }
+
+function modifyNumberOfTilesEventHandler(event){
+    
+    refreshModifyNumberOfTilesBinding();
+
+    if(!event){return};
+    if(event.target.value != null){
+        numberOfTiles = event.target.value;
+        createMainContent('galery');
+        refreshModifyNumberOfTilesBinding();
+    }
+}
+
+function refreshModifyNumberOfTilesBinding(){
+    document.querySelector('input[name="modifyNumberOfTiles"]').onchange=modifyNumberOfTilesEventHandler;
+}
+    
+
