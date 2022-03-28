@@ -61,7 +61,7 @@ section
     height: auto;
     margin: auto;
     display: flex;
-    flex-direction:row;
+    flex-direction:row   ;
 }
 
 article
