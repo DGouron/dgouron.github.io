@@ -11,6 +11,13 @@ const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 var   numberOfTiles = 2;
 var   numberOfTilesRange = [1, 7];
 var   changeTileNumberField = document.getElementById('modifyNumberOfTiles');
+/*-----------------------------------------*/
+
+/* Tic Tac Toe variables */
+var numberOfPlayers = 2;
+var currentPlayer = 1;
+/*-----------------------------------------*/
+
 
 if (document.readyState === 'complete') {
 } else {
@@ -100,6 +107,7 @@ function showGalery(){
 
 function showTicTacToe(){
     removeMainContent();
+    createTicTacToeGame(3)
 }
 
 function modifyNumberOfTilesEventHandler(event){
@@ -117,5 +125,54 @@ function modifyNumberOfTilesEventHandler(event){
 function refreshModifyNumberOfTilesBinding(){
     document.querySelector('input[name="modifyNumberOfTiles"]').onchange=modifyNumberOfTilesEventHandler;
 }
-    
 
+function createTicTacToeGame(lenght){
+
+    
+//lenght = number of case in one row.
+    let newTicTacToeTable = document.createElement('table');
+        newTicTacToeTable.setAttribute('id', 'ticTacToe');
+    mainContent.appendChild(newTicTacToeTable);
+
+    let ticTacToeHeader = document.createElement('th');
+        ticTacToeHeader.textContent = 'Tic Tac Toe';
+    newTicTacToeTable.appendChild(ticTacToeHeader);
+
+
+    for(let row = 0; row < lenght; row++){
+
+        let newTicTacToeRow = document.createElement('tr');
+            newTicTacToeRow.setAttribute('id', 'ticTacToeRow');
+        newTicTacToeTable.appendChild(newTicTacToeRow);
+
+        for(let cell = 0; cell < lenght; cell++){
+            let newTicTacToeCell = document.createElement('td');
+                newTicTacToeCell.classList.add('ticTacToCell');
+            newTicTacToeRow.appendChild(newTicTacToeCell);
+            let cellButton = document.createElement('input');
+                cellButton.setAttribute('type', 'button');
+                cellButton.setAttribute('name', 'Button'+row+cell);
+                cellButton.classList.add('ticTacToButton');
+            newTicTacToeCell.appendChild(cellButton);
+            bindTicTacToeCellButton(cellButton);
+        }
+    }
+}
+
+function bindTicTacToeCellButton(button){
+    button.addEventListener('click', function(event){
+        clickOnTicTacToCellButton(button);
+    });
+}
+
+function clickOnTicTacToCellButton(button){
+    if(currentPlayer == 1 && !button.classList.contains('ButtonLock')){
+        button.value = 'X';
+        currentPlayer = 2;
+        button.classList.add('ButtonLock');
+    }else if(currentPlayer == 2 && !button.classList.contains('ButtonLock')){
+        button.value = "0";
+        currentPlayer = 1;
+        button.classList.add('ButtonLock');
+    }
+}
