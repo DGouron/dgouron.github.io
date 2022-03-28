@@ -24,6 +24,7 @@ if (document.readyState === 'complete') {
 
 const showGaleryButton = document.getElementById('ShowGalery');
 const showTicTacToeButton = document.getElementById('ShowTicTacToe');
+const showCVButton = document.getElementById('ShowCV');
 
 showGaleryButton.addEventListener('click', function(){
     console.log('Show Galery');
