@@ -1,3 +1,9 @@
+/* 
+/  Copyright all right reserved Damien Gouron - 2022
+/  Summary : Galery - Tic Tac Toe - CV
+*/
+
+
 /* Load configuration files and setup bloc generation*/
 var configNavLink = './config/config_nav.json';
 var configNavData;
@@ -12,12 +18,6 @@ var   numberOfTiles = 2;
 var   numberOfTilesRange = [1, 7];
 var   changeTileNumberField = document.getElementById('modifyNumberOfTiles');
 /*-----------------------------------------*/
-
-/* Tic Tac Toe variables */
-var numberOfPlayers = 2;
-var currentPlayer = 1;
-/*-----------------------------------------*/
-
 
 if (document.readyState === 'complete') {
 } else {
@@ -34,12 +34,10 @@ const showTicTacToeButton = document.getElementById('ShowTicTacToe');
 const showCVButton = document.getElementById('ShowCV');
 
 showGaleryButton.addEventListener('click', function(){
-    console.log('Show Galery');
     createMainContent('galery');
 });
 
 showTicTacToeButton.addEventListener('click', function(){
-    console.log('Show TicTacToe');
     createMainContent('ticTacToe');
 });
 
@@ -131,46 +129,135 @@ function refreshModifyNumberOfTilesBinding(){
 
 
 /*-------------------------------------------------------------------------- TIC TAC TOE -------------------------------------------------------------------------------------------*/
+/* Tic Tac Toe variables */
+var numberOfPlayers = 2;
+var currentPlayer = 1;
+var ticTacToeLength = 0;
+var allTicTacToeCells = []; //2D array who store all cells for check the victory conditions.
+/*-----------------------------------------*/
 
-function createTicTacToeGame(lenght){ 
-//lenght = number of case in one row.
+class ticTacToeCell {
+    constructor(name, parentRow) {
+        this.name = name;
+        this.parentRow = parentRow;
+        this.cellRef = null;
+        this.cellButtonRef = null;
+        this.isLocked = false;
+    }
+
+    initCell(row, cell){
+        let tableCell = document.createElement('td');
+            tableCell.classList.add('ticTacToCell');
+        this.parentRow.appendChild(tableCell);
+        this.cellRef = tableCell;
+        this.createCellButton(row,cell);
+    }
+
+    createCellButton(row, cell){
+        let cellButton = document.createElement('input');
+            cellButton.setAttribute('type', 'button');
+            cellButton.setAttribute('name', 'Button'+row+cell);
+            cellButton.classList.add('ticTacToButton');
+        this.cellRef.appendChild(cellButton);
+        this.cellButtonRef = cellButton;
+        this.bindTicTacToeCellButton(cellButton);
+    }
+
+
+    bindTicTacToeCellButton(button){
+        button.addEventListener('click', function(event){
+            clickOnTicTacToCellButton(button);
+        });
+    }
+
+    getButtonValue(){
+        return this.cellButtonRef.value;
+    }
+}
+
+function createTicTacToeGame(length){ 
+//length = number of case in one row.
+    ticTacToeLength = length;
+    for(let i = 0; i < ticTacToeLength; i++){
+        allTicTacToeCells[i] = [];
+    }
+    console.log(allTicTacToeCells);
     let newTicTacToeTable = document.createElement('table');
         newTicTacToeTable.setAttribute('id', 'ticTacToe');
     mainContent.appendChild(newTicTacToeTable);
 
     let ticTacToeHeader = document.createElement('th');
+        ticTacToeHeader.setAttribute('id', 'ticTacToeHeader');
         ticTacToeHeader.textContent = 'Tic Tac Toe';
     newTicTacToeTable.appendChild(ticTacToeHeader);
 
 
-    for(let row = 0; row < lenght; row++){
+    for(let row = 0; row < length; row++){
 
         let newTicTacToeRow = document.createElement('tr');
             newTicTacToeRow.setAttribute('id', 'ticTacToeRow');
         newTicTacToeTable.appendChild(newTicTacToeRow);
 
-        for(let cell = 0; cell < lenght; cell++){
-            let newTicTacToeCell = document.createElement('td');
-                newTicTacToeCell.classList.add('ticTacToCell');
-            newTicTacToeRow.appendChild(newTicTacToeCell);
-            let cellButton = document.createElement('input');
-                cellButton.setAttribute('type', 'button');
-                cellButton.setAttribute('name', 'Button'+row+cell);
-                cellButton.classList.add('ticTacToButton');
-            newTicTacToeCell.appendChild(cellButton);
-            bindTicTacToeCellButton(cellButton);
+        for(let cell = 0; cell < length; cell++){
+            let newCell = new ticTacToeCell('test', newTicTacToeRow);
+                newCell.initCell(row, cell);
+                allTicTacToeCells[row].push(newCell); //store the cell ref
         }
     }
+} 
+
+
+function checkVictoryState(){
+    //check if one of a victory condition are true
+    let ticTacToeHeader = document.getElementById('ticTacToeHeader');
+
+    if(!victoryInLineSearch(ticTacToeHeader)){
+        if(!victoryInColumnSearch(ticTacToeHeader)){
+            victoryInDiagonalSearch(ticTacToeHeader);
+        }
+    } 
 }
 
-function bindTicTacToeCellButton(button){
-    button.addEventListener('click', function(event){
-        clickOnTicTacToCellButton(button);
-    });
+function victoryInLineSearch(ticTacToeHeader){
+    let lineCounterForX = 0;
+    let lineCounterFor0 = 0;
+
+    for(let index = 0; index < ticTacToeLength ; index++){
+        
+        let currentRow = allTicTacToeCells[index];
+        lineCounterFor0 =0;
+        lineCounterForX = 0;
+
+       for(let currentCellIndex = 0; currentCellIndex < currentRow.length; currentCellIndex++){
+            if(currentRow[currentCellIndex].getButtonValue() == 'X'){
+                ++lineCounterForX;
+            }else if(currentRow[currentCellIndex].getButtonValue() == '0'){
+                ++lineCounterFor0;
+            }
+
+            if(lineCounterFor0 == 3){
+                ticTacToeHeader.textContent = 'VICTORY FOR 0';
+                return true;
+            }else if(lineCounterForX == 3){
+                ticTacToeHeader.textContent = 'VICTORY FOR X';
+                return true;
+            }
+       }
+    }
+    return false;
+}
+
+function victoryInColumnSearch(ticTacToeHeader){
+    return false;
+}
+
+function victoryInDiagonalSearch(ticTacToeHeader){
+    return false;
 }
 
 function clickOnTicTacToCellButton(button){
     //If the button is mark at "ButtonLock", the player cant use it.
+    console.log('test');
     if(currentPlayer == 1 && !button.classList.contains('ButtonLock')){
         button.value = 'X';
         currentPlayer = 2;
@@ -180,4 +267,6 @@ function clickOnTicTacToCellButton(button){
         currentPlayer = 1;
         button.classList.add('ButtonLock');
     }
+    button.disabled = "disabled";
+    checkVictoryState();
 }
