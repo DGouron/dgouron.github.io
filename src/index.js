@@ -126,9 +126,13 @@ function refreshModifyNumberOfTilesBinding(){
     document.querySelector('input[name="modifyNumberOfTiles"]').onchange=modifyNumberOfTilesEventHandler;
 }
 
-function createTicTacToeGame(lenght){
 
-    
+
+
+
+/*-------------------------------------------------------------------------- TIC TAC TOE -------------------------------------------------------------------------------------------*/
+
+function createTicTacToeGame(lenght){ 
 //lenght = number of case in one row.
     let newTicTacToeTable = document.createElement('table');
         newTicTacToeTable.setAttribute('id', 'ticTacToe');
@@ -166,6 +170,7 @@ function bindTicTacToeCellButton(button){
 }
 
 function clickOnTicTacToCellButton(button){
+    //If the button is mark at "ButtonLock", the player cant use it.
     if(currentPlayer == 1 && !button.classList.contains('ButtonLock')){
         button.value = 'X';
         currentPlayer = 2;
