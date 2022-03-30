@@ -41,7 +41,7 @@ showTicTacToeButton.addEventListener('click', function(){
     createMainContent('ticTacToe');
 });
 
-/* Populate the main section*/
+/* Populate the main content */
 
 function createMainContent(contentName){
     /*Factory for populate the main content section*/
@@ -105,7 +105,7 @@ function showGalery(){
 
 function showTicTacToe(){
     removeMainContent();
-    createTicTacToeGame(3)
+    createTicTacToeGame();
 }
 
 function modifyNumberOfTilesEventHandler(event){
@@ -132,7 +132,8 @@ function refreshModifyNumberOfTilesBinding(){
 /* Tic Tac Toe variables */
 var numberOfPlayers = 2;
 var currentPlayer = 1;
-var ticTacToeLength = 0;
+var ticTacToeLength = 12;
+const minTicTacToeLength = 3, maxTicTacToeLength = 12;
 var allTicTacToeCells = []; //2D array who store all cells for check the victory conditions.
 /*-----------------------------------------*/
 
@@ -175,10 +176,9 @@ class ticTacToeCell {
     }
 }
 
-function createTicTacToeGame(length){ 
-//length = number of case in one row.
-    ticTacToeLength = length;
-    for(let i = 0; i < ticTacToeLength; i++){
+function createTicTacToeGame(){ 
+
+    for(let i = 0; i < ticTacToeLength; ++i){
         allTicTacToeCells[i] = [];
     }
     console.log(allTicTacToeCells);
@@ -192,13 +192,13 @@ function createTicTacToeGame(length){
     newTicTacToeTable.appendChild(ticTacToeHeader);
 
 
-    for(let row = 0; row < length; row++){
+    for(let row = 0; row < ticTacToeLength; ++row){
 
         let newTicTacToeRow = document.createElement('tr');
             newTicTacToeRow.setAttribute('id', 'ticTacToeRow');
         newTicTacToeTable.appendChild(newTicTacToeRow);
 
-        for(let cell = 0; cell < length; cell++){
+        for(let cell = 0; cell < ticTacToeLength; ++cell){
             let newCell = new ticTacToeCell('test', newTicTacToeRow);
                 newCell.initCell(row, cell);
                 allTicTacToeCells[row].push(newCell); //store the cell ref
@@ -228,36 +228,144 @@ function victoryInLineSearch(ticTacToeHeader){
         lineCounterFor0 =0;
         lineCounterForX = 0;
 
-       for(let currentCellIndex = 0; currentCellIndex < currentRow.length; currentCellIndex++){
+       for(let currentCellIndex = 0; currentCellIndex < currentRow.length; ++currentCellIndex){
             if(currentRow[currentCellIndex].getButtonValue() == 'X'){
                 ++lineCounterForX;
+                lineCounterFor0 = 0;
             }else if(currentRow[currentCellIndex].getButtonValue() == '0'){
                 ++lineCounterFor0;
+                lineCounterForX = 0;
+            }else{
+                lineCounterFor0 =0;
+                lineCounterForX = 0;
             }
 
-            if(lineCounterFor0 == 3){
-                ticTacToeHeader.textContent = 'VICTORY FOR 0';
-                return true;
-            }else if(lineCounterForX == 3){
-                ticTacToeHeader.textContent = 'VICTORY FOR X';
-                return true;
-            }
+          victoryValidation(lineCounterFor0, lineCounterForX);
        }
     }
     return false;
 }
 
 function victoryInColumnSearch(ticTacToeHeader){
+    //we go through the rows of the first column and we compare n+n columns to the same row. If 3 match, win. Otherwise we go to the next row
+    let columnCounterForX = 0;
+    let columnCounterFor0 = 0;
+
+    for(let currentRowIndex = 0; currentRowIndex < ticTacToeLength; ++currentRowIndex){
+        columnCounterForX = 0;
+        columnCounterFor0 = 0;
+
+        for(let currentColumnIndex = 0; currentColumnIndex < ticTacToeLength; ++currentColumnIndex){
+            currentCellsToCompare = allTicTacToeCells[currentColumnIndex];
+            buttonValue = currentCellsToCompare[currentRowIndex].getButtonValue(); //Save the value of the cell for comparison
+
+            if(buttonValue == 'X'){
+                ++columnCounterForX;
+                columnCounterFor0 = 0;
+            }else if(buttonValue == '0'){
+                ++columnCounterFor0;
+                columnCounterForX - 0;
+            }else{
+                columnCounterFor0 = 0;
+                columnCounterForX = 0;
+            }
+
+            victoryValidation(columnCounterFor0, columnCounterForX);
+        }
+    }
+
     return false;
 }
 
 function victoryInDiagonalSearch(ticTacToeHeader){
+
+    let counterForX = 0;
+    let counterFor0 = 0;
+    let adjustedRowIndex = 0;
+    var rowArray = [];
+
+    //Toute la ligne 0
+    let startRow = allTicTacToeCells[0];
+    let currentRow = [];
+
+
+    /*for(cellIndexInRow = 0; cellIndexInRow < ticTacToeLength; ++cellIndexInRow){
+        let color = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+
+        if(cellIndexInRow == 0){
+            let cell = startRow[cellIndexInRow];
+            cell.cellButtonRef.style.backgroundColor = color;
+
+            for(let adjacentCellIndex = 1; adjacentCellIndex < ticTacToeLength; ++adjacentCellIndex){ //Recherche des cellules adjacentes bas-droit
+                currentRow = allTicTacToeCells[adjacentCellIndex];
+                cell = currentRow[adjacentCellIndex];
+                if(cell != null || cell != undefined){
+                    cell.cellButtonRef.style.backgroundColor = color;
+                }
+            }
+        }else{
+
+            let cell = startRow[cellIndexInRow];
+            cell.cellButtonRef.style.backgroundColor = color; //point de départ de la diagonale
+
+            for(let adjacentColumnIndex = 1; adjacentColumnIndex < ticTacToeLength; ++adjacentColumnIndex){ //recherche de la cellule d'adjacente bas-droit
+                
+                console.log(cellIndexInRow);
+
+                //selectionne la ligne du dessous
+                currentRow = allTicTacToeCells[adjacentColumnIndex];
+                //selectionne la cellule un cran à droite
+                let cell = currentRow[adjacentColumnIndex + cellIndexInRow];
+                //modifie la couleur de la cellule
+                if(cell != null || cell != undefined){
+                    cell.cellButtonRef.style.backgroundColor = color;
+                    
+                }   
+            }
+        }
+    }*/
+
+    //Toute la colonne 0
+     startRow = allTicTacToeCells[1];
+     currentRow = [];
+
+     for(currentRowIndex = 1; currentRowIndex < ticTacToeLength; ++currentRowIndex){ //On check toutes les lignes 0 de la colonne 0
+        let color = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+
+        let cell = startRow[cellIndexInRow];
+            cell.cellButtonRef.style.backgroundColor = color;
+     }
+
+
     return false;
+}
+
+function victoryValidation(counterFor0, counterForX){
+    if(counterFor0 == 3){
+        ticTacToeHeader.textContent = 'VICTORY FOR 0';
+        disableAllCells();
+        return true;
+    }else if(counterForX == 3){
+        ticTacToeHeader.textContent = 'VICTORY FOR X';
+        disableAllCells();
+        return true;
+    }
+    return false
+}
+
+function disableAllCells(){
+    for(let index = 0; index < ticTacToeLength ; index++){
+        
+        let currentRow = allTicTacToeCells[index];
+
+       for(let currentCellIndex = 0; currentCellIndex < currentRow.length; ++currentCellIndex){
+            currentRow[currentCellIndex].cellButtonRef.disabled = 'disabled';
+       }
+    }
 }
 
 function clickOnTicTacToCellButton(button){
     //If the button is mark at "ButtonLock", the player cant use it.
-    console.log('test');
     if(currentPlayer == 1 && !button.classList.contains('ButtonLock')){
         button.value = 'X';
         currentPlayer = 2;
