@@ -289,7 +289,7 @@ function victoryInDiagonalSearch(ticTacToeHeader){
     let currentRow = [];
 
 
-    /*for(cellIndexInRow = 0; cellIndexInRow < ticTacToeLength; ++cellIndexInRow){
+    for(cellIndexInRow = 0; cellIndexInRow < ticTacToeLength; ++cellIndexInRow){
         let color = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
 
         if(cellIndexInRow == 0){
@@ -323,18 +323,24 @@ function victoryInDiagonalSearch(ticTacToeHeader){
                 }   
             }
         }
-    }*/
+    }
 
     //Toute la colonne 0
      startRow = allTicTacToeCells[1];
      currentRow = [];
 
-     for(currentRowIndex = 1; currentRowIndex < ticTacToeLength; ++currentRowIndex){ //On check toutes les lignes 0 de la colonne 0
+     for(let currentRowIndex = 1; currentRowIndex < ticTacToeLength; ++currentRowIndex){ //Toutes les lignes 1 par 1 à partir de ligne 1
         let color = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+        
+        //On part à partir de la cell 0.
 
-        let cell = startRow[cellIndexInRow];
-            cell.cellButtonRef.style.backgroundColor = color;
+
+        for(){//Recherche des cell adjacentes à la cell 0.
+
+        }
+        
      }
+        
 
 
     return false;
