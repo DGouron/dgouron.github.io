@@ -14,14 +14,14 @@ const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 
 /* Binding for galery */
 
-var   numberOfTiles = 2;
-var   numberOfTilesRange = [1, 7];
-var   changeTileNumberField = document.getElementById('modifyNumberOfTiles');
+var numberOfTiles = 2;
+var numberOfTilesRange = [1, 7];
+var changeTileNumberField = document.getElementById('modifyNumberOfTiles');
 /*-----------------------------------------*/
 
 if (document.readyState === 'complete') {
 } else {
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         createMainContent();
         modifyNumberOfTilesEventHandler();
     }, false);
@@ -33,17 +33,17 @@ const showGaleryButton = document.getElementById('ShowGalery');
 const showTicTacToeButton = document.getElementById('ShowTicTacToe');
 const showCVButton = document.getElementById('ShowCV');
 
-showGaleryButton.addEventListener('click', function(){
+showGaleryButton.addEventListener('click', function () {
     createMainContent('galery');
 });
 
-showTicTacToeButton.addEventListener('click', function(){
+showTicTacToeButton.addEventListener('click', function () {
     createMainContent('ticTacToe');
 });
 
 /* Populate the main content */
 
-function createMainContent(contentName){
+function createMainContent(contentName) {
     /*Factory for populate the main content section*/
     switch (contentName) {
         case 'galery':
@@ -58,42 +58,41 @@ function createMainContent(contentName){
     }
 }
 
-function removeMainContent(){
+function removeMainContent() {
     let mainContentChildren = mainContent.children;
 
-    while(mainContent.children.length != 0)
-    {
+    while (mainContent.children.length != 0) {
         mainContent.removeChild(mainContent.lastChild);
     }
 }
 
-function showGalery(){
+function showGalery() {
 
     removeMainContent();
 
     let mainContentHeader = document.createElement('header');
-        mainContentHeader.textContent = 'Nombre de tuiles affichées : ';
+    mainContentHeader.textContent = 'Nombre de tuiles affichées : ';
     mainContent.appendChild(mainContentHeader);
 
     changeTileNumberField = document.createElement('input');
-        changeTileNumberField.setAttribute('name', 'modifyNumberOfTiles');
-        changeTileNumberField.setAttribute('id', 'modifyNumberOfTiles');
-        changeTileNumberField.setAttribute('type', 'number');
-        changeTileNumberField.setAttribute('value', numberOfTiles);
-        changeTileNumberField.setAttribute('min', numberOfTilesRange[0]);
-        changeTileNumberField.setAttribute('max', numberOfTilesRange[1]);
+    changeTileNumberField.setAttribute('name', 'modifyNumberOfTiles');
+    changeTileNumberField.setAttribute('id', 'modifyNumberOfTiles');
+    changeTileNumberField.setAttribute('type', 'number');
+    changeTileNumberField.setAttribute('value', numberOfTiles);
+    changeTileNumberField.setAttribute('min', numberOfTilesRange[0]);
+    changeTileNumberField.setAttribute('max', numberOfTilesRange[1]);
     mainContentHeader.appendChild(changeTileNumberField);
     refreshModifyNumberOfTilesBinding();
 
     for (let index = 0; index < numberOfTiles; index++) {
         const newTile = document.createElement("article");
         let tileContent = document.createElement("p");
-            tileContent.innerHTML = `Tuile random numéro ${index + 1}. <br /><br />${loremIpsum}<br /><br /><strong>Tuile générée automatiquement.</strong>`;
+        tileContent.innerHTML = `Tuile random numéro ${index + 1}. <br /><br />${loremIpsum}<br /><br /><strong>Tuile générée automatiquement.</strong>`;
         let tileButton = document.createElement("a");
-            tileButton.setAttribute("href", "#");
-            tileButton.classList.add('buttonBase');
-            tileButton.classList.add('animatedButton');
-            tileButton.textContent = 'Voir plus';
+        tileButton.setAttribute("href", "#");
+        tileButton.classList.add('buttonBase');
+        tileButton.classList.add('animatedButton');
+        tileButton.textContent = 'Voir plus';
 
         newTile.appendChild(tileContent);
         newTile.appendChild(tileButton);
@@ -103,41 +102,36 @@ function showGalery(){
     }
 }
 
-function showTicTacToe(){
+function showTicTacToe() {
     removeMainContent();
     createTicTacToeGame();
 }
 
-function modifyNumberOfTilesEventHandler(event){
-    
+function modifyNumberOfTilesEventHandler(event) {
+
     refreshModifyNumberOfTilesBinding();
 
-    if(!event){return};
-    if(event.target.value != null){
+    if (!event) { return };
+    if (event.target.value != null) {
         numberOfTiles = event.target.value;
         createMainContent('galery');
         refreshModifyNumberOfTilesBinding();
     }
 }
 
-function refreshModifyNumberOfTilesBinding(){
-    document.querySelector('input[name="modifyNumberOfTiles"]').onchange=modifyNumberOfTilesEventHandler;
+function refreshModifyNumberOfTilesBinding() {
+    document.querySelector('input[name="modifyNumberOfTiles"]').onchange = modifyNumberOfTilesEventHandler;
 }
 
-
-
-
-
-/*-------------------------------------------------------------------------- TIC TAC TOE -------------------------------------------------------------------------------------------*/
 /* Tic Tac Toe variables */
 var numberOfPlayers = 2;
 var currentPlayer = 1;
 var ticTacToeLength = 3;
-const minTicTacToeLength = 3, maxTicTacToeLength = 12;
+const minTicTacToeLength = 3, maxTicTacToeLength = 12; //for future evolution
 var allTicTacToeCells = []; //2D array who store all cells for check the victory conditions.
 
 let countOccurrenceFor0 = 0, countOccurenceForX = 0;
-/*-----------------------------------------*/
+
 
 class ticTacToeCell {
     constructor(name, parentRow) {
@@ -148,104 +142,102 @@ class ticTacToeCell {
         this.isLocked = false;
     }
 
-    initCell(row, cell){
+    initCell(row, cell) {
         let tableCell = document.createElement('td');
-            tableCell.classList.add('ticTacToCell');
+        tableCell.classList.add('ticTacToCell');
         this.parentRow.appendChild(tableCell);
         this.cellRef = tableCell;
-        this.createCellButton(row,cell);
+        this.createCellButton(row, cell);
     }
 
-    createCellButton(row, cell){
+    createCellButton(row, cell) {
         let cellButton = document.createElement('input');
-            cellButton.setAttribute('type', 'button');
-            cellButton.setAttribute('name', 'Button'+row+cell);
-            cellButton.classList.add('ticTacToButton');
+        cellButton.setAttribute('type', 'button');
+        cellButton.setAttribute('name', 'Button' + row + cell);
+        cellButton.classList.add('ticTacToButton');
         this.cellRef.appendChild(cellButton);
         this.cellButtonRef = cellButton;
         this.bindTicTacToeCellButton(cellButton);
     }
 
 
-    bindTicTacToeCellButton(button){
-        button.addEventListener('click', function(event){
+    bindTicTacToeCellButton(button) {
+        button.addEventListener('click', function (event) {
             clickOnTicTacToCellButton(button);
         });
     }
 
-    getButtonValue(){
+    getButtonValue() {
         return this.cellButtonRef.value;
     }
 }
 
-function createTicTacToeGame(){ 
+function createTicTacToeGame() {
 
-    for(let i = 0; i < ticTacToeLength; ++i){
+    for (let i = 0; i < ticTacToeLength; ++i) {
         allTicTacToeCells[i] = [];
     }
 
     let newTicTacToeTable = document.createElement('table');
-        newTicTacToeTable.setAttribute('id', 'ticTacToe');
+    newTicTacToeTable.setAttribute('id', 'ticTacToe');
     mainContent.appendChild(newTicTacToeTable);
 
     let ticTacToeHeader = document.createElement('th');
-        ticTacToeHeader.setAttribute('id', 'ticTacToeHeader');
-        ticTacToeHeader.textContent = 'Tic Tac Toe';
+    ticTacToeHeader.setAttribute('id', 'ticTacToeHeader');
+    ticTacToeHeader.textContent = 'Tic Tac Toe';
     newTicTacToeTable.appendChild(ticTacToeHeader);
 
 
-    for(let row = 0; row < ticTacToeLength; ++row){
+    for (let row = 0; row < ticTacToeLength; ++row) {
 
         let newTicTacToeRow = document.createElement('tr');
-            newTicTacToeRow.setAttribute('id', 'ticTacToeRow');
+        newTicTacToeRow.setAttribute('id', 'ticTacToeRow');
         newTicTacToeTable.appendChild(newTicTacToeRow);
 
-        for(let cell = 0; cell < ticTacToeLength; ++cell){
+        for (let cell = 0; cell < ticTacToeLength; ++cell) {
             let newCell = new ticTacToeCell('test', newTicTacToeRow);
-                newCell.initCell(row, cell);
-                allTicTacToeCells[row].push(newCell); //store the cell ref
+            newCell.initCell(row, cell);
+            allTicTacToeCells[row].push(newCell); //store the cell ref
         }
     }
-} 
+}
 
 
-function checkVictoryState(){
+function checkVictoryState() {
     //check if one of a victory condition are true
     let ticTacToeHeader = document.getElementById('ticTacToeHeader');
 
-    if(!victoryInLineSearch(ticTacToeHeader)){
-        if(!victoryInColumnSearch(ticTacToeHeader)){
-            victoryInDiagonalSearch(ticTacToeHeader);
-        }
-    } 
+    victoryInLineSearch(ticTacToeHeader);
+    victoryInColumnSearch(ticTacToeHeader);
+    victoryInDiagonalSearch(ticTacToeHeader);
 }
 
-function victoryInLineSearch(ticTacToeHeader){
+function victoryInLineSearch(ticTacToeHeader) {
 
-    for(let index = 0; index < ticTacToeLength ; index++){
-        
+    for (let index = 0; index < ticTacToeLength; index++) {
+
         let currentRow = allTicTacToeCells[index];
         resetOccurenciesCounters();
 
-       for(let currentCellIndex = 0; currentCellIndex < currentRow.length; ++currentCellIndex){
+        for (let currentCellIndex = 0; currentCellIndex < currentRow.length; ++currentCellIndex) {
 
-        let buttonValue = currentRow[currentCellIndex].getButtonValue(); 
-        
-        searchOccurenciesFromCell(buttonValue);
+            let buttonValue = currentRow[currentCellIndex].getButtonValue();
+
+            searchOccurenciesFromCell(buttonValue);
             victoryValidation();
-       }
+        }
     }
     return false;
 }
 
-function victoryInColumnSearch(ticTacToeHeader){
+function victoryInColumnSearch(ticTacToeHeader) {
 
     //we go through the rows of the first column and we compare n+n columns to the same row. If 3 match, win. Otherwise we go to the next row
-    for(let currentRowIndex = 0; currentRowIndex < ticTacToeLength; ++currentRowIndex){
-        
+    for (let currentRowIndex = 0; currentRowIndex < ticTacToeLength; ++currentRowIndex) {
+
         resetOccurenciesCounters();
 
-        for(let currentColumnIndex = 0; currentColumnIndex < ticTacToeLength; ++currentColumnIndex){
+        for (let currentColumnIndex = 0; currentColumnIndex < ticTacToeLength; ++currentColumnIndex) {
             currentCellsToCompare = allTicTacToeCells[currentColumnIndex];
             let buttonValue = currentCellsToCompare[currentRowIndex].getButtonValue(); //Save the value of the cell for comparison
 
@@ -257,7 +249,7 @@ function victoryInColumnSearch(ticTacToeHeader){
     return false;
 }
 
-function victoryInDiagonalSearch(ticTacToeHeader){
+function victoryInDiagonalSearch(ticTacToeHeader) {
 
     resetOccurenciesCounters();
 
@@ -265,51 +257,52 @@ function victoryInDiagonalSearch(ticTacToeHeader){
     let currentRow = [];
     let cellColor = undefined;
 
-    for(cellIndexInRow = 0; cellIndexInRow < ticTacToeLength; ++cellIndexInRow){
+    for (cellIndexInRow = 0; cellIndexInRow < ticTacToeLength; ++cellIndexInRow) {
+
         resetOccurenciesCounters();
         cellColor = getRandomColor();
 
-        if(cellIndexInRow == 0){
+        if (cellIndexInRow == 0) {
             let cell = startRow[cellIndexInRow];
             cell.cellButtonRef.style.backgroundColor = cellColor;
 
-            let buttonValue = cell.getButtonValue(); //Save the value of the cell for comparison
+            let buttonValue = cell.getButtonValue();
 
             searchOccurenciesFromCell(buttonValue);
             victoryValidation();
 
-            for(let adjacentCellIndex = 1; adjacentCellIndex < ticTacToeLength; ++adjacentCellIndex){ //Recherche des cellules adjacentes bas-droit
+            for (let adjacentCellIndex = 1; adjacentCellIndex < ticTacToeLength; ++adjacentCellIndex) {
                 currentRow = allTicTacToeCells[adjacentCellIndex];
                 cell = currentRow[adjacentCellIndex];
 
-                if(cell != null || cell != undefined){
+                if (cell != null || cell != undefined) {
                     cell.cellButtonRef.style.backgroundColor = cellColor;
 
-                    let buttonValue = cell.getButtonValue(); //Save the value of the cell for comparison
+                    let buttonValue = cell.getButtonValue();
                     searchOccurenciesFromCell(buttonValue);
                     victoryValidation();
                 }
             }
-        }else{
+        } else {
 
             let cell = startRow[cellIndexInRow];
             cell.cellButtonRef.style.backgroundColor = cellColor; //point de départ de la diagonale
 
-            for(let adjacentColumnIndex = 1; adjacentColumnIndex < ticTacToeLength; ++adjacentColumnIndex){ //recherche de la cellule d'adjacente bas-droit
-                
+            for (let adjacentColumnIndex = 1; adjacentColumnIndex < ticTacToeLength; ++adjacentColumnIndex) { //recherche de la cellule d'adjacente bas-droit
+
                 //selectionne la ligne du dessous
                 currentRow = allTicTacToeCells[adjacentColumnIndex];
                 //selectionne la cellule un cran à droite
                 let cell = currentRow[adjacentColumnIndex + cellIndexInRow];
                 //modifie la couleur de la cellule
-                if(cell != null && cell != undefined){
+                if (cell != null && cell != undefined) {
                     cell.cellButtonRef.style.backgroundColor = cellColor;
 
                     let buttonValue = cell.getButtonValue(); //Save the value of the cell for comparison
                     searchOccurenciesFromCell(buttonValue);
                     victoryValidation();
-                    
-                }   
+
+                }
             }
         }
     }
@@ -318,68 +311,76 @@ function victoryInDiagonalSearch(ticTacToeHeader){
 
     resetOccurenciesCounters();
 
-     startRow = allTicTacToeCells[1];
-     currentRow = [];
+    startRow = allTicTacToeCells[1];
+    currentRow = [];
 
-     for(let currentRowIndex = 1; currentRowIndex < ticTacToeLength; ++currentRowIndex){ //Toutes les lignes 1 par 1 à partir de ligne 1
+    for (let currentRowIndex = 1; currentRowIndex < ticTacToeLength; ++currentRowIndex) { //Toutes les lignes 1 par 1 à partir de ligne 1
+
         cellColor = getRandomColor();
 
         //On part à partir de la cell 0.
         currentRow = allTicTacToeCells[currentRowIndex];
 
-        for(let i = 0; i < ticTacToeLength; i++){//Recherche des cell adjacentes à la cell 0.
-
-           currentRow = allTicTacToeCells[currentRowIndex + i];
+        for (let i = 0; i < ticTacToeLength; i++) {//Recherche des cell adjacentes à la cell 0.
+            resetOccurenciesCounters();
+            currentRow = allTicTacToeCells[currentRowIndex + i];
 
             //Adjacente = row + 1 et column +1
-            if(currentRow != null && currentRow != undefined){
+            if (currentRow != null && currentRow != undefined) {
                 cell = currentRow[i];
             }
             //on sécurise l'accès à la cell en vérifiant qu'elle n'est ni null ni undefined
-            if(cell != null && cell != undefined){
+            if (cell != null && cell != undefined) {
                 cell.cellButtonRef.style.backgroundColor = cellColor;
 
                 let buttonValue = cell.getButtonValue(); //Save the value of the cell for comparison
 
                 searchOccurenciesFromCell(buttonValue);
                 victoryValidation();
-                
-            }   
+
+            }
         }
-     }
+    }
+
+    reverseDiagonalSearch();
+    return false;
+}
+
+function reverseDiagonalSearch() {
+    resetOccurenciesCounters();
 
     return false;
 }
 
-function searchOccurenciesFromCell(valueToCompare){
+function searchOccurenciesFromCell(valueToCompare) {
 
     let currentValueToCompare = valueToCompare;
 
 
-    if(currentValueToCompare == 'X'){
+    if (currentValueToCompare == 'X') {
         ++countOccurenceForX;
         countOccurrenceFor0 = 0;
-    }else if(currentValueToCompare == '0'){
+    } else if (currentValueToCompare == '0') {
         ++countOccurrenceFor0;
         countOccurenceForX - 0;
-    }else{
-       resetOccurenciesCounters();
+    } else {
+        resetOccurenciesCounters();
     }
 
     console.log([countOccurrenceFor0, countOccurenceForX]);
 }
 
-function resetOccurenciesCounters(){
+function resetOccurenciesCounters() {
     countOccurrenceFor0 = 0;
     countOccurenceForX = 0;
 }
 
-function victoryValidation(){
-    if(countOccurrenceFor0 == 3){
+function victoryValidation() {
+    if (countOccurrenceFor0 == 3) {
         ticTacToeHeader.textContent = 'VICTORY FOR 0';
         disableAllCells();
         return true;
-    }else if(countOccurenceForX == 3){
+    } else if (countOccurenceForX == 3) {
         ticTacToeHeader.textContent = 'VICTORY FOR X';
         disableAllCells();
         return true;
@@ -387,29 +388,29 @@ function victoryValidation(){
     return false
 }
 
-function getRandomColor(){
+function getRandomColor() {
 
-    return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+    return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
 }
 
-function disableAllCells(){
-    for(let index = 0; index < ticTacToeLength ; index++){
-        
+function disableAllCells() {
+    for (let index = 0; index < ticTacToeLength; index++) {
+
         let currentRow = allTicTacToeCells[index];
 
-       for(let currentCellIndex = 0; currentCellIndex < currentRow.length; ++currentCellIndex){
+        for (let currentCellIndex = 0; currentCellIndex < currentRow.length; ++currentCellIndex) {
             currentRow[currentCellIndex].cellButtonRef.disabled = 'disabled';
-       }
+        }
     }
 }
 
-function clickOnTicTacToCellButton(button){
+function clickOnTicTacToCellButton(button) {
     //If the button is mark at "ButtonLock", the player cant use it.
-    if(currentPlayer == 1 && !button.classList.contains('ButtonLock')){
+    if (currentPlayer == 1 && !button.classList.contains('ButtonLock')) {
         button.value = 'X';
         currentPlayer = 2;
         button.classList.add('ButtonLock');
-    }else if(currentPlayer == 2 && !button.classList.contains('ButtonLock')){
+    } else if (currentPlayer == 2 && !button.classList.contains('ButtonLock')) {
         button.value = "0";
         currentPlayer = 1;
         button.classList.add('ButtonLock');
