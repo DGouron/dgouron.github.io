@@ -17,7 +17,6 @@ const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 var numberOfTiles = 2;
 var numberOfTilesRange = [1, 7];
 var changeTileNumberField = document.getElementById('modifyNumberOfTiles');
-/*-----------------------------------------*/
 
 if (document.readyState === 'complete') {
 } else {
@@ -41,10 +40,8 @@ showTicTacToeButton.addEventListener('click', function () {
     createMainContent('ticTacToe');
 });
 
-/* Populate the main content */
-
 function createMainContent(contentName) {
-    /*Factory for populate the main content section*/
+    /*Machine for populate the main content section*/
     switch (contentName) {
         case 'galery':
             showGalery();
@@ -58,20 +55,23 @@ function createMainContent(contentName) {
     }
 }
 
-function removeMainContent() {
-    let mainContentChildren = mainContent.children;
+function showGalery() {
+    
+    removeMainContent();
+    updateNumberOfTilesInField();
+    refreshModifyNumberOfTilesBinding();
+    createGaleryTiles(numberOfTiles);
+}
 
+function removeMainContent() {
     while (mainContent.children.length != 0) {
         mainContent.removeChild(mainContent.lastChild);
     }
 }
 
-function showGalery() {
-
-    removeMainContent();
-
+function updateNumberOfTilesInField(){
     let mainContentHeader = document.createElement('header');
-    mainContentHeader.textContent = 'Nombre de tuiles affichées : ';
+    mainContentHeader.textContent = "Nombre d'éléments : ";
     mainContent.appendChild(mainContentHeader);
 
     changeTileNumberField = document.createElement('input');
@@ -82,8 +82,9 @@ function showGalery() {
     changeTileNumberField.setAttribute('min', numberOfTilesRange[0]);
     changeTileNumberField.setAttribute('max', numberOfTilesRange[1]);
     mainContentHeader.appendChild(changeTileNumberField);
-    refreshModifyNumberOfTilesBinding();
+}
 
+function createGaleryTiles(numberOfTiles){
     for (let index = 0; index < numberOfTiles; index++) {
         const newTile = document.createElement("article");
         let tileContent = document.createElement("p");
@@ -97,15 +98,10 @@ function showGalery() {
         newTile.appendChild(tileContent);
         newTile.appendChild(tileButton);
 
-
         mainContent.appendChild(newTile);
     }
 }
 
-function showTicTacToe() {
-    removeMainContent();
-    createTicTacToeGame();
-}
 
 function modifyNumberOfTilesEventHandler(event) {
 
@@ -121,6 +117,11 @@ function modifyNumberOfTilesEventHandler(event) {
 
 function refreshModifyNumberOfTilesBinding() {
     document.querySelector('input[name="modifyNumberOfTiles"]').onchange = modifyNumberOfTilesEventHandler;
+}
+
+function showTicTacToe() {
+    removeMainContent();
+    createTicTacToeGame();
 }
 
 /* Tic Tac Toe variables */
@@ -200,8 +201,25 @@ function createTicTacToeGame() {
             allTicTacToeCells[row].push(newCell); //store the cell ref
         }
     }
+
+    createTicTacToeOptions();
 }
 
+function createTicTacToeOptions(){ //TO DO
+    createColorEffectOption();
+    createReplayButton();
+    showPlayerStat();
+}
+
+function createColorEffectOption(){
+
+}
+function createReplayButton(){
+
+}
+function showPlayerStat(){
+
+}
 
 function checkVictoryState() {
     //check if one of a victory condition are true
@@ -366,8 +384,6 @@ function searchOccurenciesFromCell(valueToCompare) {
     } else {
         resetOccurenciesCounters();
     }
-
-    console.log([countOccurrenceFor0, countOccurenceForX]);
 }
 
 function resetOccurenciesCounters() {
