@@ -5,6 +5,7 @@
 
 
 /* Load configuration files and setup bloc generation*/
+
 var configNavLink = './config/config_nav.json';
 var configNavData;
 
@@ -56,7 +57,7 @@ function createMainContent(contentName) {
 }
 
 function showGalery() {
-    
+
     removeMainContent();
     updateNumberOfTilesInField();
     refreshModifyNumberOfTilesBinding();
@@ -402,11 +403,6 @@ function victoryValidation() {
         return true;
     }
     return false
-}
-
-function getRandomColor() {
-
-    return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
 }
 
 function disableAllCells() {
