@@ -25,10 +25,29 @@ nav
     display: flex;
     justify-content: center;
     flex-direction : row;
+    flex-wrap: wrap;
     flex-basis: 120px;
     text-align: center;
     gap: 0.3rem;
 }
+@media only screen and (max-width: 700px) {
+    nav {
+        margin: 0em;
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 120px;
+        flex-direction : column;
+        text-align: center;
+    }
+    nav ul {
+        margin: 0px;
+        padding: 0px;
+        list-style:none;
+        display: flex;
+        flex-direction : column;
+        justify-content: center;
+    }
+  }
 nav a
 {
     display: block;
@@ -50,7 +69,8 @@ nav a.active
     background-color: #e3fffd;
     border-color: #00b5a9;
 }
-nav ul {
+nav ul 
+{
     margin: 0px;
     padding: 0px;
     list-style:none;
@@ -71,7 +91,14 @@ main
     height: auto;
     margin: auto;
     display: flex;
-    flex-direction:row   ;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+main header
+{
+    margin: 2%;
+    width: 20%;
 }
 
 article
@@ -82,6 +109,8 @@ article
     display: block;
     min-width: 180px;
     min-height: 350px;
+    max-width: 220px;
+    max-height: 450px;
     margin: 30px;
     padding: 1em;
 }
@@ -95,6 +124,22 @@ footer
     border: 0.1em rgb(30, 30, 30) solid;
     background-color: rgb(85, 94, 94);
     margin-top: 5em;
+    min-height: auto;
+    color: white;
+}
+#GoTopIcone{
+  width: 64px;
+  height: 64px;
+  min-width: 16px;
+  min-height: 16px;
+  float: right;
+  margin-bottom: 2em;
+}
+#GoTopIcone:hover{
+    width: 70px;
+    height: 70px;
+    min-width: 22px;
+    min-height: 22px;
 }
 
 /*Custom class and animations */

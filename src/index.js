@@ -15,7 +15,7 @@ const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 
 /* Binding for galery */
 
-var numberOfTiles = 2;
+var numberOfTiles = 3;
 var numberOfTilesRange = [1, 7];
 var changeTileNumberField = document.getElementById('modifyNumberOfTiles');
 
@@ -41,7 +41,14 @@ showTicTacToeButton.addEventListener('click', function () {
     createMainContent('ticTacToe');
 });
 
+showCVButton.addEventListener('click', function(){
+    createMainContent('CV');
+})
+
+
+
 function createMainContent(contentName) {
+
     /*Machine for populate the main content section*/
     switch (contentName) {
         case 'galery':
@@ -49,6 +56,9 @@ function createMainContent(contentName) {
             break;
         case 'ticTacToe':
             showTicTacToe();
+            break;
+        case 'CV':
+            showCV();
             break;
         default:
             showGalery();
@@ -72,29 +82,32 @@ function removeMainContent() {
 
 function updateNumberOfTilesInField(){
     let mainContentHeader = document.createElement('header');
-    mainContentHeader.textContent = "Nombre d'éléments : ";
-    mainContent.appendChild(mainContentHeader);
+        mainContentHeader.textContent = "Nombre d'éléments à afficher : ";
+        mainContent.appendChild(mainContentHeader);
 
     changeTileNumberField = document.createElement('input');
-    changeTileNumberField.setAttribute('name', 'modifyNumberOfTiles');
-    changeTileNumberField.setAttribute('id', 'modifyNumberOfTiles');
+    changeTileNumberField.setAttribute('name', 'ModifyNumberOfTiles');
+    changeTileNumberField.setAttribute('id', 'ModifyNumberOfTiles');
     changeTileNumberField.setAttribute('type', 'number');
     changeTileNumberField.setAttribute('value', numberOfTiles);
     changeTileNumberField.setAttribute('min', numberOfTilesRange[0]);
     changeTileNumberField.setAttribute('max', numberOfTilesRange[1]);
+
     mainContentHeader.appendChild(changeTileNumberField);
 }
 
 function createGaleryTiles(numberOfTiles){
     for (let index = 0; index < numberOfTiles; index++) {
         const newTile = document.createElement("article");
+        
         let tileContent = document.createElement("p");
-        tileContent.innerHTML = `Tuile random numéro ${index + 1}. <br /><br />${loremIpsum}<br /><br /><strong>Tuile générée automatiquement.</strong>`;
-        let tileButton = document.createElement("a");
-        tileButton.setAttribute("href", "#");
-        tileButton.classList.add('buttonBase');
-        tileButton.classList.add('animatedButton');
-        tileButton.textContent = 'Voir plus';
+            tileContent.innerHTML = `Elément random numéro ${index + 1}. <br /><br />${loremIpsum}<br /><br /><strong>Elément généré automatiquement via Javascript.</strong>`;
+        
+            let tileButton = document.createElement("a");
+            tileButton.setAttribute("href", "#");
+            tileButton.classList.add('buttonBase');
+            tileButton.classList.add('animatedButton');
+            tileButton.textContent = 'Voir plus';
 
         newTile.appendChild(tileContent);
         newTile.appendChild(tileButton);
@@ -117,7 +130,7 @@ function modifyNumberOfTilesEventHandler(event) {
 }
 
 function refreshModifyNumberOfTilesBinding() {
-    document.querySelector('input[name="modifyNumberOfTiles"]').onchange = modifyNumberOfTilesEventHandler;
+    document.querySelector('input[name="ModifyNumberOfTiles"]').onchange = modifyNumberOfTilesEventHandler;
 }
 
 function showTicTacToe() {
@@ -207,6 +220,7 @@ function createTicTacToeGame() {
 }
 
 function createTicTacToeOptions(){ //TO DO
+
     createColorEffectOption();
     createReplayButton();
     showPlayerStat();
@@ -222,16 +236,14 @@ function showPlayerStat(){
 
 }
 
-function checkVictoryState() {
-    //check if one of a victory condition are true
-    let ticTacToeHeader = document.getElementById('ticTacToeHeader');
+function checkVictoryState(){
 
-    victoryInLineSearch(ticTacToeHeader);
-    victoryInColumnSearch(ticTacToeHeader);
-    victoryInDiagonalSearch(ticTacToeHeader);
+    searchLineVictories();
+    searchColumnVictories();
+    searchDiagonalVictories();
 }
 
-function victoryInLineSearch(ticTacToeHeader) {
+function searchLineVictories(){
 
     for (let index = 0; index < ticTacToeLength; index++) {
 
@@ -249,7 +261,7 @@ function victoryInLineSearch(ticTacToeHeader) {
     return false;
 }
 
-function victoryInColumnSearch(ticTacToeHeader) {
+function searchColumnVictories(){
 
     //we go through the rows of the first column and we compare n+n columns to the same row. If 3 match, win. Otherwise we go to the next row
     for (let currentRowIndex = 0; currentRowIndex < ticTacToeLength; ++currentRowIndex) {
@@ -268,13 +280,20 @@ function victoryInColumnSearch(ticTacToeHeader) {
     return false;
 }
 
-function victoryInDiagonalSearch(ticTacToeHeader) {
+function searchDiagonalVictories(){
 
-    resetOccurenciesCounters();
-
-    let startRow = allTicTacToeCells[0];
-    let currentRow = [];
     let cellColor = undefined;
+    let cell = undefined;
+    let startRow = allTicTacToeCells[0];
+
+    checkAllDiagonalFromLeftTopCorner(cellColor, cell, startRow);
+    checkAllDiagonalFromRightTopCorner(cellColor, cell, startRow);
+    checkAllDiagonalFromLeftBorder();
+    checkAllDiagonalFromRightBorder();
+}
+
+function checkAllDiagonalFromLeftTopCorner(cellColor, cell, startRow){
+    resetOccurenciesCounters();
 
     for (cellIndexInRow = 0; cellIndexInRow < ticTacToeLength; ++cellIndexInRow) {
 
@@ -282,93 +301,58 @@ function victoryInDiagonalSearch(ticTacToeHeader) {
         cellColor = getRandomColor();
 
         if (cellIndexInRow == 0) {
-            let cell = startRow[cellIndexInRow];
-            cell.cellButtonRef.style.backgroundColor = cellColor;
+            cell = getCurrentCell(startRow, cellIndexInRow);
 
-            let buttonValue = cell.getButtonValue();
-
-            searchOccurenciesFromCell(buttonValue);
-            victoryValidation();
+            validateOccurenciesFromButtonValue(cell, cellColor);
 
             for (let adjacentCellIndex = 1; adjacentCellIndex < ticTacToeLength; ++adjacentCellIndex) {
                 currentRow = allTicTacToeCells[adjacentCellIndex];
-                cell = currentRow[adjacentCellIndex];
-
+                cell = getCurrentCell(currentRow, adjacentCellIndex);
+                
                 if (cell != null || cell != undefined) {
-                    cell.cellButtonRef.style.backgroundColor = cellColor;
-
-                    let buttonValue = cell.getButtonValue();
-                    searchOccurenciesFromCell(buttonValue);
-                    victoryValidation();
-                }
-            }
-        } else {
-
-            let cell = startRow[cellIndexInRow];
-            cell.cellButtonRef.style.backgroundColor = cellColor; //point de départ de la diagonale
-
-            for (let adjacentColumnIndex = 1; adjacentColumnIndex < ticTacToeLength; ++adjacentColumnIndex) { //recherche de la cellule d'adjacente bas-droit
-
-                //selectionne la ligne du dessous
-                currentRow = allTicTacToeCells[adjacentColumnIndex];
-                //selectionne la cellule un cran à droite
-                let cell = currentRow[adjacentColumnIndex + cellIndexInRow];
-                //modifie la couleur de la cellule
-                if (cell != null && cell != undefined) {
-                    cell.cellButtonRef.style.backgroundColor = cellColor;
-
-                    let buttonValue = cell.getButtonValue(); //Save the value of the cell for comparison
-                    searchOccurenciesFromCell(buttonValue);
-                    victoryValidation();
-
+                    validateOccurenciesFromButtonValue(cell, cellColor);
                 }
             }
         }
     }
-
-    //All column 0 - before, reset the counter
+}
+function checkAllDiagonalFromRightTopCorner(cellColor, cell, startRow){
 
     resetOccurenciesCounters();
+    cellColor = getRandomColor();
+    let startColumnIndex = ticTacToeLength - 1;
+    let startRowIndex = 0;
 
-    startRow = allTicTacToeCells[1];
-    currentRow = [];
+    cell = getCurrentCell(startRow, ticTacToeLength - 1);
+    validateOccurenciesFromButtonValue(cell, cellColor);
 
-    for (let currentRowIndex = 1; currentRowIndex < ticTacToeLength; ++currentRowIndex) { //Toutes les lignes 1 par 1 à partir de ligne 1
+    --startColumnIndex;
 
-        cellColor = getRandomColor();
-
-        //On part à partir de la cell 0.
-        currentRow = allTicTacToeCells[currentRowIndex];
-
-        for (let i = 0; i < ticTacToeLength; i++) {//Recherche des cell adjacentes à la cell 0.
-            resetOccurenciesCounters();
-            currentRow = allTicTacToeCells[currentRowIndex + i];
-
-            //Adjacente = row + 1 et column +1
-            if (currentRow != null && currentRow != undefined) {
-                cell = currentRow[i];
-            }
-            //on sécurise l'accès à la cell en vérifiant qu'elle n'est ni null ni undefined
-            if (cell != null && cell != undefined) {
-                cell.cellButtonRef.style.backgroundColor = cellColor;
-
-                let buttonValue = cell.getButtonValue(); //Save the value of the cell for comparison
-
-                searchOccurenciesFromCell(buttonValue);
-                victoryValidation();
-
-            }
-        }
+    for(startColumnIndex ; startColumnIndex != -1; --startColumnIndex){
+        ++startRowIndex;
+        let currentRow = allTicTacToeCells[startRowIndex];
+        cell = getCurrentCell(currentRow, startColumnIndex);
+        if(cell != null){validateOccurenciesFromButtonValue(cell, cellColor);} 
     }
-
-    reverseDiagonalSearch();
-    return false;
+}
+function checkAllDiagonalFromLeftBorder(){
+    resetOccurenciesCounters();
+}
+function checkAllDiagonalFromRightBorder(){
+    resetOccurenciesCounters();
 }
 
-function reverseDiagonalSearch() {
-    resetOccurenciesCounters();
+function validateOccurenciesFromButtonValue(cell, cellColor = getRandomColor()){
+    cell.cellButtonRef.style.backgroundColor = cellColor;
+    let buttonValue = cell.getButtonValue();
+    searchOccurenciesFromCell(buttonValue);
+    victoryValidation();
+}
 
-    return false;
+function getCurrentCell(targetRow, cellIndex){
+    currentCell = targetRow[cellIndex];
+    if(currentCell != null){return currentCell;}
+    else{return null;}    
 }
 
 function searchOccurenciesFromCell(valueToCompare) {
@@ -417,6 +401,7 @@ function disableAllCells() {
 }
 
 function clickOnTicTacToCellButton(button) {
+    
     //If the button is mark at "ButtonLock", the player cant use it.
     if (currentPlayer == 1 && !button.classList.contains('ButtonLock')) {
         button.value = 'X';
@@ -429,4 +414,8 @@ function clickOnTicTacToCellButton(button) {
     }
     button.disabled = "disabled";
     checkVictoryState();
+}
+
+function showCV(){ //TO DO
+    removeMainContent();
 }
