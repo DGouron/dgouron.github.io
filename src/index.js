@@ -94,25 +94,35 @@ function updateNumberOfTilesInField(){
     changeTileNumberField.setAttribute('max', numberOfTilesRange[1]);
 
     mainContentHeader.appendChild(changeTileNumberField);
+
+    let divForSlider = document.createElement('div');
+        divForSlider.classList.add('tileSliderContainer');
+    let tileSlider = document.createElement('input');
+        tileSlider.setAttribute('type', 'range');
+        tileSlider.setAttribute('min', numberOfTilesRange[0]);
+        tileSlider.setAttribute('max', numberOfTilesRange[1]);
+        tileSlider.setAttribute('value', numberOfTiles)
+        tileSlider.setAttribute('id', 'tileSlider');
+        tileSlider.classList.add('tileSlider');
+    divForSlider.appendChild(tileSlider);
+
+    mainContentHeader.appendChild(divForSlider);
+
 }
 
 function createGaleryTiles(numberOfTiles){
     for (let index = 0; index < numberOfTiles; index++) {
+        const newLink = document.createElement("a");
+            newLink.setAttribute("href", "#Article"+ (index+ 1));
+            newLink.classList.add('tileLink');
         const newTile = document.createElement("article");
-        
+
         let tileContent = document.createElement("p");
             tileContent.innerHTML = `Elément random numéro ${index + 1}. <br /><br />${loremIpsum}<br /><br /><strong>Elément généré automatiquement via Javascript.</strong>`;
-        
-            let tileButton = document.createElement("a");
-            tileButton.setAttribute("href", "#");
-            tileButton.classList.add('buttonBase');
-            tileButton.classList.add('animatedButton');
-            tileButton.textContent = 'Voir plus';
 
         newTile.appendChild(tileContent);
-        newTile.appendChild(tileButton);
-
-        mainContent.appendChild(newTile);
+        newLink.appendChild(newTile);
+        mainContent.appendChild(newLink);
     }
 }
 
@@ -199,6 +209,8 @@ function createTicTacToeGame() {
 
     let ticTacToeHeader = document.createElement('th');
     ticTacToeHeader.setAttribute('id', 'ticTacToeHeader');
+    ticTacToeHeader.setAttribute('scope', 'rowgroup');
+    ticTacToeHeader.setAttribute('colspan', ticTacToeLength);
     ticTacToeHeader.textContent = 'Tic Tac Toe';
     newTicTacToeTable.appendChild(ticTacToeHeader);
 
@@ -377,6 +389,7 @@ function resetOccurenciesCounters() {
 }
 
 function victoryValidation() {
+
     if (countOccurrenceFor0 == 3) {
         ticTacToeHeader.textContent = 'VICTORY FOR 0';
         disableAllCells();
@@ -386,7 +399,28 @@ function victoryValidation() {
         disableAllCells();
         return true;
     }
-    return false
+    
+    if(checkEquality()){
+        ticTacToeHeader.textContent = 'AMAZING ! ITS AN EQUALITY !';
+        return true;
+   }
+
+    return false;
+}
+
+function checkEquality(){
+    console.log('Check Equality');
+    
+    for (let currentRowIndex = 0; currentRowIndex < ticTacToeLength; ++currentRowIndex) {
+        let row = allTicTacToeCells[currentRowIndex];
+        for (let currentCell = 0; currentCell < ticTacToeLength; ++currentCell) {
+            console.log('ROW -> '+currentRowIndex + ' | CELL -> '+currentCell);
+            console.log(row[currentCell].cellButtonRef.getAttribute('disabled'));
+            if(row[currentCell].cellButtonRef.getAttribute('disabled') != ''){return false}
+        }
+    }
+    console.log('------------------------------------------------------------');
+    return true;
 }
 
 function disableAllCells() {
@@ -401,7 +435,7 @@ function disableAllCells() {
 }
 
 function clickOnTicTacToCellButton(button) {
-    
+
     //If the button is mark at "ButtonLock", the player cant use it.
     if (currentPlayer == 1 && !button.classList.contains('ButtonLock')) {
         button.value = 'X';

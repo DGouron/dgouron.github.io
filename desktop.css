@@ -10,20 +10,23 @@
 
 body
 {
-    background-color: rgb(248, 248, 248);
+    background-color: rgb(42, 42, 42);
 }
 header
 {
-    color: rgb(63, 58, 58);
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px rgb(10, 10, 10);
     margin: auto;
-    width: 50%;
+    width: 60%;
     float: left;
 }
 nav
 {  
-    margin: 1em;
+    margin: 0em;
     display: flex;
     justify-content: center;
+    background-color: rgb(72, 72, 72);
+    box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
     flex-direction : row;
     flex-wrap: wrap;
     flex-basis: 120px;
@@ -51,8 +54,8 @@ nav
 nav a
 {
     display: block;
-    padding: 0.5rem;
-    background-color: #aaa;
+    padding: 0.1rem;
+    background-color: rgb(84, 84, 84);
     text-decoration: none;
     color: rgb(255, 255, 255);
     border-bottom: 3px solid #333;
@@ -73,15 +76,19 @@ nav ul
 {
     margin: 0px;
     padding: 0px;
+    width: 100%;
     list-style:none;
     display: flex;
     flex-direction : row;
-    justify-content: center;
+    justify-content:left;
 }
 
 li
 {
     list-style-type: none;
+    width: 100%;
+    height: 100%;
+    margin: auto;
     padding: 0.5rem;
 }
 
@@ -105,6 +112,7 @@ article
 {
     border: 0.1em rgb(30, 30, 30) solid;
     background-color: rgb(85, 94, 94);
+    box-shadow: 1px 2px 2px 2px rgb(40, 40, 40);
     color: white;
     display: block;
     min-width: 180px;
@@ -114,11 +122,19 @@ article
     margin: 30px;
     padding: 1em;
 }
+article:hover
+{
+    box-shadow: 0px 0px 0px 2px rgb(120, 120, 120);
+}
+
 article p
 {
     height: 90%;
 }
-
+.tileLink
+{
+    text-decoration: none;
+}
 footer
 {
     border: 0.1em rgb(30, 30, 30) solid;
@@ -151,9 +167,9 @@ footer
       padding: 8px 20px;
       margin: 0px 3px 6px;
       text-align: center;
-      border: 2px solid rgb(48, 45, 45);
       text-decoration: none;
-      color: rgb(51, 48, 48);
+      color: rgb(120, 120, 120);
+      text-shadow: 1px 1px rgb(0, 0, 0);
       white-space: nowrap;
       z-index: 0;
 } 
@@ -167,49 +183,49 @@ footer
 .animatedButton::before {
       position: absolute;
       content: "";
-      background: rgb(51, 50, 50) none repeat scroll 0% 0%;
-      transition-duration: 0.3s;
+      background: rgb(90, 90, 90) none repeat scroll 0% 0%;
+      transition-duration: 0.9s;
       z-index: -1;
       inset: 0px 0px auto auto;
-      width: 50%;
+      width: 100%;
       height: 100%;
       opacity: 1;
-      border: 2px solid rgb(46, 46, 46);
+      
 } 
  
 
 .animatedButton:hover::before {
       width: 0px;
       height: 100%;
-      opacity: 1;
+      opacity: 0.9;
 } 
  
 
 .animatedButton {
-      background: rgb(48, 44, 44) none repeat scroll 0% 0%;
+      background: rgb(90, 90, 90) none repeat scroll 0% 0%;
       color: rgb(255, 223, 223);
-      transition: color 0.3s ease 0s, background 0s ease 0.3s;
+      transition: color 0.9s ease 0s, background 0s ease 0.9s;
 } 
  
 
 .animatedButton:hover {
       background: transparent none repeat scroll 0% 0%;
-      color: rgb(8, 8, 8);
-      transition: color 0.3s ease 0s, background 0s ease 0s;
+      color: rgb(240, 220, 220);
+      transition: color 0.9s ease 0s, background 0s ease 0s;
 } 
  
 
 .animatedButton::after {
       position: absolute;
       content: "";
-      background: rgb(51, 49, 49) none repeat scroll 0% 0%;
-      transition-duration: 0.3s;
+      background: rgb(120, 120, 120) none repeat scroll 0% 0%;
+      transition-duration: 0.9s;
       z-index: -1;
       inset: 0px auto auto 0px;
       width: 50%;
       height: 100%;
       opacity: 1;
-      border: 2px solid rgb(51, 50, 50);
+      
 } 
  
 
@@ -219,6 +235,11 @@ footer
 
 
 /*--------------------------------------------------------------------------TIC TAC TOE DESIGN--------------------------------------------------------*/
+table{
+    background-color: rgba(95, 80, 80, 0.938);
+    box-shadow: 1px 1px 1px 1px rgb(90, 90, 90);
+}
+
 #ticTacToe{
     margin: auto;
     justify-content: center;
@@ -241,4 +262,47 @@ footer
     font-size: 72px;
     text-align: center;
     color: #333; 
+}
+#ticTacToeHeader{
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 2px solid rgb(46, 46, 46);
+    background-color: rgba(95, 80, 80, 0.938);
+    color: rgb(250, 242, 242);
+}
+
+.tileSliderContainer {
+    width: 50%;
+  }
+  
+.tileSlider {
+-webkit-appearance: none;
+appearance: none;
+width: 100%;
+height: 10px;
+background: #d3d3d3;
+outline: none;
+opacity: 0.7;
+-webkit-transition: .2s;
+transition: opacity .2s;
+}
+
+.tileSlider:hover {
+opacity: 1;
+}
+
+.tileSlider::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 15px;
+height: 15px;
+background: #04AA6D;
+cursor: pointer; 
+}
+
+.tileSlider::-moz-range-thumb {
+width: 15px;
+height: 15px;
+background: #04AA6D;
+cursor: pointer;
 }
