@@ -3,7 +3,11 @@
 /  
 */
 
-function getRandomColor() {
-    return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+function getRandomColor(configFileName = null) {
+    if(configFileName == null){
+        return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+    }else{
+
+    }
 }
 

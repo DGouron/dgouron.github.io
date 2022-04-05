@@ -4,10 +4,11 @@
 */
 
 
-/* Load configuration files and setup bloc generation*/
+/* Load configuration files and setup*/
 
-var configNavLink = './config/config_nav.json';
+const configNavLink = './config/config_nav.json';
 var configNavData;
+const configColorPicker = './config/config_color_picker.json';
 
 var mainContent = document.getElementById('MainContent');
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
@@ -153,7 +154,10 @@ var numberOfPlayers = 2;
 var currentPlayer = 1;
 var ticTacToeLength = 3;
 const minTicTacToeLength = 3, maxTicTacToeLength = 12; //for future evolution
+const victoryFirstPlayerWord = 'X', victorySecondPlayerWord = '0';
 var allTicTacToeCells = []; //2D array who store all cells for check the victory conditions.
+const classForTicTacToeButtonLocked = 'ButtonLock';
+const victoryMessageHead = 'VICTORY FOR ', equalityMessage = "AMAZING ! ITS AN EQUALITY !"
 
 let countOccurrenceFor0 = 0, countOccurenceForX = 0;
 
@@ -264,9 +268,9 @@ function searchLineVictories(){
 
         for (let currentCellIndex = 0; currentCellIndex < currentRow.length; ++currentCellIndex) {
 
-            let buttonValue = currentRow[currentCellIndex].getButtonValue();
+            let cellButtonValue = currentRow[currentCellIndex].getButtonValue();
 
-            searchOccurenciesFromCell(buttonValue);
+            searchOccurenciesFromCell(cellButtonValue);
             victoryValidation();
         }
     }
@@ -282,9 +286,9 @@ function searchColumnVictories(){
 
         for (let currentColumnIndex = 0; currentColumnIndex < ticTacToeLength; ++currentColumnIndex) {
             currentCellsToCompare = allTicTacToeCells[currentColumnIndex];
-            let buttonValue = currentCellsToCompare[currentRowIndex].getButtonValue(); //Save the value of the cell for comparison
+            let cellButtonValue = currentCellsToCompare[currentRowIndex].getButtonValue(); //Save the value of the cell for comparison
 
-            searchOccurenciesFromCell(buttonValue);
+            searchOccurenciesFromCell(cellButtonValue);
             victoryValidation();
         }
     }
@@ -315,14 +319,14 @@ function checkAllDiagonalFromLeftTopCorner(cellColor, cell, startRow){
         if (cellIndexInRow == 0) {
             cell = getCurrentCell(startRow, cellIndexInRow);
 
-            validateOccurenciesFromButtonValue(cell, cellColor);
+            validateOccurenciesFromButtonValue(cell, cellColor, true);
 
             for (let adjacentCellIndex = 1; adjacentCellIndex < ticTacToeLength; ++adjacentCellIndex) {
                 currentRow = allTicTacToeCells[adjacentCellIndex];
                 cell = getCurrentCell(currentRow, adjacentCellIndex);
                 
                 if (cell != null || cell != undefined) {
-                    validateOccurenciesFromButtonValue(cell, cellColor);
+                    validateOccurenciesFromButtonValue(cell, cellColor, true);
                 }
             }
         }
@@ -336,7 +340,7 @@ function checkAllDiagonalFromRightTopCorner(cellColor, cell, startRow){
     let startRowIndex = 0;
 
     cell = getCurrentCell(startRow, ticTacToeLength - 1);
-    validateOccurenciesFromButtonValue(cell, cellColor);
+    validateOccurenciesFromButtonValue(cell, cellColor, true);
 
     --startColumnIndex;
 
@@ -344,7 +348,7 @@ function checkAllDiagonalFromRightTopCorner(cellColor, cell, startRow){
         ++startRowIndex;
         let currentRow = allTicTacToeCells[startRowIndex];
         cell = getCurrentCell(currentRow, startColumnIndex);
-        if(cell != null){validateOccurenciesFromButtonValue(cell, cellColor);} 
+        if(cell != null){validateOccurenciesFromButtonValue(cell, cellColor, true);} 
     }
 }
 function checkAllDiagonalFromLeftBorder(){
@@ -354,10 +358,14 @@ function checkAllDiagonalFromRightBorder(){
     resetOccurenciesCounters();
 }
 
-function validateOccurenciesFromButtonValue(cell, cellColor = getRandomColor()){
-    cell.cellButtonRef.style.backgroundColor = cellColor;
-    let buttonValue = cell.getButtonValue();
-    searchOccurenciesFromCell(buttonValue);
+function validateOccurenciesFromButtonValue(cell, cellColor = getRandomColor(), canModifyButtonColor = false){
+
+    if(canModifyButtonColor){
+        cell.cellButtonRef.style.backgroundColor = cellColor;
+    }
+
+    let cellButtonValue = cell.getButtonValue();
+    searchOccurenciesFromCell(cellButtonValue);
     victoryValidation();
 }
 
@@ -372,10 +380,10 @@ function searchOccurenciesFromCell(valueToCompare) {
     let currentValueToCompare = valueToCompare;
 
 
-    if (currentValueToCompare == 'X') {
+    if (currentValueToCompare == victoryFirstPlayerWord) {
         ++countOccurenceForX;
         countOccurrenceFor0 = 0;
-    } else if (currentValueToCompare == '0') {
+    } else if (currentValueToCompare == victorySecondPlayerWord) {
         ++countOccurrenceFor0;
         countOccurenceForX - 0;
     } else {
@@ -391,17 +399,17 @@ function resetOccurenciesCounters() {
 function victoryValidation() {
 
     if (countOccurrenceFor0 == 3) {
-        ticTacToeHeader.textContent = 'VICTORY FOR 0';
+        ticTacToeHeader.textContent = victoryMessageHead + victorySecondPlayerWord;
         disableAllCells();
         return true;
     } else if (countOccurenceForX == 3) {
-        ticTacToeHeader.textContent = 'VICTORY FOR X';
+        ticTacToeHeader.textContent =  victoryMessageHead + victoryFirstPlayerWord;
         disableAllCells();
         return true;
     }
     
     if(checkEquality()){
-        ticTacToeHeader.textContent = 'AMAZING ! ITS AN EQUALITY !';
+        ticTacToeHeader.textContent = equalityMessage;
         return true;
    }
 
@@ -409,18 +417,23 @@ function victoryValidation() {
 }
 
 function checkEquality(){
-    console.log('Check Equality');
-    
+
+    let numberOfButtons = ticTacToeLength * ticTacToeLength;
+    let numberOfButtonsUsed = 0;
+
+    //Read all cell buttons value
     for (let currentRowIndex = 0; currentRowIndex < ticTacToeLength; ++currentRowIndex) {
         let row = allTicTacToeCells[currentRowIndex];
         for (let currentCell = 0; currentCell < ticTacToeLength; ++currentCell) {
-            console.log('ROW -> '+currentRowIndex + ' | CELL -> '+currentCell);
-            console.log(row[currentCell].cellButtonRef.getAttribute('disabled'));
-            if(row[currentCell].cellButtonRef.getAttribute('disabled') != ''){return false}
+            if(row[currentCell].cellButtonRef.getAttribute('value') == victoryFirstPlayerWord || 
+                row[currentCell].cellButtonRef.getAttribute('value') == victorySecondPlayerWord){
+                    ++numberOfButtonsUsed;
+                }
         }
     }
-    console.log('------------------------------------------------------------');
-    return true;
+
+    if(numberOfButtonsUsed == numberOfButtons){return true;}
+    else{return false};
 }
 
 function disableAllCells() {
@@ -437,14 +450,14 @@ function disableAllCells() {
 function clickOnTicTacToCellButton(button) {
 
     //If the button is mark at "ButtonLock", the player cant use it.
-    if (currentPlayer == 1 && !button.classList.contains('ButtonLock')) {
-        button.value = 'X';
+    if (currentPlayer == 1 && !button.classList.contains(classForTicTacToeButtonLocked)) {
+        button.value = victoryFirstPlayerWord;
         currentPlayer = 2;
-        button.classList.add('ButtonLock');
-    } else if (currentPlayer == 2 && !button.classList.contains('ButtonLock')) {
-        button.value = "0";
+        button.classList.add(classForTicTacToeButtonLocked);
+    } else if (currentPlayer == 2 && !button.classList.contains(classForTicTacToeButtonLocked)) {
+        button.value = victorySecondPlayerWord;
         currentPlayer = 1;
-        button.classList.add('ButtonLock');
+        button.classList.add(classForTicTacToeButtonLocked);
     }
     button.disabled = "disabled";
     checkVictoryState();
