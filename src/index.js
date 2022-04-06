@@ -16,6 +16,8 @@ const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 
 var numberOfTiles = 3;
 var numberOfTilesRange = [1, 7];
+const pannels = ['galery', 'ticTacToe', 'CV'];
+var currentMainPannel = pannels[0];
 var changeTileNumberField = document.getElementById('modifyNumberOfTiles');
 
 if (document.readyState === 'complete') {
@@ -33,18 +35,19 @@ const showTicTacToeButton = document.getElementById('ShowTicTacToe');
 const showCVButton = document.getElementById('ShowCV');
 
 showGaleryButton.addEventListener('click', function () {
-    createMainContent('galery');
+    createMainContent(pannels[0]);
+    currentMainPannel = pannels[0];
 });
 
 showTicTacToeButton.addEventListener('click', function () {
-    createMainContent('ticTacToe');
+    createMainContent(pannels[1]);
+    currentMainPannel = pannels[1];
 });
 
 showCVButton.addEventListener('click', function(){
-    createMainContent('CV');
+    createMainContent(pannels[2]);
+    currentMainPannel = pannels[2];
 })
-
-
 
 function createMainContent(contentName) {
 
@@ -147,6 +150,6 @@ function showTicTacToe() {
     createTicTacToeGame();
 }
 
-function showCV(){ //TO DO
+function showCV(){
     removeMainContent();
 }

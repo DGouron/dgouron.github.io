@@ -1,4 +1,3 @@
-var numberOfPlayers = 2;
 var currentPlayer = 1;
 var ticTacToeLength = 3;
 const minTicTacToeLength = 3, maxTicTacToeLength = 12; //for future evolution
@@ -6,8 +5,14 @@ const victoryFirstPlayerWord = 'X', victorySecondPlayerWord = '0';
 var allTicTacToeCells = []; //2D array who store all cells for check the victory conditions.
 const classForTicTacToeButtonLocked = 'ButtonLock';
 const victoryMessageHead = 'VICTORY FOR ', equalityMessage = "AMAZING ! ITS AN EQUALITY !"
+let canModifyButtonColor = true;
 
 let countOccurrenceFor0 = 0, countOccurenceForX = 0;
+
+let ticTacToeStatistics = {
+    gamesPlayed: 0,
+    playersVictories: [0,0,0]
+}
 
 
 class ticTacToeCell {
@@ -51,53 +56,111 @@ class ticTacToeCell {
 
 function createTicTacToeGame() {
 
+    ticTacToeStatistics.playersVictories[0] = ticTacToeStatistics.gamesPlayed - (ticTacToeStatistics.playersVictories[1]+ticTacToeStatistics.playersVictories[2]);
+    ++ticTacToeStatistics.gamesPlayed;
+
     for (let i = 0; i < ticTacToeLength; ++i) {
         allTicTacToeCells[i] = [];
     }
 
     let newTicTacToeTable = document.createElement('table');
-    newTicTacToeTable.setAttribute('id', 'ticTacToe');
+        newTicTacToeTable.setAttribute('id', 'ticTacToe');
     mainContent.appendChild(newTicTacToeTable);
 
     let ticTacToeHeader = document.createElement('th');
-    ticTacToeHeader.setAttribute('id', 'ticTacToeHeader');
-    ticTacToeHeader.setAttribute('scope', 'rowgroup');
-    ticTacToeHeader.setAttribute('colspan', ticTacToeLength);
-    ticTacToeHeader.textContent = 'Tic Tac Toe';
+        ticTacToeHeader.setAttribute('id', 'ticTacToeHeader');
+        ticTacToeHeader.setAttribute('scope', 'rowgroup');
+        ticTacToeHeader.setAttribute('colspan', ticTacToeLength);
+        ticTacToeHeader.textContent = 'Tic Tac Toe';
     newTicTacToeTable.appendChild(ticTacToeHeader);
 
 
     for (let row = 0; row < ticTacToeLength; ++row) {
 
         let newTicTacToeRow = document.createElement('tr');
-        newTicTacToeRow.setAttribute('id', 'ticTacToeRow');
+            newTicTacToeRow.setAttribute('id', 'ticTacToeRow');
         newTicTacToeTable.appendChild(newTicTacToeRow);
 
         for (let cell = 0; cell < ticTacToeLength; ++cell) {
-            let newCell = new ticTacToeCell('test', newTicTacToeRow);
-            newCell.initCell(row, cell);
+            let newCell = new ticTacToeCell(cell, newTicTacToeRow);
+                newCell.initCell(row, cell);
             allTicTacToeCells[row].push(newCell); //store the cell ref
         }
     }
 
     createTicTacToeOptions();
 }
+function createTicTacToeOptions(){
+    let optionsSection = document.createElement('section');
+        mainContent.appendChild(optionsSection);
 
-function createTicTacToeOptions(){ //TO DO
+    createReplayButton(optionsSection);
+    createColorEffectOption(optionsSection);
+    showPlayerStatistics(optionsSection);
+}
+function createColorEffectOption(section){
+    let effectOptionsPannel = document.createElement('div');
+        effectOptionsPannel.setAttribute('id', 'colorEffectOption');
+    let colorEffectOption = document.createElement('p');
+    colorEffectOption.innerText = 'Color Effect : ';
+    effectOptionsPannel.appendChild(colorEffectOption);
+    let colorEffectOptionCheckbox = document.createElement('input');
+        colorEffectOptionCheckbox.setAttribute('type', 'checkbox');
+        colorEffectOptionCheckbox.classList.add('colorEffectOptionCheckbox');
+        colorEffectOptionCheckbox.setAttribute(canModifyButtonColor ? 'checked' : 'unchecked', '');
+        colorEffectOptionCheckbox.setAttribute('title', "Si coché, modifie la couleur des cellules lorsqu'un joueur joue.");
+        colorEffectOption.appendChild(colorEffectOptionCheckbox);
 
-    createColorEffectOption();
-    createReplayButton();
-    showPlayerStat();
+        colorEffectOptionCheckbox.addEventListener('change', function () {
+            changeColorEffectCheckbox(colorEffectOptionCheckbox);
+        });
+
+    section.appendChild(effectOptionsPannel);
 }
 
-function createColorEffectOption(){
+function createReplayButton(section){
+    let replayButton = document.createElement('input');
+        replayButton.classList.add('ticTacToeReplayButton');
+        replayButton.setAttribute('type', 'button');
+        replayButton.setAttribute('value', 'REJOUER');
 
+        replayButton.addEventListener('click', function () {
+            clickOnReplayTicTacToeCellButton();})
+
+            section.appendChild(replayButton);
 }
-function createReplayButton(){
+function showPlayerStatistics(section){
+    let numberOfGamesPlayed = document.createElement('p');
+        numberOfGamesPlayed.innerText = 'Parties jouées : '+ ticTacToeStatistics.gamesPlayed;
+    section.appendChild(numberOfGamesPlayed);
 
+    for(let currentElement = 0; currentElement < ticTacToeStatistics.playersVictories.length; ++currentElement){
+        let elementToAdd = document.createElement('p');
+        let elementPercentOfGames = getPercentage(ticTacToeStatistics.playersVictories[currentElement], ticTacToeStatistics.gamesPlayed);
+        switch(currentElement){
+            case 0:
+                elementToAdd.innerText = 'Egalitées : '+ ticTacToeStatistics.playersVictories[currentElement]+ ' ('+ elementPercentOfGames +'%)';
+                break;
+            case 1:
+                elementToAdd.innerText = 'Victoires joueur '+victoryFirstPlayerWord+' : '+ ticTacToeStatistics.playersVictories[currentElement]+ ' ('+ elementPercentOfGames +'%)';
+                break;
+            case 2:
+                elementToAdd.innerText = 'Victoires joueur '+victorySecondPlayerWord+' : '+ ticTacToeStatistics.playersVictories[currentElement]+ ' ('+ elementPercentOfGames +'%)';
+                break;
+        }
+            
+        section.appendChild(elementToAdd);
+    }
+        
 }
-function showPlayerStat(){
 
+function clickOnReplayTicTacToeCellButton(){
+    createMainContent(pannels[1]);
+}
+
+function changeColorEffectCheckbox(checkbox){
+    canModifyButtonColor = checkbox.checked;
+    console.log(checkbox.value);
 }
 
 function checkVictoryState(){
@@ -206,7 +269,7 @@ function checkAllDiagonalFromRightBorder(){
     resetOccurenciesCounters();
 }
 
-function validateOccurenciesFromButtonValue(cell, cellColor = getRandomColor(), canModifyButtonColor = false){
+function validateOccurenciesFromButtonValue(cell, cellColor = getRandomColor()){
 
     if(canModifyButtonColor){
         cell.cellButtonRef.style.backgroundColor = cellColor;
@@ -248,10 +311,12 @@ function victoryValidation() {
 
     if (countOccurrenceFor0 == 3) {
         ticTacToeHeader.textContent = victoryMessageHead + victorySecondPlayerWord;
+        ++ticTacToeStatistics.playersVictories[2];
         disableAllCells();
         return true;
     } else if (countOccurenceForX == 3) {
         ticTacToeHeader.textContent =  victoryMessageHead + victoryFirstPlayerWord;
+        ++ticTacToeStatistics.playersVictories[1];
         disableAllCells();
         return true;
     }

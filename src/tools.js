@@ -12,3 +12,13 @@ function getRandomColor(configFileName = null) {
     }
 }
 
+function getPercentage(value1 = 0, value2 = 0, roundResult = true){
+    if(roundResult){
+        return Math.round((value1 * 100) / value2);
+    }
+    else{
+        return (value1 * 100) / value2;
+    }
+    
+}
+
