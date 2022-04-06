@@ -1,14 +1,14 @@
-var currentPlayer = 1;
-var ticTacToeLength = 3;
+let currentPlayer = 1;
+let ticTacToeLength = 3;
 const minTicTacToeLength = 3, maxTicTacToeLength = 12; //for future evolution
 const victoryFirstPlayerWord = 'X', victorySecondPlayerWord = '0';
-var allTicTacToeCells = []; //2D array who store all cells for check the victory conditions.
+let allTicTacToeCells = []; //2D array who store all cells for check the victory conditions.
 const classForTicTacToeButtonLocked = 'ButtonLock';
 const victoryMessageHead = 'VICTORY FOR ', equalityMessage = "AMAZING ! ITS AN EQUALITY !"
 let canModifyButtonColor = true;
 
 let countOccurrenceFor0 = 0, countOccurenceForX = 0;
-
+let gameCounterAlreadyIncrement = false; //State for prevent duplicate action and duplicate incrementation
 let ticTacToeStatistics = {
     gamesPlayed: 0,
     playersVictories: [0,0,0]
@@ -57,7 +57,7 @@ class ticTacToeCell {
 function createTicTacToeGame() {
 
     ticTacToeStatistics.playersVictories[0] = ticTacToeStatistics.gamesPlayed - (ticTacToeStatistics.playersVictories[1]+ticTacToeStatistics.playersVictories[2]);
-    ++ticTacToeStatistics.gamesPlayed;
+    resetGameCounterIncrementationState();
 
     for (let i = 0; i < ticTacToeLength; ++i) {
         allTicTacToeCells[i] = [];
@@ -137,6 +137,7 @@ function showPlayerStatistics(section){
     for(let currentElement = 0; currentElement < ticTacToeStatistics.playersVictories.length; ++currentElement){
         let elementToAdd = document.createElement('p');
         let elementPercentOfGames = getPercentage(ticTacToeStatistics.playersVictories[currentElement], ticTacToeStatistics.gamesPlayed);
+            console.log(elementPercentOfGames);
         switch(currentElement){
             case 0:
                 elementToAdd.innerText = 'Egalitées : '+ ticTacToeStatistics.playersVictories[currentElement]+ ' ('+ elementPercentOfGames +'%)';
@@ -160,7 +161,6 @@ function clickOnReplayTicTacToeCellButton(){
 
 function changeColorEffectCheckbox(checkbox){
     canModifyButtonColor = checkbox.checked;
-    console.log(checkbox.value);
 }
 
 function checkVictoryState(){
@@ -312,23 +312,32 @@ function victoryValidation() {
     if (countOccurrenceFor0 == 3) {
         ticTacToeHeader.textContent = victoryMessageHead + victorySecondPlayerWord;
         ++ticTacToeStatistics.playersVictories[2];
+        incrementGameCounter();
         disableAllCells();
         return true;
     } else if (countOccurenceForX == 3) {
         ticTacToeHeader.textContent =  victoryMessageHead + victoryFirstPlayerWord;
         ++ticTacToeStatistics.playersVictories[1];
+        incrementGameCounter();
         disableAllCells();
         return true;
     }
     
     if(checkEquality()){
         ticTacToeHeader.textContent = equalityMessage;
+        gameCounterAlreadyIncrement == false ? incrementGameCounter() : null;
         return true;
    }
 
     return false;
 }
-
+function incrementGameCounter(){
+    ++ticTacToeStatistics.gamesPlayed;
+    gameCounterAlreadyIncrement = true;
+}
+function resetGameCounterIncrementationState(){
+    gameCounterAlreadyIncrement = false;
+}
 function checkEquality(){
 
     let numberOfButtons = ticTacToeLength * ticTacToeLength;

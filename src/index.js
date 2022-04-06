@@ -6,19 +6,19 @@
 /* Load configuration files and setup*/
 
 const configNavLink = './config/config_nav.json';
-var configNavData;
+let configNavData;
 
-var mainContent = document.getElementById('MainContent');
+let mainContent = document.getElementById('MainContent');
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
 
 /* Binding for galery */
 
-var numberOfTiles = 3;
-var numberOfTilesRange = [1, 7];
+let numberOfTiles = 3;
+let numberOfTilesRange = [1, 7];
 const pannels = ['galery', 'ticTacToe', 'CV'];
-var currentMainPannel = pannels[0];
-var changeTileNumberField = document.getElementById('modifyNumberOfTiles');
+let currentMainPannel = pannels[0];
+let changeTileNumberField = document.getElementById('modifyNumberOfTiles');
 
 if (document.readyState === 'complete') {
 } else {
