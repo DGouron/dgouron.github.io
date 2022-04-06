@@ -149,7 +149,6 @@ function showPlayerStatistics(section){
                 elementToAdd.innerText = 'Victoires joueur '+victorySecondPlayerWord+' : '+ ticTacToeStatistics.playersVictories[currentElement]+ ' ('+ elementPercentOfGames +'%)';
                 break;
         }
-            
         section.appendChild(elementToAdd);
     }
         
