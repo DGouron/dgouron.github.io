@@ -120,7 +120,7 @@ function createGaleryTiles(numberOfTiles){
         const newTile = document.createElement("article");
 
         let tileContent = document.createElement("p");
-            tileContent.innerHTML = `Ceci est un futur projet. <br /><br /> Vous pouvez me contacter <input type="mailto" value="ici"> pour que nous le commencions ensemble.<br /><br /><strong>Elément généré automatiquement via Javascript.</strong>`;
+            tileContent.innerHTML = `Ceci est un futur projet. <br /><br /> Vous pouvez me contacter a <em>damien.gouron@gmail.com</em> pour que nous le commencions ensemble.<br /><br /><strong>Elément généré automatiquement via Javascript.</strong>`;
 
         newTile.appendChild(tileContent);
         newLink.appendChild(newTile);
