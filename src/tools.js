@@ -3,14 +3,16 @@
 /  
 */
 const configColorPicker = './config/config_color_picker.json';
+let colorsData = [];
 
 fetch(configColorPicker)
-    .then(res => console.log(res))
+    .then(res => res.json())
+    .then(data => colorsData = data)
 
-function getRandomColor(configFileName = null) {
+function getRandomColor(useConfigFile = true) {
     
-
-    return configFileName == null ? '#' + (Math.random() * 0xFFFFFF << 0).toString(16) : null; //TO DO
+    let color = Math.round(Math.random() * (colorsData.length-1 - 0) + 0);
+    return useConfigFile == false ? '#' + (Math.random() * 0xFFFFFF << 0).toString(16) : colorsData[color].value;
 }
 
 function getPercentage(value1 = 0, value2 = 0, roundResult = true){
