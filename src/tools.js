@@ -9,8 +9,6 @@ function getRandomColor(configFileName = null) {
 }
 
 function getPercentage(value1 = 0, value2 = 0, roundResult = true){
-    console.log('Value 1 => '+value1+' |Value 2 => '+value2)
-    //console.log(Math.round((value1 * 100) / value2));
     let result = roundResult ?  Math.round((value1 * 100) / value2) : (value1 * 100) / value2 ;
     if(result != 0 && !result > 0){ return 0}
     else{return result}

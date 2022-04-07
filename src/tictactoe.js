@@ -137,7 +137,7 @@ function showPlayerStatistics(section){
     for(let currentElement = 0; currentElement < ticTacToeStatistics.playersVictories.length; ++currentElement){
         let elementToAdd = document.createElement('p');
         let elementPercentOfGames = getPercentage(ticTacToeStatistics.playersVictories[currentElement], ticTacToeStatistics.gamesPlayed);
-            console.log(elementPercentOfGames);
+
         switch(currentElement){
             case 0:
                 elementToAdd.innerText = 'Egalitées : '+ ticTacToeStatistics.playersVictories[currentElement]+ ' ('+ elementPercentOfGames +'%)';
