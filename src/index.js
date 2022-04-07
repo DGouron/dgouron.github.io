@@ -8,6 +8,13 @@
 const configNavLink = './config/config_nav.json';
 let configNavData;
 
+const projectsDataLink = './data/data_projects.json';
+let projectsData = [];
+
+fetch(projectsDataLink)
+    .then(res => res.json())
+    .then(data => projectsData = data)
+
 let mainContent = document.getElementById('MainContent');
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
@@ -118,16 +125,35 @@ function createGaleryTiles(numberOfTiles){
             newLink.setAttribute("href", "#Article"+ (index+ 1));
             newLink.classList.add('tileLink');
         const newTile = document.createElement("article");
-
-        let tileContent = document.createElement("p");
+        
+        if(index <= projectsData.length-1){
+            console.log(projectsData[index]);
+            newTile.appendChild(loadProjectData(projectsData[index], newLink));
+        }else{
+            let tileContent = document.createElement("p");
             tileContent.innerHTML = `Ceci est un futur projet. <br /><br /> Vous pouvez me contacter a <em>damien.gouron@gmail.com</em> pour que nous le commencions ensemble.<br /><br /><strong>Elément généré automatiquement via Javascript.</strong>`;
-
-        newTile.appendChild(tileContent);
+            newTile.appendChild(tileContent);
+            
+        }
         newLink.appendChild(newTile);
-        mainContent.appendChild(newLink);
-    }
+        mainContent.appendChild(newLink);}
+   
 }
 
+function loadProjectData(data, linkElement){
+    let projectBlock = document.createElement('div');
+    let projectTitle = document.createElement('h1');
+        projectTitle.innerText = data.projectName;
+    let projectThumbnail = document.createElement('img');
+        projectThumbnail.setAttribute('src', data.projectLargeImage);
+        projectThumbnail.classList.add('projectThumbnail');
+    projectBlock.appendChild(projectThumbnail);
+    projectBlock.appendChild(projectTitle);
+    linkElement.setAttribute('href', data.projectLink);
+    linkElement.setAttribute('target', '_blank');
+
+    return projectBlock;
+}
 
 function modifyNumberOfTilesEventHandler(event) {
 

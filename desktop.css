@@ -117,9 +117,11 @@ article
     display: block;
     min-width: 180px;
     min-height: 350px;
-    max-width: 220px;
-    max-height: 450px;
-    margin: 30px;
+    max-width: 450px;
+    max-height: 5500px;
+    margin-top: 10px;
+    margin-right: 25px;
+    margin-left: 10px;
     padding: 1em;
 }
 article:hover
@@ -129,7 +131,13 @@ article:hover
 
 article p
 {
-    height: 90%;
+    height: 100%;
+}
+.projectThumbnail{
+    margin: 0.2em;
+    width: 100%;
+    height: auto;
+
 }
 .tileLink
 {
