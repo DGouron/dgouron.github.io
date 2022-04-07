@@ -3,8 +3,12 @@
 /  
 */
 const configColorPicker = './config/config_color_picker.json';
+fetch(configFileName)
+    .then(res => console.log(res))
 
 function getRandomColor(configFileName = null) {
+    
+
     return configFileName == null ? '#' + (Math.random() * 0xFFFFFF << 0).toString(16) : null; //TO DO
 }
 

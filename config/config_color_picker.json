@@ -1,4 +1,10 @@
-{
-    "name": "Normal Black",
-    "colorValue": "#00000"
-}
+[
+    {
+        "colorName": "black",
+        "value": "#00000"
+    },
+    {
+        "colorName": "white",
+        "value": "#FFFFFF"
+    }
+]
