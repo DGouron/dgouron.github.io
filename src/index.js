@@ -21,7 +21,7 @@ const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 
 /* Binding for galery */
 
-let numberOfTiles = 3;
+let numberOfTiles = 2;
 let numberOfTilesRange = [1, 7];
 const pannels = ['galery', 'ticTacToe', 'CV'];
 let currentMainPannel = pannels[0];

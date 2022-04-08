@@ -147,7 +147,11 @@ footer
 {
     border: 0.1em rgb(30, 30, 30) solid;
     background-color: rgb(85, 94, 94);
+    box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
+    justify-content: center;
     margin-top: 5em;
+    padding: 3em;
+    height: 10%;
     min-height: auto;
     color: white;
 }
