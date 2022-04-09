@@ -10,11 +10,16 @@ let configNavData;
 
 const projectsDataLink = './data/data_projects.json';
 let projectsData = [];
-let projectsDataLoaded = false;
 
 fetch(projectsDataLink)
     .then(res => res.json())
-    .then(data => projectsData = data, projectsDataLoaded = true)
+    .then(data => reloadMainContent(data))
+
+    function reloadMainContent(data){
+        projectsData = data;
+        createMainContent();
+    }
+
 
 let mainContent = document.getElementById('MainContent');
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
@@ -31,13 +36,9 @@ let changeTileNumberField = document.getElementById('modifyNumberOfTiles');
 if (document.readyState === 'complete') {
 } else {
     document.addEventListener('DOMContentLoaded', function () {
-        let i = 0;
-        do {
-            i = i + 1;
-            console.log(projectsDataLoaded)
-            createMainContent();
-            modifyNumberOfTilesEventHandler();
-          } while (projectsDataLoaded == false);
+
+        createMainContent();
+        modifyNumberOfTilesEventHandler();
     }, false);
 }
 
