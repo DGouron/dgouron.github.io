@@ -17,6 +17,7 @@ fetch(projectsDataLink)
 
     function reloadMainContent(data){
         projectsData = data;
+        
         createMainContent();
     }
 
