@@ -2,6 +2,7 @@
 /  Copyright all right reserved Damien Gouron - 2022
 */
 
+let linkedinLink = "https://www.linkedin.com/in/damien-gouron/"
 
 /* Load configuration files and setup*/
 
@@ -11,13 +12,21 @@ let configNavData;
 const projectsDataLink = './data/data_projects.json';
 let projectsData = [];
 
+
+let numberOfTiles = 4;
+let numberOfTilesRange = [1, 7];
+const pannels = ['galery', 'ticTacToe', 'CV'];
+let currentMainPannel = pannels[0];
+let changeTileNumberField = document.getElementById('modifyNumberOfTiles');
+
+
 fetch(projectsDataLink)
     .then(res => res.json())
     .then(data => reloadMainContent(data))
 
     function reloadMainContent(data){
         projectsData = data;
-        
+        numberOfTilesRange[1] = projectsData.length + 3;
         createMainContent();
     }
 
@@ -25,14 +34,6 @@ fetch(projectsDataLink)
 let mainContent = document.getElementById('MainContent');
 const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
-
-/* Binding for galery */
-
-let numberOfTiles = 2;
-let numberOfTilesRange = [1, 7];
-const pannels = ['galery', 'ticTacToe', 'CV'];
-let currentMainPannel = pannels[0];
-let changeTileNumberField = document.getElementById('modifyNumberOfTiles');
 
 if (document.readyState === 'complete') {
 } else {
@@ -139,7 +140,10 @@ function createGaleryTiles(numberOfTiles){
             newTile.appendChild(loadProjectData(projectsData[index], newLink));
         }else{
             let tileContent = document.createElement("p");
-            tileContent.innerHTML = `Ceci est un futur projet. <br /><br /> Vous pouvez me contacter a <em>damien.gouron@gmail.com</em> pour que nous le commencions ensemble.<br /><br /><strong>Elément généré automatiquement via Javascript.</strong>`;
+            textForTileContent = "Ceci est un futur projet. <br /><br /> Vous pouvez me contacter a <em>damien.gouron@gmail.com</em> ou sur Linkedin pour que nous le commencions ensemble.<br /><br />"
+            
+            textForTileContent = textForTileContent + '<a href="'+linkedinLink+'" title="Me rejoindre sur Linkedin"><img src="./img/logo_linkedin.png" title = "Me rejoindre sur Linkedin" class = "TileIcones"></a>';
+            tileContent.innerHTML = textForTileContent;
             newTile.appendChild(tileContent);
             
         }
@@ -155,8 +159,11 @@ function loadProjectData(data, linkElement){
     let projectThumbnail = document.createElement('img');
         projectThumbnail.setAttribute('src', data.projectLargeImage);
         projectThumbnail.classList.add('projectThumbnail');
+    let projectDescription = document.createElement('p');
+        projectDescription.innerText = data.projectDescription;
     projectBlock.appendChild(projectThumbnail);
     projectBlock.appendChild(projectTitle);
+    projectBlock.appendChild(projectDescription);
     linkElement.setAttribute('href', data.projectLink);
     linkElement.setAttribute('target', '_blank');
 

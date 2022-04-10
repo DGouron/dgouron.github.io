@@ -132,6 +132,7 @@ article:hover
 article p
 {
     height: 100%;
+    text-align: center;
 }
 .projectThumbnail{
     margin: 0.2em;
@@ -154,6 +155,11 @@ footer
     height: 10%;
     min-height: auto;
     color: white;
+    text-align: center;
+}
+.FooterIcones, .TileIcones{
+    width: 64px;
+    height: 64px;
 }
 #GoTopIcone{
   width: 64px;
