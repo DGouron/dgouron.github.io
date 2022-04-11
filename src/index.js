@@ -84,8 +84,7 @@ function createMainContent(contentName) {
     }
 }
 
-function showGalery() {
-
+function showGalery() {  
     removeMainContent();
     updateNumberOfTilesInField();
     refreshModifyNumberOfTilesBinding();
@@ -93,9 +92,11 @@ function showGalery() {
 }
 
 function removeMainContent() {
-    while (mainContent.children.length != 0) {
-        mainContent.removeChild(mainContent.lastChild);
-    }
+
+    
+        while (mainContent.children.length != 0) {
+            mainContent.removeChild(mainContent.lastChild);
+        }
 }
 
 function updateNumberOfTilesInField(){

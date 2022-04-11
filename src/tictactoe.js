@@ -381,5 +381,14 @@ function clickOnTicTacToCellButton(button) {
         button.classList.add(classForTicTacToeButtonLocked);
     }
     button.disabled = "disabled";
+    animTicTacToeButtonAtClick(button);
     checkVictoryState();
+}
+
+function animTicTacToeButtonAtClick(button)
+{
+    button.style.backgroundColor = "gold";    
+    setTimeout(() => {
+        button.style.backgroundColor = "#00949b";  
+    }, 200)
 }
