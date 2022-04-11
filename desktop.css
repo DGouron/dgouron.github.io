@@ -5,12 +5,21 @@
 	src: url('fonts/Technology/Technology-BoldItalic.ttf');
 	src: url('fonts/Technology/Technology-Italic.ttf');
 }
-
+@font-face{
+	font-family: 'LouisGeorgesCafé';
+	src: url('Fonts/LouisGeorgesCafé/Louis\ George\ Cafe.ttf');
+	src: url('Fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Bold.ttf');
+	src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Bold\ Italic.ttf');
+	src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Italic.ttf');
+    src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Light.ttf');
+    src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Light\ Italic.ttf');
+}
 
 
 body
 {
-    background-color: rgb(42, 42, 42);
+    background-color: #00515a;
+    font-family: 'LouisGeorgesCafé', Arial, Helvetica, sans-serif;
 }
 header
 {
