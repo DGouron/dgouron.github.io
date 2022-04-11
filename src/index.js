@@ -13,7 +13,7 @@ const projectsDataLink = './data/data_projects.json';
 let projectsData = [];
 
 
-let numberOfTiles = 4;
+let numberOfTiles = 6;
 let numberOfTilesRange = [1, 7];
 const pannels = ['galery', 'ticTacToe', 'CV'];
 let currentMainPannel = pannels[0];
@@ -131,7 +131,7 @@ function updateNumberOfTilesInField(){
 function createGaleryTiles(numberOfTiles){
     for (let index = 0; index < numberOfTiles; index++) {
         const newLink = document.createElement("a");
-            newLink.setAttribute("href", "#Article"+ (index+ 1));
+            newLink.setAttribute("href", linkedinLink);
             newLink.classList.add('tileLink');
         const newTile = document.createElement("article");
         
