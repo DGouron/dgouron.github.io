@@ -33,6 +33,7 @@ header p{
 }
 nav
 {  
+    width: 40%;
     margin: 0em;
     display: flex;
     justify-content: center;
@@ -40,28 +41,9 @@ nav
     box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
     flex-direction : row;
     flex-wrap: wrap;
-    flex-basis: 120px;
     text-align: center;
     gap: 0.3rem;
 }
-@media only screen and (max-width: 700px) {
-    nav {
-        margin: 0em;
-        display: flex;
-        flex-wrap: wrap;
-        flex-basis: 120px;
-        flex-direction : column;
-        text-align: center;
-    }
-    nav ul {
-        margin: 0px;
-        padding: 0px;
-        list-style:none;
-        display: flex;
-        flex-direction : column;
-        justify-content: center;
-    }
-  }
 nav a
 {
     display: block;
@@ -112,6 +94,7 @@ main
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
+    margin-left: 10%;
 
     opacity: 0;
     transform: translate(-30px);
@@ -370,4 +353,31 @@ cursor: pointer;
     width: 16px;
     height: 16px;
     box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
+}
+@media only screen and (max-width: 700px) {
+    h1{
+        font-size: medium;
+    }
+    h2, p{
+        font-size: small;
+    }
+    nav {
+        margin: 0em;
+        display: flex;
+        flex-basis: 120px;
+        flex-direction : column;
+        text-align: center;
+        width: 30%;
+    }
+    nav ul {
+        margin: 0px;
+        padding: 0px;
+        list-style:none;
+        display: flex;
+        flex-direction : column;
+        justify-content: center;
+    }
+    main{
+        margin-left: 0%;
+    }
 }

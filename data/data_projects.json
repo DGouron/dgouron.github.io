@@ -1,23 +1,20 @@
 [
-    {
-        "projectName": "Linda Keisea",
-        "projectLink": "https://lindakeisea.fr/",
-        "projectDescription": "",
-        "projectLargeImage": "./img/projects/Large_lindakeisea.png",
-        "projectSmallImage": ""
-    },
-    {
+        {
         "projectName": "Arkas Dev - Portfolio",
         "projectLink": "https://arkasdev.wixsite.com/home",
         "projectDescription": "Site de présentation de mes travaux dans le jeux vidéo: création de menu/UI, gameplay multijoueurs, heatmap en temps réel, API REST, etc.",
-        "projectLargeImage": "./img/projects/Large_ArkasDev.jpg",
-        "projectSmallImage": ""
+        "projectLargeImage": "./img/projects/Large_ArkasDev.jpg"
     },
     {
         "projectName": "Print Message Visualizer",
         "projectLink": "https://www.unrealengine.com/marketplace/en-US/product/print-message-visualizer",
         "projectDescription": "Plugin Unreal Engine 4 fait en C++. PMV est un outil qui permet de traquer en temps réel, de sauvegarder et de comparer des données de jeu. Par exemple les points de passage des joueurs, les morts, etc. Parfais pour le debug d'un jeu multijoueur.",
-        "projectLargeImage": "./img/projects/Large_PMV.jpg",
-        "projectSmallImage": ""
+        "projectLargeImage": "./img/projects/Large_PMV.jpg"
+    },
+    {
+        "projectName": "Linda Keisea",
+        "projectLink": "https://lindakeisea.fr/",
+        "projectDescription": "Création d'un blog de lecture et d'écriture. Ajout des statistiques Google Site Kit. Paramétrages de l'affichage, gestion des utilisateurs avec formulaire d'adhésion au site. Prise en compte du certificat SSL pour accroître la sécurité du site.",
+        "projectLargeImage": "./img/projects/Large_lindakeisea.png"
     }
 ]

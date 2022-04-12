@@ -4,8 +4,6 @@
 
 let linkedinLink = "https://www.linkedin.com/in/damien-gouron/"
 
-/* Load configuration files and setup*/
-
 const configNavLink = './config/config_nav.json';
 let configNavData;
 
