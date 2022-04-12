@@ -42,7 +42,7 @@ nav
     margin: 0em;
     display: flex;
     justify-content: center;
-    background-color: #00515a;
+    background-color: #003339;
     box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
     flex-direction : row;
     flex-wrap: wrap;
@@ -159,6 +159,7 @@ article p
 }
 article h1, h1{
     font-family: 'Optimus', 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px rgb(10, 10, 10);
 }
 .projectThumbnail{
     margin: 0.2em;
