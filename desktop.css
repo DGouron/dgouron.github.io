@@ -1,14 +1,14 @@
 @font-face{
 	font-family: 'Technology';
-	src: url('Fonts/Technology/Technology.ttf');
-	src: url('Fonts/Technology/Technology-Bold.ttf');
+	src: url('fonts/Technology/Technology.ttf');
+	src: url('fonts/Technology/Technology-Bold.ttf');
 	src: url('fonts/Technology/Technology-BoldItalic.ttf');
 	src: url('fonts/Technology/Technology-Italic.ttf');
 }
 @font-face{
 	font-family: 'LouisGeorgesCafé';
-	src: url('Fonts/LouisGeorgesCafé/Louis\ George\ Cafe.ttf');
-	src: url('Fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Bold.ttf');
+	src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe.ttf');
+	src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Bold.ttf');
 	src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Bold\ Italic.ttf');
 	src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Italic.ttf');
     src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Light.ttf');
@@ -16,8 +16,8 @@
 }
 @font-face{
 	font-family: 'Optimus';
-	src: url('Fonts/optimusprinceps/OptimusPrinceps.ttf');
-	src: url('Fonts/optimusprinceps/OptimusPrincepsSemiBold.ttf');
+	src: url('fonts/optimusprinceps/OptimusPrinceps.ttf');
+	src: url('fonts/optimusprinceps/OptimusPrincepsSemiBold.ttf');
 }
 
 
