@@ -38,8 +38,18 @@ if (document.readyState === 'complete') {
     document.addEventListener('DOMContentLoaded', function () {
 
         createMainContent();
-        modifyNumberOfTilesEventHandler();
+        numberOfTilesViewEventHandler();
     }, false);
+}
+function numberOfTilesViewEventHandler(event) {
+    refreshNumberOfTilesView();
+
+    if (!event) { return };
+    if (event.target.value != null) {
+        numberOfTiles = event.target.value;
+        createMainContent('galery');
+        refreshNumberOfTilesView();
+    }
 }
 
 /*Button binding for main menu */
@@ -61,7 +71,8 @@ showTicTacToeButton.addEventListener('click', function () {
 showCVButton.addEventListener('click', function(){
     createMainContent(pannels[2]);
     currentMainPannel = pannels[2];
-})
+});
+
 
 function createMainContent(contentName) {
 
@@ -85,7 +96,7 @@ function createMainContent(contentName) {
 function showGalery() {  
     removeMainContent();
     updateNumberOfTilesInField();
-    refreshModifyNumberOfTilesBinding();
+    refreshNumberOfTilesView();
     createGaleryTiles(numberOfTiles);
 }
 
@@ -103,12 +114,10 @@ function updateNumberOfTilesInField(){
         mainContent.appendChild(mainContentHeader);
 
     changeTileNumberField = document.createElement('input');
-    changeTileNumberField.setAttribute('name', 'ModifyNumberOfTiles');
-    changeTileNumberField.setAttribute('id', 'ModifyNumberOfTiles');
-    changeTileNumberField.setAttribute('type', 'number');
+    changeTileNumberField.setAttribute('name', 'NumberOfTilesViewer');
+    changeTileNumberField.setAttribute('id', 'NumberOfTilesViewer');
+    changeTileNumberField.setAttribute('readonly', true);
     changeTileNumberField.setAttribute('value', numberOfTiles);
-    changeTileNumberField.setAttribute('min', numberOfTilesRange[0]);
-    changeTileNumberField.setAttribute('max', numberOfTilesRange[1]);
 
     mainContentHeader.appendChild(changeTileNumberField);
 
@@ -122,6 +131,12 @@ function updateNumberOfTilesInField(){
         tileSlider.setAttribute('id', 'tileSlider');
         tileSlider.classList.add('tileSlider');
     divForSlider.appendChild(tileSlider);
+
+    tileSlider.addEventListener('change', function(){
+        numberOfTiles = this.value;
+        refreshNumberOfTilesView();
+        createMainContent('galery');
+    });
 
     mainContentHeader.appendChild(divForSlider);
 
@@ -168,21 +183,9 @@ function loadProjectData(data, linkElement){
 
     return projectBlock;
 }
-
-function modifyNumberOfTilesEventHandler(event) {
-
-    refreshModifyNumberOfTilesBinding();
-
-    if (!event) { return };
-    if (event.target.value != null) {
-        numberOfTiles = event.target.value;
-        createMainContent('galery');
-        refreshModifyNumberOfTilesBinding();
-    }
-}
-
-function refreshModifyNumberOfTilesBinding() {
-    document.querySelector('input[name="ModifyNumberOfTiles"]').onchange = modifyNumberOfTilesEventHandler;
+function refreshNumberOfTilesView() {
+    let numberOfTilesViewer = document.getElementById('NumberOfTilesViewer');
+        numberOfTilesViewer.setAttribute('value', numberOfTiles);
 }
 
 function showTicTacToe() {

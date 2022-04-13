@@ -59,16 +59,14 @@ nav a
     color: #00515a;
     border-bottom: 3px solid #00949b;
 }
-nav a:hover
+nav a.active:hover
 {
-    color: #9e7f02;
-    background-color: #f5e49f;
     border-color: #9e7f02;
 }
 nav a.active
 {
-    color: #5b0900;
-    background-color: #00949b;
+    color: black;
+    background-color: #999999;
     border-color: #00b5a9;
 }
 nav ul 
@@ -309,7 +307,10 @@ table {
     background-color: rgba(95, 80, 80, 0.938);
     color: rgb(250, 242, 242);
 }
-
+#NumberOfTilesViewer{
+    width: 20%;
+    height: 2%;
+}
 .tileSliderContainer {
     width: 90%;
   }
