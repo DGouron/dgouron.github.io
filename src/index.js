@@ -13,8 +13,8 @@ let projectsData = [];
 
 let numberOfTiles = 6;
 let numberOfTilesRange = [1, 7];
-const pannels = ['galery', 'ticTacToe', 'CV'];
-let currentMainPannel = pannels[0];
+const pannels = ['Gallerie', 'Tic Tac Toe', 'CV'];
+let currentMainPannel = 0;
 let changeTileNumberField = document.getElementById('modifyNumberOfTiles');
 
 
@@ -41,13 +41,14 @@ if (document.readyState === 'complete') {
         numberOfTilesViewEventHandler();
     }, false);
 }
+
 function numberOfTilesViewEventHandler(event) {
     refreshNumberOfTilesView();
 
     if (!event) { return };
     if (event.target.value != null) {
         numberOfTiles = event.target.value;
-        createMainContent('galery');
+        createMainContent(pannels[0]);
         refreshNumberOfTilesView();
     }
 }
@@ -57,34 +58,61 @@ function numberOfTilesViewEventHandler(event) {
 const showGaleryButton = document.getElementById('ShowGalery');
 const showTicTacToeButton = document.getElementById('ShowTicTacToe');
 const showCVButton = document.getElementById('ShowCV');
+const nextContentView = document.getElementById('RightNavigationArrow');
+      nextContentView.setAttribute('title', 'Allez vers '+ pannels[currentMainPannel + 1]);
+const previousContentView = document.getElementById('LeftNavigationArrow');
+      previousContentView.setAttribute('title', 'Allez vers '+ pannels[pannels.length - 1]);
 
 showGaleryButton.addEventListener('click', function () {
     createMainContent(pannels[0]);
-    currentMainPannel = pannels[0];
+    currentMainPannel = 0;
 });
 
 showTicTacToeButton.addEventListener('click', function () {
     createMainContent(pannels[1]);
-    currentMainPannel = pannels[1];
+    currentMainPannel = 1;
 });
 
 showCVButton.addEventListener('click', function(){
     createMainContent(pannels[2]);
-    currentMainPannel = pannels[2];
+    currentMainPannel = 2;
 });
 
+nextContentView.addEventListener('click', function(){
+    if(currentMainPannel == pannels.length - 1){
+        createMainContent(pannels[0]);
+        currentMainPannel = 0;
+    }
+    else{
+        createMainContent(pannels[currentMainPannel + 1]);
+        ++currentMainPannel;
+    }
+    nextContentView.setAttribute('title', currentMainPannel + 1 > pannels.length - 1 ? 'Allez vers ' + pannels[0] : 'Allez vers '+ pannels[currentMainPannel + 1]);
+});
+
+previousContentView.addEventListener('click', function(){
+    if(currentMainPannel == 0){
+        createMainContent(pannels[pannels.length - 1]);
+        currentMainPannel = pannels.length - 1;
+    }
+    else{
+        createMainContent(pannels[currentMainPannel - 1]);
+        --currentMainPannel;
+    }
+    previousContentView.setAttribute('title', currentMainPannel - 1 < 0 ? 'Allez vers ' + pannels[pannels.length - 1] : 'Allez vers '+ pannels[currentMainPannel - 1]);
+});
 
 function createMainContent(contentName) {
 
     /*Machine for populate the main content section*/
     switch (contentName) {
-        case 'galery':
+        case pannels[0]:
             showGalery();
             break;
-        case 'ticTacToe':
+        case pannels[1]:
             showTicTacToe();
             break;
-        case 'CV':
+        case pannels[2]:
             showCV();
             break;
         default:
@@ -135,7 +163,7 @@ function updateNumberOfTilesInField(){
     tileSlider.addEventListener('change', function(){
         numberOfTiles = this.value;
         refreshNumberOfTilesView();
-        createMainContent('galery');
+        createMainContent(pannels[0]);
     });
 
     mainContentHeader.appendChild(divForSlider);
