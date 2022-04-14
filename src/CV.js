@@ -1,17 +1,14 @@
-/*$(function () {
+const resumeDataLink = './data/data_CV.json';
+let resumeData = [];
 
-    var specialElementHandlers = {
-        '#editor': function (element,renderer) {
-            return true;
-        }
-    };
- $('#cmd').click(function () {
-        var doc = new jsPDF();
-        doc.fromHTML(
-            $('#target').html(), 15, 15, 
-            { 'width': 170, 'elementHandlers': specialElementHandlers }, 
-            function(){ doc.save('sample-file.pdf'); }
-        );
+fetch(resumeDataLink)
+    .then(res => res.json())
+        .catch(console.error('CANT FINT DATA CV JSON FILE'))
+    .then(data => resumeData = data)
+        .catch(console.error('RESUME DATA NOT LOADED'))
+    .then(createResume())
 
-    });  
-});*/
+
+function createResume(){
+    console.log(resumeData);
+}

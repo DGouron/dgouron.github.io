@@ -1,0 +1,185 @@
+{
+    "title" : "Recherche alternance : développeur web",
+    "headerText" : "Fort de nombreuses années en auto-didacte, je dispose d’une bonne capacité d’apprentissage et n’ai pas peur d’aborder de nouvelles technologies pour le bien du projet. J’aime aussi le clean code et l’agilité.",
+    "personnalInformations":
+        {
+            "name" : "Damien Gouron",
+            "address": "86100 Châtellerault",
+            "contact": [
+                            {
+                                "title": "Téléphone",
+                                "content": "06-51-99-85-43",
+                                "icone": ""
+                            },
+                            {
+                                "title": "Linkedin",
+                                "content": "Damien-gouron",
+                                "icone": ""
+                            },
+                            {
+                                "title": "Github",
+                                "content": "dgouron@github.io",
+                                "icone": ""
+                            },
+                            {
+                                "title": "Email",
+                                "content": "damien.gouron@gmail.com",
+                                "icone": ""
+                            }
+                        ]
+        },
+    "certifications" : 
+        {
+            "header" : "Diplômes / Certifications",
+            "content" :
+                [
+                    {
+                        "title": "Certificat HTML 5 / CSS",
+                        "school": "Open Classrooms",
+                        "icone" : ""
+                    },
+                    {
+                        "title": "Certificat Javascript",
+                        "school": "Open Classrooms",
+                        "icone" : ""
+                    },
+                    {
+                        "title": "Rapidité de développement",
+                        "school": "Codingame",
+                        "icone" : ""
+                    },
+                    {
+                        "title": "Certificat Python",
+                        "school": "Open Classrooms",
+                        "icone" : ""
+                    },
+                    {
+                        "title": "Titre de technicien d'assistance en informatique (Niveau IV)",
+                        "school": "AFPA",
+                        "icone" : ""
+                    }
+                ]
+        },
+    "experiences" :  {
+        "header" : "Expériences",
+        "content" :
+            [
+                {
+                    "title": "Préparateur Drive",
+                    "enterprise": "Intermarché",
+                    "location" : "Châtellerault",
+                    "text": "",
+                    "years": "2021"
+                },
+                {
+                    "title": "Lead Online Programme",
+                    "enterprise": "Freelance",
+                    "location" : "France",
+                    "text": "Travail en équipe sur un projet de FPS multijoueurs puis sur un projet de jeu de survie. Suivit des taches, planification et quantification via Trello. Force de proposition dans les choix technologiques et techniques.",
+                    "years": "2017/2020"
+                },
+                {
+                    "title": "Online Programmer",
+                    "enterprise": "Wormholes Interactive",
+                    "location" : "France",
+                    "text": "Projet utilisant Unreal Engine 4. Utilisation du C++ pour implémenter l’affichage de donné en passant via les points d’accès de l’API REST. Mise en place d’UI pour afficher les statistiques joueur. Création de menu de création de serveur. Network profiling et optimisaiton sur UE4.",
+                    "years": "2016/2017"
+                },
+                {
+                    "title": "Technicien Informatique à domicile",
+                    "enterprise": "",
+                    "location" : "Schiltigheim",
+                    "text": "Auto-entreprise de dépannage informatique. Implémentation de process. Gestion client et mise en place de devis via un site internent vitrine fait en HTLM5 et PHP (formulaire de contact avancés).",
+                    "years": "2013/2016"
+                },
+                {
+                    "title": "Web UI Develope",
+                    "enterprise": "Livrechange.eu",
+                    "location" : "Strasbourg",
+                    "text": "Création d’un site internet d’échange de livres. Projet personnel utilisant du PHP et du HTML5 avec une base de donnée SQL (MySQL, PHPMyAdmin). Ce projet m’a permis d’apprendre la POO et le pattern MVC",
+                    "years": "2012/2014"
+                }
+            ]
+    },
+    "formations" :  {
+        "header" : "Formations",
+        "content" :
+            [
+                {
+                    "title": "1ere année de licence d’Histoire",
+                    "location" : "Poitiers et Strasbourg",
+                    "years": "2011-2013"
+                },
+                {
+                    "title": "Formation professionnelle de technicien d’assistance en informatique",
+                    "location" : "AFPA Châtellerault",
+                    "years": "2010"
+                },
+                {
+                    "title": "Préparation Militaire Découverte ",
+                    "location" : "17e RGP - Montauban",
+                    "years": "2008"
+                }
+            ]
+    },
+    "benevolat" :  {
+        "header" : "Bénévolat",
+        "content" :
+            [
+                {
+                    "title": "Sapeur-Pompier volontaire",
+                    "actual": true,
+                    "location" : "Centre de secours principal de Châtellerault",
+                    "years": "2021"
+                },
+                {
+                    "title": "Volontaire internationnal en soutien opérrationnel virtuel",
+                    "actual": true,
+                    "location" : "VISOV France",
+                    "years": "2021"
+                },
+                {
+                    "title": "Bénévole à la Réserve Civique",
+                    "actual": false,
+                    "location" : "Châtellerault",
+                    "years": "2020"
+                }
+            ]
+    },
+    "softskills" :  {
+        "header" : "Soft-Skills",
+        "content" :
+            [
+                {
+                    "title": "Capacité à apprendre en autonomie et à s'insérer dans une équipe"
+                },
+                {
+                    "title": "Curieux, discipliné et sens du dépassement de soi"
+                },
+                {
+                    "title": "Persévérant et bonne résistance au stress"
+                }
+            ]
+    },
+    "interrest" :  {
+        "header" : "Centres d'interêts",
+        "content" :
+            [
+                {
+                    "title": "Cyclisme",
+                    "link": "",
+                    "icone": ""
+                },
+                {
+                    "title": "Jeux vidéo",
+                    "link": "",
+                    "icone": ""
+                },
+                {
+                    "title": "Course à pied - rejoin moi sur Strava",
+                    "link": "",
+                    "icone": ""
+                }
+            ]
+    }
+}

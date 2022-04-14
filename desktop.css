@@ -53,7 +53,6 @@ nav
 nav a
 {
     display: block;
-    padding: 0.1rem;
     background-color: rgb(84, 84, 84);
     text-decoration: none;
     color: #00515a;
@@ -71,8 +70,8 @@ nav a.active
 }
 nav ul 
 {
-    margin: 0px;
-    padding: 0px;
+    margin: 1%;
+    padding: 1%;
     width: 100%;
     list-style:none;
     display: flex;
@@ -85,8 +84,8 @@ li
     list-style-type: none;
     width: 100%;
     height: 100%;
-    margin: auto;
-    padding: 0.5rem;
+    margin: 0%;
+    padding: 1%;
 }
 #Center{
     display: flex;
@@ -183,7 +182,8 @@ article h1, h1{
 .projectThumbnail{
     margin: 0.2em;
     width: 100%;
-    height: auto;
+    height: 236px;
+    object-fit: fill;
 }
 .tileLink
 {
@@ -225,22 +225,20 @@ footer
     
     position: relative;
     box-sizing: border-box;
-    font-size: 20px;
+    font-size: 100%;
     font-weight: bold;
-    display: inline-block;
+    display: block;
     overflow: hidden;
-    padding: 8px 20px;
-    margin: 0px 3px 6px;
+    padding: 10%;
+    margin: 3%;
+    width: 100%;
+    height: 60%;
+    justify-content: center;
     text-align: center;
     text-decoration: none;
     text-shadow: 1px 1px #5b0900;
     white-space: nowrap;
     z-index: 0;
-} 
- 
-
-.buttonBase i {
-      padding-right: 8px;
 } 
 .animatedButton::before {
       position: absolute;
@@ -361,6 +359,11 @@ cursor: pointer;
     height: 16px;
     box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
 }
+@media only screen and (max-width: 1000px) {
+    .buttonBase{
+        font-size: 14px;
+    }
+}
 @media only screen and (max-width: 700px) {
     h1{
         font-size: medium;
@@ -378,16 +381,25 @@ cursor: pointer;
     }
     nav ul {
         margin: 0px;
+        width: fit-content;
+        height: fit-content;
         padding: 0px;
         list-style:none;
         display: flex;
         flex-direction : column;
-        justify-content: center;
+    }
+    .buttonBase{
+        font-size: 12px;
+        padding: 5%;
+        margin: 1%;
     }
     main{
         margin-left: 0%;
     }
     #LeftNavigationArrow, #RightNavigationArrow{
         opacity: 0;
+    }
+    .projectThumbnail{
+        height: 10%;
     }
 }

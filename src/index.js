@@ -113,7 +113,7 @@ function createMainContent(contentName) {
             showTicTacToe();
             break;
         case pannels[2]:
-            showCV();
+            showResume();
             break;
         default:
             showGalery();
@@ -221,6 +221,7 @@ function showTicTacToe() {
     createTicTacToeGame();
 }
 
-function showCV(){
+function showResume(){
     removeMainContent();
+    createResume();
 }
