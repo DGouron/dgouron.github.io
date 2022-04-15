@@ -1,10 +1,16 @@
 const resumeDataLink = './data/data_resume.json';
+let currentResumeData;
 
 fetch(resumeDataLink)
     .then(response => response.json())
-    .then(resumeData => createResume(resumeData))
+    .then(resumeData => getResumeData(resumeData))
 
 
-function createResume(resumeData){
-    console.table(resumeData);
+function getResumeData(resumeData){
+    currentResumeData = resumeData;
+    console.table(currentResumeData);
+}
+
+function createResumeView(){
+    
 }

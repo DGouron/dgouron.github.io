@@ -223,5 +223,5 @@ function showTicTacToe() {
 
 function showResume(){
     removeMainContent();
-    createResume();
+    createResumeView();
 }
