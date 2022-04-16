@@ -5,5 +5,5 @@ fetch(githubProfileLink)
     .then(dataToShow => showGithubStats(dataToShow))
 
 function showGithubStats(dataToShow){
-    console.table(dataToShow);
+    //console.table(dataToShow);
 }

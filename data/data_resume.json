@@ -6,6 +6,7 @@
     [
         {
             "blockName": "Personnal Informations",
+            "type": "PersonnalInformation",
             "showBlockName": true,
             "content": [
                             {
@@ -37,6 +38,7 @@
         },
         {
             "blockName": "Diplômes / Certifications",
+            "type": "Certification",
             "showBlockName": true,
             "content" :
                 [
@@ -69,6 +71,7 @@
         },
         {
             "blockName": "Soft-Skills",
+            "type": "Softskill",
             "showBlockName": true,
             "content" :
                 [
@@ -85,6 +88,7 @@
         }, 
         {
             "blockName" : "Centres d'interêts",
+            "type": "Interest",
             "showBlockName": true,
             "content" :
                 [

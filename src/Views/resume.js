@@ -10,7 +10,7 @@ fetch(resumeDataLink)
 function getResumeData(resumeData){
     currentResumeData = resumeData;
     updateWebsiteHeader();
-    console.table(currentResumeData);
+    //console.table(currentResumeData);
 }
 function updateWebsiteHeader(){
     document.title = currentResumeData.title;
@@ -47,13 +47,19 @@ function  constructBlockForRightResumePannel(blockData){
 }
 
 function createRightResumePannel(){
-    let leftResumePannel = document.createElement('section');
-    console.error(currentResumeData.rightPannel)
+    let rightResumePannel = document.createElement('section');
         for(element in currentResumeData.rightPannel){
-            console.table(currentResumeData.rightPannel[element]);
-            leftResumePannel.appendChild(constructBlockForRightResumePannel(currentResumeData.rightPannel[element])); 
+            let currentData = currentResumeData.rightPannel[element];
+            for(element in currentResumeData.rightPannel[element].content){
+                let newResumeItem = new ResumeFactory(currentData.content[element], currentData.type); 
+                    newResumeItem.printData();
+                    if(newResumeItem.getItem() != undefined){
+                        rightResumePannel.appendChild(newResumeItem.getItem());
+                    }
+                    
+            }
         }
-    resumePannels.push(leftResumePannel);
+    resumePannels.push(rightResumePannel);
 }
 
 function addResumePannelsToMain(){
