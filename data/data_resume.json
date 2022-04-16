@@ -60,7 +60,7 @@
                     {
                         "title": "Certificat Python",
                         "school": "Open Classrooms",
-                        "icone" : ""
+                        "icone" : "python.GIF"
                     },
                     {
                         "title": "Titre de technicien d'assistance en informatique (Niveau IV)",
@@ -95,17 +95,17 @@
                     {
                         "title": "Cyclisme",
                         "link": "",
-                        "icone": ""
+                        "icone": "bike"
                     },
                     {
                         "title": "Jeux vidéo",
                         "link": "",
-                        "icone": ""
+                        "icone": "videogame"
                     },
                     {
                         "title": "Course à pied - rejoin moi sur Strava",
-                        "link": "",
-                        "icone": ""
+                        "link": "http://strava.com",
+                        "icone": "running"
                     }
                 ]
         }

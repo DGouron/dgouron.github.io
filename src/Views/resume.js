@@ -10,7 +10,6 @@ fetch(resumeDataLink)
 function getResumeData(resumeData){
     currentResumeData = resumeData;
     updateWebsiteHeader();
-    //console.table(currentResumeData);
 }
 function updateWebsiteHeader(){
     document.title = currentResumeData.title;
@@ -47,8 +46,11 @@ function  constructBlockForRightResumePannel(blockData){
 }
 
 function createRightResumePannel(){
-    let rightResumePannel = document.createElement('section');
+    let rightResumePannel = document.createElement('div');
         for(element in currentResumeData.rightPannel){
+            let separator = document.createElement('img');
+                separator.src = './img/resume/separator.GIF';
+            rightResumePannel.appendChild(separator);
             let currentData = currentResumeData.rightPannel[element];
             for(element in currentResumeData.rightPannel[element].content){
                 let newResumeItem = new ResumeFactory(currentData.content[element], currentData.type); 

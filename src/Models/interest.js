@@ -7,9 +7,20 @@ class Interest extends ResumeItem{
 
     makeItem(data){
         let newItem = document.createElement('div');
-        let newTitle = document.createElement('h1');
-            newTitle.innerText = data.title;
-        newItem.appendChild(newTitle);
+        let newIcone = document.createElement('img');
+
+            newIcone.src = './img/resume/'+data.icone+'.GIF';
+            newIcone.title = data.title;
+
+        if(data.link != ""){
+            let newLink = document.createElement('a');
+                newLink.href = data.link;
+                newLink.appendChild(newIcone);
+            newItem.appendChild(newLink);
+        }else{
+            newItem.appendChild(newIcone);
+        }
+        
         super.setItem(newItem);
     }
 }

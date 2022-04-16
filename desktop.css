@@ -359,6 +359,9 @@ cursor: pointer;
     height: 16px;
     box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
 }
+.rightBarResumeItem{
+    background-image: '/img/resume/rightbarItem.png';
+}
 @media only screen and (max-width: 1000px) {
     .buttonBase{
         font-size: 14px;

@@ -7,7 +7,11 @@ class Certification extends ResumeItem{
 
     makeItem(data){
         let newItem = document.createElement('div');
-        let newTitle = document.createElement('h1');
+            newItem.classList.add('rightBarResumeItem');
+        let newIcone = document.createElement('img');
+            newIcone.src = './img/resume/'+data.icone;
+        newItem.appendChild(newIcone);
+        let newTitle = document.createElement('h2');
             newTitle.innerText = data.title;
         newItem.appendChild(newTitle);
         super.setItem(newItem);
