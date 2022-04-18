@@ -7,7 +7,7 @@
         {
             "blockName": "Personnal Informations",
             "type": "PersonnalInformation",
-            "showBlockName": true,
+            "showBlockName": false,
             "content": [
                             {
                                 "title": "address",
@@ -17,7 +17,7 @@
                             {
                                 "title": "Téléphone",
                                 "content": "06-51-99-85-43",
-                                "icone": ""
+                                "icone": "./img/resume/phone.gif"
                             },
                             {
                                 "title": "Linkedin",
@@ -32,7 +32,7 @@
                             {
                                 "title": "Email",
                                 "content": "damien.gouron@gmail.com",
-                                "icone": ""
+                                "icone": "./img/resume/mail.gif"
                             }
                         ]
         },
@@ -110,9 +110,30 @@
                 ]
         }
     ],
-    "experiences" :  {
-        "header" : "Expériences",
-        "content" :
+    "leftPannel": 
+    [
+        {
+            "blockName": "Compétences",
+            "type": "Hardskill",
+            "showBlockName": true,
+            "content" :
+                [
+                    {
+                        "content": "Méthodologie, recherche d'informations, documentation technique, diagrammes UML, clean code."
+                    },
+                    {
+                        "content": "Connaissances des design pattern. Compréhension du multi-paradigm et de la Programmation Orientée Object (POO)."
+                    },
+                    {
+                        "content": "Création de code asynchrone. Envois de requettes HTTP, JSON et communication avec les API."
+                    }
+                ]
+        },
+        {
+            "blockName" : "Expériences",
+            "type": "Experience",
+            "showBlockName": true,
+            "content" :
             [
                 {
                     "title": "Préparateur Drive",
@@ -150,10 +171,12 @@
                     "years": "2012/2014"
                 }
             ]
-    },
-    "formations" :  {
-        "header" : "Formations",
-        "content" :
+        },
+        {
+            "blockName" : "Formations",
+            "type": "Formation",
+            "showBlockName": true,
+            "content" :
             [
                 {
                     "title": "1ere année de licence d’Histoire",
@@ -171,10 +194,12 @@
                     "years": "2008"
                 }
             ]
-    },
-    "benevolat" :  {
-        "header" : "Bénévolat",
-        "content" :
+        },
+        {
+            "blockName" : "Bénévolat",
+            "type": "Volonteer",
+            "showBlockName": true,
+            "content" :
             [
                 {
                     "title": "Sapeur-Pompier volontaire",
@@ -195,5 +220,6 @@
                     "years": "2020"
                 }
             ]
-    }
+        }
+    ]
 }

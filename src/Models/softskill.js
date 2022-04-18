@@ -7,7 +7,7 @@ class Softskill extends ResumeItem{
 
     makeItem(data){
         let newItem = document.createElement('div');
-        let newTitle = document.createElement('h1');
+        let newTitle = document.createElement('P');
             newTitle.innerText = data.title;
         newItem.appendChild(newTitle);
         super.setItem(newItem);

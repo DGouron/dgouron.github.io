@@ -120,14 +120,6 @@ function createMainContent(contentName) {
             break;
     }
 }
-
-function showGalery() {  
-    removeMainContent();
-    updateNumberOfTilesInField();
-    refreshNumberOfTilesView();
-    createGaleryTiles(numberOfTiles);
-}
-
 function removeMainContent() {
 
     
@@ -216,12 +208,44 @@ function refreshNumberOfTilesView() {
         numberOfTilesViewer.setAttribute('value', numberOfTiles);
 }
 
+function showGalery() {  
+    removeMainContent();
+    setDisplayOfMainContent('flex');
+    updateNumberOfTilesInField();
+    refreshNumberOfTilesView();
+    createGaleryTiles(numberOfTiles);
+}
+
 function showTicTacToe() {
     removeMainContent();
+    setDisplayOfMainContent('flex');
     createTicTacToeGame();
 }
 
 function showResume(){
     removeMainContent();
+    setDisplayOfMainContent('grid');
     createResumeView();
+}
+
+function setDisplayOfMainContent(displayValue){
+    let mainContent = document.getElementById('MainContent');
+        
+        switch(displayValue){
+            case 'flex':
+                mainContent.classList.remove('centerDisplayBlock');
+                mainContent.classList.remove('centerDisplayGrid');
+                mainContent.classList.add('centerDisplayFlex');
+                break;
+            case 'block':
+                mainContent.classList.add('centerDisplayBlock');
+                mainContent.classList.remove('centerDisplayGrid');
+                mainContent.classList.remove('centerDisplayFlex');
+                break;
+            case 'grid':
+                mainContent.classList.remove('centerDisplayBlock');
+                mainContent.classList.add('centerDisplayGrid');
+                mainContent.classList.remove('centerDisplayFlex');
+                break;
+        }
 }

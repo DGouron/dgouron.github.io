@@ -7,9 +7,16 @@ class PersonalInformation extends ResumeItem{
 
     makeItem(data){
         let newItem = document.createElement('div');
-        let newTitle = document.createElement('h1');
-            newTitle.innerText = data.title;
-        newItem.appendChild(newTitle);
+        if(data.icone != ""){
+            let newIcone = document.createElement('img');
+                newIcone.src = data.icone;
+                newIcone.title = data.title;
+            newItem.appendChild(newIcone);
+        }
+
+        let newContent = document.createElement('p');
+            newContent.innerText = data.content;
+        newItem.appendChild(newContent);
         super.setItem(newItem);
     }
 }

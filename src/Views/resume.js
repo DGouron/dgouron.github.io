@@ -20,8 +20,8 @@ function updateWebsiteHeader(){
 function createResumeView(){
     clearResumePannels();
 
-    createLeftResumePannel();
     createRightResumePannel();
+    createLeftResumePannel();
 
     addResumePannelsToMain();
 }
@@ -30,28 +30,30 @@ function clearResumePannels(){
 }
 
 function createLeftResumePannel(){
+    let leftResumePannel = document.createElement('div');
+    leftResumePannel.id = "leftBarResume";
 
-}
+    //CREATION CODE TO DO HERE
 
-function constructBlockForLeftResumePannel(){
-
-}
-
-function  constructBlockForRightResumePannel(blockData){
-    let newBlock = document.createElement('section');
-    let blockTitle = document.createElement('h1');
-        blockTitle.textContent = blockData.blockName;
-        newBlock.appendChild(blockTitle);
-    return newBlock;
+    resumePannels.push(leftResumePannel);
 }
 
 function createRightResumePannel(){
     let rightResumePannel = document.createElement('div');
+        rightResumePannel.id = "rightBarResume";
+
         for(element in currentResumeData.rightPannel){
-            let separator = document.createElement('img');
-                separator.src = './img/resume/separator.GIF';
-            rightResumePannel.appendChild(separator);
             let currentData = currentResumeData.rightPannel[element];
+
+            if(currentData.showBlockName){
+                let separator = document.createElement('img');
+                    separator.src = './img/resume/separator.GIF';
+                rightResumePannel.appendChild(separator);
+                let blockTitle = document.createElement('p');
+                    blockTitle.innerText = currentData.blockName;
+                rightResumePannel.appendChild(blockTitle);
+            }
+            
             for(element in currentResumeData.rightPannel[element].content){
                 let newResumeItem = new ResumeFactory(currentData.content[element], currentData.type); 
                     newResumeItem.printData();
@@ -66,8 +68,12 @@ function createRightResumePannel(){
 
 function addResumePannelsToMain(){
     let mainContentPannel = document.getElementById('MainContent');
+    let resumeContentBox = document.createElement('div');
+        resumeContentBox.id ='resumeContentBox';
 
     for(element in resumePannels){
-        mainContentPannel.appendChild(resumePannels[element]);
+        resumeContentBox.appendChild(resumePannels[element]);
     }
+
+    mainContentPannel.appendChild(resumeContentBox);
 }
