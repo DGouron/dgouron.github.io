@@ -11,29 +11,34 @@
             "content": [
                             {
                                 "title": "address",
+                                "isLink": false,
                                 "content": "86100 Châtellerault",
                                 "icone": ""
                             },
                             {
                                 "title": "Téléphone",
+                                "isLink": false,
                                 "content": "06-51-99-85-43",
-                                "icone": "./img/resume/phone.gif"
-                            },
-                            {
-                                "title": "Linkedin",
-                                "content": "Damien-gouron",
-                                "icone": ""
-                            },
-                            {
-                                "title": "Github",
-                                "content": "dgouron@github.io",
-                                "icone": ""
+                                "icone": "./img/resume/phone.png"
                             },
                             {
                                 "title": "Email",
+                                "isLink": false,
                                 "content": "damien.gouron@gmail.com",
-                                "icone": "./img/resume/mail.gif"
-                            }
+                                "icone": "./img/resume/mail.png"
+                            },
+                            {
+                                "title": "Linkedin",
+                                "isLink": true,
+                                "content": "https://www.linkedin.com/in/damien-gouron/",
+                                "icone": "./img/resume/linkedin.png"
+                            },
+                            {
+                                "title": "Github",
+                                "isLink": true,
+                                "content": "https://github.com/DGouron",
+                                "icone": "./img/resume/github.png"
+                            }   
                         ]
         },
         {
@@ -45,17 +50,17 @@
                     {
                         "title": "Certificat HTML 5 / CSS",
                         "school": "Open Classrooms",
-                        "icone" : ""
+                        "icone" : "html_css.png"
                     },
                     {
                         "title": "Certificat Javascript",
                         "school": "Open Classrooms",
-                        "icone" : ""
+                        "icone" : "js.jpg"
                     },
                     {
                         "title": "Rapidité de développement",
                         "school": "Codingame",
-                        "icone" : ""
+                        "icone" : "codingame.png"
                     },
                     {
                         "title": "Certificat Python",
@@ -63,9 +68,9 @@
                         "icone" : "python.GIF"
                     },
                     {
-                        "title": "Titre de technicien d'assistance en informatique (Niveau IV)",
+                        "title": "Titre de technicien d'assistance en informatique",
                         "school": "AFPA",
-                        "icone" : ""
+                        "icone" : "school.png"
                     }
                 ]
         },
@@ -104,7 +109,7 @@
                     },
                     {
                         "title": "Course à pied - rejoin moi sur Strava",
-                        "link": "http://strava.com",
+                        "link": "https://www.strava.com/athletes/62580637",
                         "icone": "running"
                     }
                 ]
@@ -115,7 +120,6 @@
         {
             "blockName": "Compétences",
             "type": "Hardskill",
-            "showBlockName": true,
             "content" :
                 [
                     {
@@ -132,7 +136,6 @@
         {
             "blockName" : "Expériences",
             "type": "Experience",
-            "showBlockName": true,
             "content" :
             [
                 {
@@ -158,13 +161,13 @@
                 },
                 {
                     "title": "Technicien Informatique à domicile",
-                    "enterprise": "",
+                    "enterprise": "Auto entreprise",
                     "location" : "Schiltigheim",
                     "text": "Auto-entreprise de dépannage informatique. Implémentation de process. Gestion client et mise en place de devis via un site internent vitrine fait en HTLM5 et PHP (formulaire de contact avancés).",
                     "years": "2013/2016"
                 },
                 {
-                    "title": "Web UI Develope",
+                    "title": "Web UI Developer",
                     "enterprise": "Livrechange.eu",
                     "location" : "Strasbourg",
                     "text": "Création d’un site internet d’échange de livres. Projet personnel utilisant du PHP et du HTML5 avec une base de donnée SQL (MySQL, PHPMyAdmin). Ce projet m’a permis d’apprendre la POO et le pattern MVC",
@@ -175,7 +178,6 @@
         {
             "blockName" : "Formations",
             "type": "Formation",
-            "showBlockName": true,
             "content" :
             [
                 {
@@ -198,7 +200,6 @@
         {
             "blockName" : "Bénévolat",
             "type": "Volonteer",
-            "showBlockName": true,
             "content" :
             [
                 {

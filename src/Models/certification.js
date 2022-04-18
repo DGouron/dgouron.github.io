@@ -9,7 +9,7 @@ class Certification extends ResumeItem{
         let newItem = document.createElement('div');
             newItem.classList.add('rightBarResumeCertificationItem');
         let newSchool = document.createElement('p');
-            newSchool.innerHTML = "<img src='./img/resume/" +data.icone+"' class='rightBarResumeCertificationIcone'>"+data.title+"<br /> "+data.school;
+            newSchool.innerHTML = "<img src='./img/resume/" +data.icone+"' class='certificationIcone'>"+data.title+"<br /> "+data.school;
         newItem.appendChild(newSchool);
         super.setItem(newItem);
     }

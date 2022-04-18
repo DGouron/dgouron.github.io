@@ -31,11 +31,31 @@ function clearResumePannels(){
 
 function createLeftResumePannel(){
     let leftResumePannel = document.createElement('div');
-    leftResumePannel.id = "leftBarResume";
+        leftResumePannel.id = "leftBarResume";
+    for(element in currentResumeData.leftPannel){
+        let currentData = currentResumeData.leftPannel[element];
 
-    //CREATION CODE TO DO HERE
+        leftResumePannel.appendChild(constructLeftResumePannelTitle(currentData.blockName));
 
+        for(element in currentResumeData.leftPannel[element].content){
+            let newResumeItem = new ResumeFactory(currentData.content[element], currentData.type); 
+                if(newResumeItem.getItem() != undefined){
+                    leftResumePannel.appendChild(newResumeItem.getItem());
+                }
+                
+        }
+    }
     resumePannels.push(leftResumePannel);
+}
+
+function constructLeftResumePannelTitle(title){
+    let titleItem = document.createElement('div');
+        titleItem.classList.add('leftResumePannelTitle');
+    let titleText = document.createElement('p');
+        titleText.innerText = title;
+    titleItem.appendChild(titleText);
+
+    return titleItem;
 }
 
 function createRightResumePannel(){
@@ -56,7 +76,6 @@ function createRightResumePannel(){
             
             for(element in currentResumeData.rightPannel[element].content){
                 let newResumeItem = new ResumeFactory(currentData.content[element], currentData.type); 
-                    newResumeItem.printData();
                     if(newResumeItem.getItem() != undefined){
                         rightResumePannel.appendChild(newResumeItem.getItem());
                     }

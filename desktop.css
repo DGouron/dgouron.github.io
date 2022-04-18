@@ -249,7 +249,7 @@ footer
     white-space: nowrap;
     z-index: 0;
 } 
-.animatedButton::before {
+.animatedButton::before , .downloadResume::before{
       position: absolute;
       content: "";
       background: #adc1c4 none repeat scroll 0% 0%;
@@ -261,7 +261,7 @@ footer
       opacity: 0.9;
       
 } 
-.animatedButton:hover::before {
+.animatedButton:hover::before , .downloadResume:before{
       width: 0px;
       height: 100%;
       opacity: 1;
@@ -273,7 +273,7 @@ footer
 } 
  
 
-.animatedButton:hover {
+.animatedButton:hover , .downloadResume:hover{
       background: transparent none repeat scroll 0% 0%;
       color: rgb(240, 220, 220);
       transition: color 0.9s ease 0s, background 0s ease 0s;
@@ -370,34 +370,90 @@ cursor: pointer;
 }
 #resumeContentBox{
     display: grid;
+    grid-template-columns: 2;
+    grid-auto-flow: column;
+    margin-top: 3%;
+    color: white;
+}
+#leftBarResume p{
+    font-size: 100%;
+}
+.resumeItem{
+    display: flex;
+    padding-left: 1em;
+    vertical-align: middle;
+}
+.resumeItem img{
+    height: 16px;
+    float: left;
 }
 #leftBarResume{
-    background-color: #00515a;
-    box-shadow: 5px 5px 5px 5px white;
-    width: 60%;
-    border:  red 5px solid;
+    background-color: #003339;
+    box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
+    background-color: rgb(85, 94, 94);
+    box-shadow: 2px 2px 2px 2px rgb(40, 40, 40);
+    width: 95%;
+    padding: 10px;
     grid-column: 1;
-    margin: auto;
 }
 #rightBarResume{
-    background-color: #00515a;
-    box-shadow: 5px 5px 5px 5px white;
-    width: 40%;
-    border:  red 5px solid;
-    margin: auto;
+    background-color: rgb(85, 94, 94);
+    box-shadow: 2px 2px 2px 2px rgb(40, 40, 40);
+    width: 95%;
+    padding: 10px;
     grid-column: 2;
+}
+.interestPanel{
+    display: flex;
+}
+.interestItem{
+    width: 32px;
+}
+.personalInformationItem{
+    vertical-align: middle;
+    width: 64px;
+    height: 64px;
+}
+.certificationIcone{
+    height: 32px;
+    padding: 5px;
+    float: left;
 }
 .rightBarResumeCertificationItem{
     background-image: url('./img/resume/rightbarItem.png');
     background-repeat:no-repeat;
     background-size: contain;
     display: flex;
-    vertical-align: middle;
-    width: 500px;
+    vertical-align: left;
+    width: 100%;
+    margin-bottom: 4%;
 }
-.rightBarResumeCertificationIcone{
-    width: 20px;
-    height: 20px;
+.leftResumePannelTitle{
+    background-image: url('./img/resume/leftbarItem.png');
+    background-repeat:no-repeat;
+    background-size: 100%;
+    justify-content: center;
+    font-size: large;
+    font-weight: bold;
+    display: flex;
+}
+.rightResumePannelTitle{
+    justify-content: center;
+    font-size: large;
+    font-weight: bold;
+    display: flex;
+}
+.downloadResume{
+    width: 20%;
+    height: 3em;
+    background-color: #9e7f02;
+    border: none;
+    font-weight: bold;
+    font-size: medium;
+    color: white;
+    cursor: pointer;
+    font-family: 'Optimus', 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px rgb(10, 10, 10);
 }
 @media only screen and (max-width: 1000px) {
     .buttonBase{

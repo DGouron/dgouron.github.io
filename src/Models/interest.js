@@ -8,13 +8,14 @@ class Interest extends ResumeItem{
     makeItem(data){
         let newItem = document.createElement('div');
         let newIcone = document.createElement('img');
-
-            newIcone.src = './img/resume/'+data.icone+'.GIF';
+            newIcone.classList.add('interestItem');
+            newIcone.src = './img/resume/'+data.icone+'.png';
             newIcone.title = data.title;
 
         if(data.link != ""){
             let newLink = document.createElement('a');
                 newLink.href = data.link;
+                newLink.setAttribute('target', '_blank');
                 newLink.appendChild(newIcone);
             newItem.appendChild(newLink);
         }else{

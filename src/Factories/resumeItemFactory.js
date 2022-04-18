@@ -4,6 +4,12 @@ class ResumeFactory {
         switch(type){
             case 'Hardskill':
                 return new Hardskill(data);
+            case 'Experience':
+                return new Experience(data);
+            case 'Formation':
+                return new Formation(data);
+            case 'Volonteer':
+                return new Volonteer(data);
             case 'Softskill':
                 return new Softskill(data);
             case 'PersonnalInformation':
@@ -15,10 +21,6 @@ class ResumeFactory {
             default: 
                 throw 'Unknown type format';
         }
-    }
-
-    GetData(){
-        console.log('test');
     }
 }
 
