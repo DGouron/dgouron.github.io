@@ -18,6 +18,7 @@ class PersonalInformation extends ResumeItem{
                 let newIcone = document.createElement('img');
                     newIcone.classList.add('personalInformationItem');
                     newIcone.src = data.icone;
+                    newIcone.alt = data.title;
                     newIcone.title = data.title;
                 newLink.appendChild(newIcone);
             }

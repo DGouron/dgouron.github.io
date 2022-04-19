@@ -4,6 +4,8 @@
 	src: url('fonts/Technology/Technology-Bold.ttf');
 	src: url('fonts/Technology/Technology-BoldItalic.ttf');
 	src: url('fonts/Technology/Technology-Italic.ttf');
+
+    font-display: swap;
 }
 @font-face{
 	font-family: 'LouisGeorgesCafé';
@@ -13,11 +15,15 @@
 	src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Italic.ttf');
     src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Light.ttf');
     src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Light\ Italic.ttf');
+
+    font-display: swap;
 }
 @font-face{
 	font-family: 'Optimus';
 	src: url('fonts/optimusprinceps/OptimusPrinceps.ttf');
 	src: url('fonts/optimusprinceps/OptimusPrincepsSemiBold.ttf');
+
+    font-display: swap;
 }
 
 
@@ -35,6 +41,10 @@ header{
 header p{
     width: 50%;
     height: 20%;
+}
+#portrait{
+    width: 4em;
+    height: 4em;
 }
 nav
 {  

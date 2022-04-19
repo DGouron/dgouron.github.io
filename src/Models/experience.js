@@ -10,6 +10,7 @@ class Experience extends ResumeItem{
             newItem.classList.add('resumeItem');
         let separatorPoint = document.createElement('img');
             separatorPoint.src = "./img/resume/blackpoint.gif";
+            separatorPoint.alt = data.title;
             separatorPoint.title = data.title;
         newItem.appendChild(separatorPoint);
         let newContent = document.createElement('p');

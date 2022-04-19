@@ -9,6 +9,7 @@ class Hardskill extends ResumeItem{
         let newItem = document.createElement('div');
             newItem.classList.add('resumeItem');
         let separatorPoint = document.createElement('img');
+            separatorPoint.alt = data.content;
             separatorPoint.src = "./img/resume/blackpoint.gif";
             separatorPoint.title = data.content;
         newItem.appendChild(separatorPoint);

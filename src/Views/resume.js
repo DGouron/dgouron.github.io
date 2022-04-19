@@ -68,6 +68,7 @@ function createRightResumePannel(){
             if(currentData.showBlockName){
                 let separator = document.createElement('img');
                     separator.src = './img/resume/separator.GIF';
+                    separator.alt = 'separator';
                 rightResumePannel.appendChild(separator);
                 let blockTitle = document.createElement('p');
                     blockTitle.innerText = currentData.blockName;

@@ -135,7 +135,8 @@ function updateNumberOfTilesInField(){
 
     changeTileNumberField = document.createElement('input');
     changeTileNumberField.setAttribute('name', 'NumberOfTilesViewer');
-    changeTileNumberField.setAttribute('id', 'NumberOfTilesViewer');
+    changeTileNumberField.id = 'NumberOfTilesViewer';
+    changeTileNumberField.title = 'Modify number of tiles';
     changeTileNumberField.setAttribute('readonly', true);
     changeTileNumberField.setAttribute('value', numberOfTiles);
 
@@ -148,6 +149,7 @@ function updateNumberOfTilesInField(){
         tileSlider.setAttribute('min', numberOfTilesRange[0]);
         tileSlider.setAttribute('max', numberOfTilesRange[1]);
         tileSlider.setAttribute('value', numberOfTiles)
+        tileSlider.title = 'Number of tiles slider';
         tileSlider.setAttribute('id', 'tileSlider');
         tileSlider.classList.add('tileSlider');
     divForSlider.appendChild(tileSlider);
@@ -192,6 +194,7 @@ function loadProjectData(data, linkElement){
         projectTitle.innerText = data.projectName;
     let projectThumbnail = document.createElement('img');
         projectThumbnail.setAttribute('src', data.projectLargeImage);
+        projectThumbnail.alt = data.projectName;
         projectThumbnail.classList.add('projectThumbnail');
     let projectDescription = document.createElement('p');
         projectDescription.innerText = data.projectDescription;

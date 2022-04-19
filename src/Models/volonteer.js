@@ -9,6 +9,7 @@ class Volonteer extends ResumeItem{
         let newItem = document.createElement('div');
             newItem.classList.add('resumeItem');
         let separatorPoint = document.createElement('img');
+            separatorPoint.alt = data.title;
             separatorPoint.src = "./img/resume/blackpoint.gif";
             separatorPoint.title = data.title;
         newItem.appendChild(separatorPoint);

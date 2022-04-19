@@ -9,6 +9,7 @@ class Interest extends ResumeItem{
         let newItem = document.createElement('div');
         let newIcone = document.createElement('img');
             newIcone.classList.add('interestItem');
+            newIcone.alt = data.title;
             newIcone.src = './img/resume/'+data.icone+'.png';
             newIcone.title = data.title;
 
