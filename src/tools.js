@@ -21,3 +21,21 @@ function getPercentage(value1 = 0, value2 = 0, roundResult = true){
     else{return result}
 }
 
+const days = [
+    'Lundi',
+    'Mardi',
+    'Mercredi',
+    'Jeudi',
+    'Vendredi',
+    'Samedi',
+    'Dimanche'
+];
+
+function getDay(){
+    let date = new Date();
+    let day = days[date.getDay()-1];
+
+    return day;
+}
+
+console.log(getDay());
