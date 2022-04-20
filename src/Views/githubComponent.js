@@ -14,10 +14,10 @@ function showGithubStats(dataToShow){
         gitHubComponent.id = 'gitHubComponent';
 
         gitHubComponent.appendChild(constructGitHubAvatar(dataToShow));
-        gitHubComponent.appendChild(constructProfileLinkButton(constructProfileLink()));
+        gitHubComponent.appendChild(constructProfileLinkButton(constructProfileLink(dataToShow)));
         
     let gitHubName = document.createElement('div');
-        gitHubName.innerHTML = 'Github Stats Component <br /><em> Githbug Name : ' + dataToShow.name + '</em><br />';
+        gitHubName.innerHTML = 'Github Stats Component <br /><em> Github Name : ' + dataToShow.name + '</em><br />';
         gitHubName.classList.add('gitHubComponentElement');
         gitHubComponent.appendChild(gitHubName);
 
@@ -40,9 +40,9 @@ function constructGitHubAvatar(data){
     return gitHubAvatar;
 }
 
-function constructProfileLink(){
+function constructProfileLink(dataToShow){
     let profileLink = document.createElement('a');
-        profileLink.href = githubProfileLink;
+        profileLink.setAttribute('href', dataToShow.html_url);
         profileLink.alt = 'Link to github profile.';
         profileLink.title = 'Link to github profile.';
 
