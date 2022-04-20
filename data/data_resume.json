@@ -10,10 +10,10 @@
             "showBlockName": false,
             "content": [
                             {
-                                "title": "address",
+                                "title": "Adresse",
                                 "isLink": false,
                                 "content": "86100 Châtellerault",
-                                "icone": ""
+                                "icone": "./img/resume/localisation.png"
                             },
                             {
                                 "title": "Téléphone",
@@ -63,7 +63,7 @@
                         "icone" : "codingame.png"
                     },
                     {
-                        "title": "Certificat Python",
+                        "title": "Certificat langage Python",
                         "school": "Open Classrooms",
                         "icone" : "python.GIF"
                     },

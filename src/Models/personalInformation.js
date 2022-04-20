@@ -7,16 +7,18 @@ class PersonalInformation extends ResumeItem{
 
     makeItem(data){
         let newItem = document.createElement('div');
+            newItem.classList.add('personnalInformationItem');
 
         if(data.isLink){
             let newLink = document.createElement('a');
                 newLink.setAttribute('href', data.content);
                 newLink.title = data.title;
-                newLink.setAttribute('target', '_blank');
+            newLink.setAttribute('target', '_blank');
+            newLink.classList.add('personalInformationLink');
 
             if(data.icone != ""){
                 let newIcone = document.createElement('img');
-                    newIcone.classList.add('personalInformationItem');
+                    newIcone.classList.add('personalInformationIcone');
                     newIcone.src = data.icone;
                     newIcone.alt = data.title;
                     newIcone.title = data.title;
@@ -28,18 +30,17 @@ class PersonalInformation extends ResumeItem{
         else{
             if(data.icone != ""){
                 let newIcone = document.createElement('img');
-                    newIcone.classList.add('personalInformationItem');
+                    newIcone.classList.add('personalInformationIcone');
                     newIcone.src = data.icone;
                     newIcone.title = data.title;
                 newItem.appendChild(newIcone);
-            }
-            let newContent = document.createElement('p');
-                newContent.innerText = data.content;
-                newItem.appendChild(newContent);
-
-                
+            }     
         }
         
+        let newContent = document.createElement('p');
+                newContent.innerText = data.content;
+                newContent.classList.add('personnalInformationContent');
+                newItem.appendChild(newContent);
         
         super.setItem(newItem);
     }

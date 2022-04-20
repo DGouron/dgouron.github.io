@@ -6,6 +6,7 @@ class Interest extends ResumeItem{
     }
 
     makeItem(data){
+
         let newItem = document.createElement('div');
         let newIcone = document.createElement('img');
             newIcone.classList.add('interestItem');
@@ -22,7 +23,7 @@ class Interest extends ResumeItem{
         }else{
             newItem.appendChild(newIcone);
         }
-        
+
         super.setItem(newItem);
     }
 }

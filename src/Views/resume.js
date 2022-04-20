@@ -71,6 +71,7 @@ function createRightResumePannel(){
                     separator.alt = 'separator';
                 rightResumePannel.appendChild(separator);
                 let blockTitle = document.createElement('p');
+                    blockTitle.classList.add('rightResumePannelTitle');
                     blockTitle.innerText = currentData.blockName;
                 rightResumePannel.appendChild(blockTitle);
             }
