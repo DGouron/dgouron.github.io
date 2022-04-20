@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Portfolio de Damien Gouron - développeur web.">
+		<meta name="robots" content= "index,follow">
 		<link rel="stylesheet" type="text/css" href="desktop.css">
 		<title></title>
 	</head>
 	<body>
 		<header id = "top">
-			<h1><img src="./img/images/CV_27.gif"> Damien Gouron</h1>
+			<h1><img src="./img/resume/CV_27.gif" alt="Damien Gouron" id="portrait"> Damien Gouron</h1>
 			<h2 id = "HeaderTitle"></h2>
-			<p id = "HeaderResume"></p>
+			<p id = "HeaderResume"></p><a href="./documents/CV_GOURON_Damien_DeveloppeurWeb_v2.pdf"><input type="button" value="Telecharger CV" class="downloadResume" target="_blank"></a>
 		</header>
 		<nav role="navigation">
 			<ul>
-				<li><a href="#" class = "active buttonBase animatedButton" id="ShowGalery">Gallerie</a></li>
+				<li><a href="#" class = "active buttonBase animatedButton" id="ShowGalery">Galerie</a></li>
 				<li><a href="#" class = "active buttonBase animatedButton" id="ShowTicTacToe">Tic Tac Toe</a></li>
 				<li><a href="#" class = "active buttonBase animatedButton" id="ShowCV">CV</a></li>
 				<li><a href="https://www.codingame.com/servlet/urlinvite?u=2435446" class = "active buttonBase animatedButton" id="JoinCodingame" title="Rejoin moi sur codingame">Codingame</a></li>
@@ -21,20 +24,29 @@
 		</nav>
 		<div id="Center">
 			<aside id="LeftNavigationArrow"><</aside>
-			<main id ="MainContent"></main>
+			<main id ="MainContent" class="centerDisplayFlex"></main>
 			<aside id="RightNavigationArrow">></aside>
 		</div>
-		<script type="text/javascript" src ="./src/index.js"></script>
 		<script type="text/javascript" src ="./src/tools.js"></script>
-		<!-- VIEWS-->
+		<!--FACTORIES-->
+			<script type="text/javascript" src="./src/Factories/resumeItemFactory.js"></script>
+		<!--MODELS-->
+			<script type="text/javascript" src="./src/Models/hardskill.js"></script>
+			<script type="text/javascript" src="./src/Models/experience.js"></script>
+			<script type="text/javascript" src="./src/Models/formation.js"></script>
+			<script type="text/javascript" src="./src/Models/volonteer.js"></script>
+			<script type="text/javascript" src="./src/Models/softskill.js"></script>
+			<script type="text/javascript" src="./src/Models/interest.js"></script>
+			<script type="text/javascript" src="./src/Models/personalInformation.js"></script>
+			<script type="text/javascript" src="./src/Models/certification.js"></script>
+		<!--VIEWS-->
 			<script type="text/javascript" src ="./src/Views/tictactoe.js"></script>
 			<script type="text/javascript" src ="./src/Views/resume.js"></script>
 			<script type="text/javascript" src ="./src/Views/githubStats.js"></script>
-		<!--FACTORIES-->
-			<script type="text/javascript" src="./src/Factories/resumeItemFactory.js"></script>
+		<!--CONTROLLER-->
+			<script type="text/javascript" src ="./src/index.js"></script>
 		<footer> Copyright all right reserved Damien Gouron - 2022
-			<br /> Site fait avec <img src="./img/logo_techno.png" title = "Techno utilisées" class = "FooterIcones"> 
-			<br />Réseaux sociaux : <a href="https://www.linkedin.com/in/damien-gouron/" target="_blank"><img src="./img/logo_linkedin.png" title = "Me rejoindre sur Linkedin" class = "FooterIcones"></a>
+			<br />Réseaux sociaux : <a href="https://www.linkedin.com/in/damien-gouron/" target="_blank"><img src="./img/logo_linkedin.png" title = "Me rejoindre sur Linkedin" class = "FooterIcones" alt="Linkedin"></a>
 			<br />Code source du projet <a href="https://github.com/DGouron/dgouron.github.io" target = "_blank">ici</a>
 			<a href="#top"><img src="./img/gotop.png" alt = "Go Top" title="Go Top" id = "GoTopIcone"></a>
 		</footer>

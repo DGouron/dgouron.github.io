@@ -4,6 +4,8 @@
 	src: url('fonts/Technology/Technology-Bold.ttf');
 	src: url('fonts/Technology/Technology-BoldItalic.ttf');
 	src: url('fonts/Technology/Technology-Italic.ttf');
+
+    font-display: swap;
 }
 @font-face{
 	font-family: 'LouisGeorgesCafé';
@@ -13,11 +15,15 @@
 	src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Italic.ttf');
     src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Light.ttf');
     src: url('fonts/LouisGeorgesCafé/Louis\ George\ Cafe\ Light\ Italic.ttf');
+
+    font-display: swap;
 }
 @font-face{
 	font-family: 'Optimus';
 	src: url('fonts/optimusprinceps/OptimusPrinceps.ttf');
 	src: url('fonts/optimusprinceps/OptimusPrincepsSemiBold.ttf');
+
+    font-display: swap;
 }
 
 
@@ -35,6 +41,10 @@ header{
 header p{
     width: 50%;
     height: 20%;
+}
+#portrait{
+    width: 4.36em;
+    height: 4em;
 }
 nav
 {  
@@ -88,9 +98,18 @@ li
     padding: 1%;
 }
 #Center{
+    width: 100%;
     display: flex;
     flex-direction: row;
-    width: 100%;
+}
+.centerDisplayBlock{
+    display: block;
+}
+.centerDisplayGrid{
+    display: grid;
+}
+.centerDisplayFlex{
+    display: flex;
 }
 #LeftNavigationArrow, #RightNavigationArrow{
     font-size: 70px;
@@ -203,9 +222,13 @@ footer
     color: white;
     text-align: center;
 }
-.FooterIcones, .TileIcones{
-    width: 64px;
-    height: 64px;
+.FooterIcones{
+    width: 87.33px;
+    height: 109px;
+}
+.TileIcones{
+    width: 131px;
+    height: 163.5px;
 }
 #GoTopIcone{
   width: 64px;
@@ -240,7 +263,7 @@ footer
     white-space: nowrap;
     z-index: 0;
 } 
-.animatedButton::before {
+.animatedButton::before , .downloadResume::before{
       position: absolute;
       content: "";
       background: #adc1c4 none repeat scroll 0% 0%;
@@ -252,7 +275,7 @@ footer
       opacity: 0.9;
       
 } 
-.animatedButton:hover::before {
+.animatedButton:hover::before , .downloadResume:before{
       width: 0px;
       height: 100%;
       opacity: 1;
@@ -264,7 +287,7 @@ footer
 } 
  
 
-.animatedButton:hover {
+.animatedButton:hover , .downloadResume:hover{
       background: transparent none repeat scroll 0% 0%;
       color: rgb(240, 220, 220);
       transition: color 0.9s ease 0s, background 0s ease 0s;
@@ -307,7 +330,7 @@ table {
 }
 #NumberOfTilesViewer{
     width: 20%;
-    height: 2%;
+    height: 4%;
 }
 .tileSliderContainer {
     width: 90%;
@@ -317,7 +340,7 @@ table {
 -webkit-appearance: none;
 appearance: none;
 width: 100%;
-height: 10px;
+height: 1em;
 background: #00949b;
 outline: none;
 opacity: 0.7;
@@ -333,7 +356,7 @@ opacity: 1;
 -webkit-appearance: none;
 appearance: none;
 width: 15px;
-height: 15px;
+height: 1em;
 background: #04AA6D;
 cursor: pointer; 
 }
@@ -358,6 +381,125 @@ cursor: pointer;
     width: 16px;
     height: 16px;
     box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
+}
+#resumeContentBox{
+    display: grid;
+    grid-template-columns: 2;
+    grid-auto-flow: column;
+    margin-top: 3%;
+    color: white;
+}
+#leftBarResume p{
+    font-size: 100%;
+    text-shadow: 1px 1px #5b0900;
+    padding: 0.2em;
+}
+.resumeItem{
+    display: flex;
+    padding-left: 1em;
+    vertical-align: middle;
+}
+.resumeItem img{
+    height: 13px;
+    float: left;
+}
+#leftBarResume{
+    background-color: #003339;
+    box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
+    background-color: rgb(85, 94, 94);
+    box-shadow: 2px 2px 2px 2px rgb(40, 40, 40);
+    width: 95%;
+    padding: 10px;
+    grid-column: 1;
+}
+#rightBarResume{
+    background-color: rgb(85, 94, 94);
+    box-shadow: 2px 2px 2px 2px rgb(40, 40, 40);
+    width: 95%;
+    padding: 10px;
+    grid-column: 2;
+}
+.rightBarResumeCertificationItem{
+    text-shadow: 1px 1px #5b0900;
+    font-weight: 500;
+    font-size: 1.5em;
+}
+.interestItem{
+    width: 46px;
+    margin: 1em;
+    justify-content: center;
+}
+.personalInformationIcone{
+    vertical-align: middle;
+    width: 64px;
+    height: 64px;
+}
+.personalInformationLink{
+    vertical-align: middle;
+    width: 64px;
+    height: 64px;
+}
+.personnalInformationItem{
+    display: flex;
+    flex-direction: row;
+    margin: 0.2em;
+    text-shadow: 1px 1px #5b0900;
+}
+.personnalInformationContent{
+    font-size: 1.5em;
+    font-weight: 400;
+    padding: 0.5em;
+}
+.certificationIcone{
+    height: 32px;
+    padding: 5px;
+    float: left;
+}
+.softSkillRow{
+    vertical-align: middle;
+    text-shadow: 1px 1px #5b0900;
+}
+.rightBarResumeCertificationItem{
+    background-image: url('./img/resume/rightbarItem.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    text-align: center;
+    padding: 0.5em;
+    display: flex;
+    width: 90%;
+    margin-bottom: 4%;
+}
+.leftResumePannelTitle{
+    background-image: url('./img/resume/leftbarItem.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content:center;
+    text-align: center;
+    padding: 0.5em;
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+    height: 5%;
+    margin: 2em;
+}
+.rightResumePannelTitle{
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+}
+.downloadResume{
+    width: 20%;
+    height: 3em;
+    background-color: #9e7f02;
+    border: none;
+    font-weight: bold;
+    font-size: medium;
+    color: black;
+    cursor: pointer;
+    font-family: 'Optimus', 'Times New Roman', Times, serif;
 }
 @media only screen and (max-width: 1000px) {
     .buttonBase{
@@ -401,5 +543,16 @@ cursor: pointer;
     }
     .projectThumbnail{
         height: 10%;
+    }
+    #resumeContentBox{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1%;
+    }
+    .downloadResume{
+        font-size: 0.9em;
+        text-align: justify;
+        width: 128px;
+        height: 64px;
     }
 }

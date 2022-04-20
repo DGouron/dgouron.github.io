@@ -10,7 +10,6 @@ fetch(resumeDataLink)
 function getResumeData(resumeData){
     currentResumeData = resumeData;
     updateWebsiteHeader();
-    console.table(currentResumeData);
 }
 function updateWebsiteHeader(){
     document.title = currentResumeData.title;
@@ -21,8 +20,8 @@ function updateWebsiteHeader(){
 function createResumeView(){
     clearResumePannels();
 
-    createLeftResumePannel();
     createRightResumePannel();
+    createLeftResumePannel();
 
     addResumePannelsToMain();
 }
@@ -31,35 +30,71 @@ function clearResumePannels(){
 }
 
 function createLeftResumePannel(){
+    let leftResumePannel = document.createElement('div');
+        leftResumePannel.id = "leftBarResume";
+    for(element in currentResumeData.leftPannel){
+        let currentData = currentResumeData.leftPannel[element];
 
+        leftResumePannel.appendChild(constructLeftResumePannelTitle(currentData.blockName));
+
+        for(element in currentResumeData.leftPannel[element].content){
+            let newResumeItem = new ResumeFactory(currentData.content[element], currentData.type); 
+                if(newResumeItem.getItem() != undefined){
+                    leftResumePannel.appendChild(newResumeItem.getItem());
+                }
+                
+        }
+    }
+    resumePannels.push(leftResumePannel);
 }
 
-function constructBlockForLeftResumePannel(){
+function constructLeftResumePannelTitle(title){
+    let titleItem = document.createElement('div');
+        titleItem.classList.add('leftResumePannelTitle');
+    let titleText = document.createElement('p');
+        titleText.innerText = title;
+    titleItem.appendChild(titleText);
 
-}
-
-function  constructBlockForRightResumePannel(blockData){
-    let newBlock = document.createElement('section');
-    let blockTitle = document.createElement('h1');
-        blockTitle.textContent = blockData.blockName;
-        newBlock.appendChild(blockTitle);
-    return newBlock;
+    return titleItem;
 }
 
 function createRightResumePannel(){
-    let leftResumePannel = document.createElement('section');
-    console.error(currentResumeData.rightPannel)
+    let rightResumePannel = document.createElement('div');
+        rightResumePannel.id = "rightBarResume";
+
         for(element in currentResumeData.rightPannel){
-            console.table(currentResumeData.rightPannel[element]);
-            leftResumePannel.appendChild(constructBlockForRightResumePannel(currentResumeData.rightPannel[element])); 
+            let currentData = currentResumeData.rightPannel[element];
+
+            if(currentData.showBlockName){
+                let separator = document.createElement('img');
+                    separator.src = './img/resume/separator.GIF';
+                    separator.alt = 'separator';
+                rightResumePannel.appendChild(separator);
+                let blockTitle = document.createElement('p');
+                    blockTitle.classList.add('rightResumePannelTitle');
+                    blockTitle.innerText = currentData.blockName;
+                rightResumePannel.appendChild(blockTitle);
+            }
+            
+            for(element in currentResumeData.rightPannel[element].content){
+                let newResumeItem = new ResumeFactory(currentData.content[element], currentData.type); 
+                    if(newResumeItem.getItem() != undefined){
+                        rightResumePannel.appendChild(newResumeItem.getItem());
+                    }
+                    
+            }
         }
-    resumePannels.push(leftResumePannel);
+    resumePannels.push(rightResumePannel);
 }
 
 function addResumePannelsToMain(){
     let mainContentPannel = document.getElementById('MainContent');
+    let resumeContentBox = document.createElement('div');
+        resumeContentBox.id ='resumeContentBox';
 
     for(element in resumePannels){
-        mainContentPannel.appendChild(resumePannels[element]);
+        resumeContentBox.appendChild(resumePannels[element]);
     }
+
+    mainContentPannel.appendChild(resumeContentBox);
 }

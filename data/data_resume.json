@@ -6,69 +6,77 @@
     [
         {
             "blockName": "Personnal Informations",
-            "showBlockName": true,
+            "type": "PersonnalInformation",
+            "showBlockName": false,
             "content": [
                             {
-                                "title": "address",
+                                "title": "Adresse",
+                                "isLink": false,
                                 "content": "86100 Châtellerault",
-                                "icone": ""
+                                "icone": "./img/resume/localisation.png"
                             },
                             {
                                 "title": "Téléphone",
+                                "isLink": false,
                                 "content": "06-51-99-85-43",
-                                "icone": ""
-                            },
-                            {
-                                "title": "Linkedin",
-                                "content": "Damien-gouron",
-                                "icone": ""
-                            },
-                            {
-                                "title": "Github",
-                                "content": "dgouron@github.io",
-                                "icone": ""
+                                "icone": "./img/resume/phone.png"
                             },
                             {
                                 "title": "Email",
+                                "isLink": false,
                                 "content": "damien.gouron@gmail.com",
-                                "icone": ""
-                            }
+                                "icone": "./img/resume/mail.png"
+                            },
+                            {
+                                "title": "Linkedin",
+                                "isLink": true,
+                                "content": "https://www.linkedin.com/in/damien-gouron/",
+                                "icone": "./img/resume/linkedin.png"
+                            },
+                            {
+                                "title": "Github",
+                                "isLink": true,
+                                "content": "https://github.com/DGouron",
+                                "icone": "./img/resume/github.png"
+                            }   
                         ]
         },
         {
             "blockName": "Diplômes / Certifications",
+            "type": "Certification",
             "showBlockName": true,
             "content" :
                 [
                     {
                         "title": "Certificat HTML 5 / CSS",
                         "school": "Open Classrooms",
-                        "icone" : ""
+                        "icone" : "html_css.png"
                     },
                     {
                         "title": "Certificat Javascript",
                         "school": "Open Classrooms",
-                        "icone" : ""
+                        "icone" : "js.jpg"
                     },
                     {
                         "title": "Rapidité de développement",
                         "school": "Codingame",
-                        "icone" : ""
+                        "icone" : "codingame.png"
                     },
                     {
-                        "title": "Certificat Python",
+                        "title": "Certificat langage Python",
                         "school": "Open Classrooms",
-                        "icone" : ""
+                        "icone" : "python.GIF"
                     },
                     {
-                        "title": "Titre de technicien d'assistance en informatique (Niveau IV)",
+                        "title": "Titre de technicien d'assistance en informatique",
                         "school": "AFPA",
-                        "icone" : ""
+                        "icone" : "school.png"
                     }
                 ]
         },
         {
             "blockName": "Soft-Skills",
+            "type": "Softskill",
             "showBlockName": true,
             "content" :
                 [
@@ -85,30 +93,50 @@
         }, 
         {
             "blockName" : "Centres d'interêts",
+            "type": "Interest",
             "showBlockName": true,
             "content" :
                 [
                     {
                         "title": "Cyclisme",
                         "link": "",
-                        "icone": ""
+                        "icone": "bike"
                     },
                     {
                         "title": "Jeux vidéo",
                         "link": "",
-                        "icone": ""
+                        "icone": "videogame"
                     },
                     {
                         "title": "Course à pied - rejoin moi sur Strava",
-                        "link": "",
-                        "icone": ""
+                        "link": "https://www.strava.com/athletes/62580637",
+                        "icone": "running"
                     }
                 ]
         }
     ],
-    "experiences" :  {
-        "header" : "Expériences",
-        "content" :
+    "leftPannel": 
+    [
+        {
+            "blockName": "Compétences",
+            "type": "Hardskill",
+            "content" :
+                [
+                    {
+                        "content": "Méthodologie, recherche d'informations, documentation technique, diagrammes UML, clean code."
+                    },
+                    {
+                        "content": "Connaissances des design pattern. Compréhension du multi-paradigm et de la Programmation Orientée Object (POO)."
+                    },
+                    {
+                        "content": "Création de code asynchrone. Envois de requettes HTTP, JSON et communication avec les API."
+                    }
+                ]
+        },
+        {
+            "blockName" : "Expériences",
+            "type": "Experience",
+            "content" :
             [
                 {
                     "title": "Préparateur Drive",
@@ -133,23 +161,24 @@
                 },
                 {
                     "title": "Technicien Informatique à domicile",
-                    "enterprise": "",
+                    "enterprise": "Auto entreprise",
                     "location" : "Schiltigheim",
                     "text": "Auto-entreprise de dépannage informatique. Implémentation de process. Gestion client et mise en place de devis via un site internent vitrine fait en HTLM5 et PHP (formulaire de contact avancés).",
                     "years": "2013/2016"
                 },
                 {
-                    "title": "Web UI Develope",
+                    "title": "Web UI Developer",
                     "enterprise": "Livrechange.eu",
                     "location" : "Strasbourg",
                     "text": "Création d’un site internet d’échange de livres. Projet personnel utilisant du PHP et du HTML5 avec une base de donnée SQL (MySQL, PHPMyAdmin). Ce projet m’a permis d’apprendre la POO et le pattern MVC",
                     "years": "2012/2014"
                 }
             ]
-    },
-    "formations" :  {
-        "header" : "Formations",
-        "content" :
+        },
+        {
+            "blockName" : "Formations",
+            "type": "Formation",
+            "content" :
             [
                 {
                     "title": "1ere année de licence d’Histoire",
@@ -167,10 +196,11 @@
                     "years": "2008"
                 }
             ]
-    },
-    "benevolat" :  {
-        "header" : "Bénévolat",
-        "content" :
+        },
+        {
+            "blockName" : "Bénévolat",
+            "type": "Volonteer",
+            "content" :
             [
                 {
                     "title": "Sapeur-Pompier volontaire",
@@ -191,5 +221,6 @@
                     "years": "2020"
                 }
             ]
-    }
+        }
+    ]
 }
