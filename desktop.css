@@ -211,16 +211,41 @@ article h1, h1{
 }
 footer
 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     border: 0.1em rgb(30, 30, 30) solid;
     background-color: rgb(85, 94, 94);
     box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
-    justify-content: center;
-    margin-top: 5em;
-    padding: 3em;
-    height: 10%;
-    min-height: auto;
+    margin-top: 3em;
+    
+    height: 100%;
+
     color: white;
     text-align: center;
+    font-family: 'LouisGeorgesCafé', Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    text-shadow: 2px 2px rgb(10, 10, 10);
+}
+footer a{
+    color: white;
+}
+footer a:hover{
+    font-weight: bold;
+}
+#gitHubComponent{
+    display: flex;
+    flex-direction: row;
+    box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
+    margin-top: 1em;
+    padding : 3em;
+}
+.gitHubComponentElement{
+    padding : 1em;
+}
+.gitHubAvatar{
+    height: 64px;
+    width: 64px;
 }
 .FooterIcones{
     width: 87.33px;
@@ -263,7 +288,7 @@ footer
     white-space: nowrap;
     z-index: 0;
 } 
-.animatedButton::before , .downloadResume::before{
+.animatedButton::before , .callToAction::before{
       position: absolute;
       content: "";
       background: #adc1c4 none repeat scroll 0% 0%;
@@ -275,7 +300,7 @@ footer
       opacity: 0.9;
       
 } 
-.animatedButton:hover::before , .downloadResume:before{
+.animatedButton:hover::before , .callToAction:before{
       width: 0px;
       height: 100%;
       opacity: 1;
@@ -287,7 +312,7 @@ footer
 } 
  
 
-.animatedButton:hover , .downloadResume:hover{
+.animatedButton:hover , .callToAction:hover{
       background: transparent none repeat scroll 0% 0%;
       color: rgb(240, 220, 220);
       transition: color 0.9s ease 0s, background 0s ease 0s;
@@ -490,9 +515,10 @@ cursor: pointer;
     font-weight: bold;
     display: flex;
 }
-.downloadResume{
+.callToAction{
     width: 20%;
     height: 3em;
+    margin: 1em;
     background-color: #9e7f02;
     border: none;
     font-weight: bold;
@@ -549,10 +575,11 @@ cursor: pointer;
         flex-direction: column;
         margin-top: 1%;
     }
-    .downloadResume{
+    .callToAction{
         font-size: 0.9em;
         text-align: justify;
         width: 128px;
         height: 64px;
+        margin: 1em;
     }
 }
