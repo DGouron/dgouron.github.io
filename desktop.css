@@ -211,16 +211,41 @@ article h1, h1{
 }
 footer
 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     border: 0.1em rgb(30, 30, 30) solid;
     background-color: rgb(85, 94, 94);
     box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
-    justify-content: center;
-    margin-top: 5em;
-    padding: 3em;
-    height: 10%;
-    min-height: auto;
+    margin-top: 3em;
+    
+    height: 100%;
+
     color: white;
     text-align: center;
+    font-family: 'LouisGeorgesCafé', Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    text-shadow: 2px 2px rgb(10, 10, 10);
+}
+footer a{
+    color: white;
+}
+footer a:hover{
+    font-weight: bold;
+}
+#gitHubComponent{
+    display: flex;
+    flex-direction: row;
+    box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
+    margin-top: 1em;
+    padding : 3em;
+}
+.gitHubComponentElement{
+    padding : 1em;
+}
+.gitHubAvatar{
+    height: 64px;
+    width: 64px;
 }
 .FooterIcones{
     width: 87.33px;
