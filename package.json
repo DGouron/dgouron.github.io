@@ -1,0 +1,19 @@
+{
+  "name": "portfolio_v1",
+  "version": "1.0.0",
+  "description": "package for the v1 of the portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DGouron/dgouron.github.io.git"
+  },
+  "author": "Damien Gouron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DGouron/dgouron.github.io/issues"
+  },
+  "homepage": "https://github.com/DGouron/dgouron.github.io#readme"
+}
