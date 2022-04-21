@@ -4,7 +4,8 @@
   "description": "package for the v1 of the portfolio",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/DGouron/dgouron.github.io#readme",
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.5",
+    "babel-polyfill": "^6.26.0",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2"
   }
