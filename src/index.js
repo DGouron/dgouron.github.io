@@ -1,11 +1,11 @@
 /* 
 /  Copyright all right reserved Damien Gouron - 2022
 */
+import createResumeView from './Views/resume.js';
+import createTicTacToeGame from './Views/tictactoe.js';
+import showGithubStats from './Views/githubComponent.js';
 
 let linkedinLink = "https://www.linkedin.com/in/damien-gouron/"
-
-const configNavLink = './config/config_nav.json';
-let configNavData;
 
 const projectsDataLink = './data/data_projects.json';
 let projectsData = [];
@@ -30,8 +30,6 @@ fetch(projectsDataLink)
 
 
 let mainContent = document.getElementById('MainContent');
-const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
-
 
 if (document.readyState === 'complete') {
 } else {

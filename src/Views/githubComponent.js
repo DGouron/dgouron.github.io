@@ -5,7 +5,7 @@ fetch(githubProfileLink)
     .then(reponse => reponse.json())
     .then(dataToShow => showGithubStats(dataToShow))
 
-function showGithubStats(dataToShow){
+export default function showGithubStats(dataToShow){
     if(showConsoleDebug){console.table(dataToShow);}
 
     let footerRef = document.getElementById('mainFooter');

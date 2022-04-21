@@ -31,7 +31,7 @@ const days = [
     'Dimanche'
 ];
 
-function getDay(){
+export default function getDay(){
     let date = new Date();
     let day = days[date.getDay()-1];
 

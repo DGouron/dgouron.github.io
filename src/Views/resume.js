@@ -17,7 +17,7 @@ function updateWebsiteHeader(){
     document.getElementById('HeaderResume').innerHTML = currentResumeData.headerText;
 }
 
-function createResumeView(){
+export default function createResumeView(){
     clearResumePannels();
 
     createRightResumePannel();

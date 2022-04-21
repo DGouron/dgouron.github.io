@@ -1,6 +1,6 @@
 let currentPlayer = 1;
 let ticTacToeLength = 3;
-const minTicTacToeLength = 3, maxTicTacToeLength = 12; //for future evolution
+
 const victoryFirstPlayerWord = 'X', victorySecondPlayerWord = '0';
 let allTicTacToeCells = []; //2D array who store all cells for check the victory conditions.
 const classForTicTacToeButtonLocked = 'ButtonLock';
@@ -54,7 +54,7 @@ class ticTacToeCell {
     }
 }
 
-function createTicTacToeGame() {
+export default function createTicTacToeGame() {
 
     ticTacToeStatistics.playersVictories[0] = ticTacToeStatistics.gamesPlayed - (ticTacToeStatistics.playersVictories[1]+ticTacToeStatistics.playersVictories[2]);
     resetGameCounterIncrementationState();
