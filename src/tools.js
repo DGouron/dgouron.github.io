@@ -37,5 +37,3 @@ function getDay(){
 
     return day;
 }
-
-console.log(getDay());

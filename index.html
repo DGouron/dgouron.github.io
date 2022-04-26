@@ -10,23 +10,23 @@
 	</head>
 	<body>
 		<header id = "top">
-			<h1><img src="./img/resume/CV_27.gif" alt="Damien Gouron" id="portrait"> Damien Gouron</h1>
+			<h1>Damien Gouron<img src="./img/resume/CV_27.gif" alt="Damien Gouron" id="portrait"> </h1>
 			<h2 id = "HeaderTitle"></h2>
 			<p id = "HeaderResume"></p><a href="./documents/CV_GOURON_Damien_DeveloppeurWeb_v2.pdf"><input type="button" value="Telecharger CV" class="callToAction" target="_blank"></a>
 		</header>
-		<nav role="navigation">
-			<ul>
-				<li><a href="#" class = "active buttonBase animatedButton" id="ShowGalery">Galerie</a></li>
-				<li><a href="#" class = "active buttonBase animatedButton" id="ShowTicTacToe">Tic Tac Toe</a></li>
-				<li><a href="#" class = "active buttonBase animatedButton" id="ShowCV">CV</a></li>
-				<li><a href="https://www.codingame.com/servlet/urlinvite?u=2435446" class = "active buttonBase animatedButton" id="JoinCodingame" title="Rejoin moi sur codingame">Codingame</a></li>
-				</ul> 
-		</nav>
 		<div id="Center">
-			<aside id="LeftNavigationArrow"><</aside>
+			<nav role="navigation">
+				<ul>
+					<li><a href="#" class = "active buttonBase animatedButton" id="ShowGalery">Galerie</a></li>
+					<li><a href="#" class = "active buttonBase animatedButton" id="ShowTicTacToe">Tic Tac Toe</a></li>
+					<li><a href="#" class = "active buttonBase animatedButton" id="ShowCV">CV</a></li>
+					<li><a href="https://www.codingame.com/servlet/urlinvite?u=2435446" class = "active buttonBase animatedButton" id="JoinCodingame" title="Rejoin moi sur codingame">Codingame</a></li>
+				</ul> 
+			</nav>
 			<main id ="MainContent" class="centerDisplayFlex"></main>
 			<aside id="RightNavigationArrow">></aside>
 		</div>
+	
 		<script type="text/javascript" src ="./src/tools.js"></script>
 		<!--FACTORIES-->
 			<script type="text/javascript" src="./src/Factories/resumeItemFactory.js"></script>
@@ -46,7 +46,7 @@
 		<!--CONTROLLER-->
 			<script type="text/javascript" src ="./src/index.js"></script>
 			<footer id='mainFooter'> 
-				<a href="#top"><img src="./img/gotop.png" alt = "Go Top" title="Go Top" id = "GoTopIcone"></a>
+				<a href="#top"><p id = "GoTopIcone"><</p>
 				<div id="footerContent">
 					Copyright all right reserved Damien Gouron - 2022
 					<br />Réseaux sociaux : <a href="https://www.linkedin.com/in/damien-gouron/" target="_blank"><img src="./img/logo_linkedin.png" title = "Me rejoindre sur Linkedin" class = "FooterIcones"></a>

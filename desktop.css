@@ -26,47 +26,50 @@
     font-display: swap;
 }
 
-
 body{
-    background-color: #00515a;
+    margin: 0;
+    background-color: #003339;
     font-family: 'LouisGeorgesCafé', Arial, Helvetica, sans-serif;
+}
+ul{
+    margin: 0;
 }
 header{
     color: rgb(255, 255, 255);
     text-shadow: 2px 2px rgb(10, 10, 10);
-    margin: auto;
-    width: 60%;
-    float: left;
+    margin-left: 1%;
+    width: 80%;
+    float: right;
+    text-align: right;
 }
 header p{
-    width: 50%;
-    height: 20%;
+    width: 100%;
+    height: 10%;
 }
 #portrait{
-    width: 4.36em;
+    width: 4em;
     height: 4em;
 }
 nav
 {  
-    width: 40%;
-    margin: 0em;
-    display: flex;
-    justify-content: center;
-    background-color: #003339;
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+    width: 10vw;
+    height: 100vh;
+    background-color: #00515a;
     box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
-    flex-direction : row;
-    flex-wrap: wrap;
-    text-align: center;
-    gap: 0.3rem;
     font-family: 'Optimus', 'Times New Roman', Times, serif;
 }
 nav a
 {
     display: block;
-    background-color: rgb(84, 84, 84);
+    background-color: rgba(84, 84, 84, 50);
     text-decoration: none;
     color: #00515a;
-    border-bottom: 3px solid #00949b;
+    outline: 2px solid #00949b;
 }
 nav a.active:hover
 {
@@ -80,13 +83,8 @@ nav a.active
 }
 nav ul 
 {
-    margin: 1%;
-    padding: 1%;
-    width: 100%;
     list-style:none;
-    display: flex;
-    flex-direction : row;
-    justify-content:left;
+    flex-direction : column;
 }
 
 li
@@ -95,12 +93,13 @@ li
     width: 100%;
     height: 100%;
     margin: 0%;
-    padding: 1%;
 }
+
 #Center{
     width: 100%;
     display: flex;
     flex-direction: row;
+    gap: 1em;
 }
 .centerDisplayBlock{
     display: block;
@@ -111,26 +110,27 @@ li
 .centerDisplayFlex{
     display: flex;
 }
-#LeftNavigationArrow, #RightNavigationArrow{
+#RightNavigationArrow{
     font-size: 70px;
+    font-weight: bold;
     font-family:Georgia, 'Times New Roman', Times, serif;
     margin-top: 10%;
-    color: rgb(85, 94, 94);
+    color: red;
     text-shadow: 2px 2px rgb(10, 10, 10);
+    position: fixed;
+    right: 0px;
+    z-index: 0;
 }
-#LeftNavigationArrow:hover, #RightNavigationArrow:hover{
+#RightNavigationArrow:hover{
     margin-top: 10%;
-    color: rgb(85, 94, 94);
+    color: red;
     text-shadow: 5px 5px rgb(10, 10, 10);
     cursor: pointer;
 }
-#LeftNavigationArrow{
-    flex: 2 1 auto;
-    width: 0.1%;
-}
+
 main
 {
-    width: 98%;
+    width: 90%;
     height: auto;
     display: flex;
     flex-direction: row-reverse;
@@ -218,14 +218,16 @@ footer
     background-color: rgb(85, 94, 94);
     box-shadow: 2px 4px 4px 4px rgb(40, 40, 40);
     margin-top: 3em;
-    
-    height: 100%;
+    margin-left: 10vw;
+    height: auto;
 
     color: white;
     text-align: center;
     font-family: 'LouisGeorgesCafé', Arial, Helvetica, sans-serif;
     font-size: 1.2em;
     text-shadow: 2px 2px rgb(10, 10, 10);
+
+    z-index: 2;
 }
 footer a{
     color: white;
@@ -258,10 +260,14 @@ footer a:hover{
 #GoTopIcone{
   width: 64px;
   height: 64px;
+  font-size: 70px;
+  color: red;
   min-width: 16px;
+  font-weight: bold;
   min-height: 16px;
   float: right;
   margin-bottom: 2em;
+  transform: rotate(90deg);
 }
 #GoTopIcone:hover{
     width: 70px;
@@ -539,14 +545,6 @@ cursor: pointer;
     h2, p{
         font-size: small;
     }
-    nav {
-        margin: 0em;
-        display: flex;
-        flex-basis: 120px;
-        flex-direction : column;
-        text-align: center;
-        width: 30%;
-    }
     nav ul {
         margin: 0px;
         width: fit-content;
@@ -562,9 +560,9 @@ cursor: pointer;
         margin: 1%;
     }
     main{
-        margin-left: 0%;
+        margin-left: 10%;
     }
-    #LeftNavigationArrow, #RightNavigationArrow{
+    #RightNavigationArrow{
         opacity: 0;
     }
     .projectThumbnail{

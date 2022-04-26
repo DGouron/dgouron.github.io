@@ -30,8 +30,6 @@ fetch(projectsDataLink)
 
 
 let mainContent = document.getElementById('MainContent');
-const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
-
 
 if (document.readyState === 'complete') {
 } else {
@@ -43,7 +41,6 @@ if (document.readyState === 'complete') {
 }
 
 function numberOfTilesViewEventHandler(event) {
-    refreshNumberOfTilesView();
 
     if (!event) { return };
     if (event.target.value != null) {
@@ -60,8 +57,6 @@ const showTicTacToeButton = document.getElementById('ShowTicTacToe');
 const showCVButton = document.getElementById('ShowCV');
 const nextContentView = document.getElementById('RightNavigationArrow');
       nextContentView.setAttribute('title', 'Allez vers '+ pannels[currentMainPannel + 1]);
-const previousContentView = document.getElementById('LeftNavigationArrow');
-      previousContentView.setAttribute('title', 'Allez vers '+ pannels[pannels.length - 1]);
 
 showGaleryButton.addEventListener('click', function () {
     createMainContent(pannels[0]);
@@ -90,18 +85,6 @@ nextContentView.addEventListener('click', function(){
     nextContentView.setAttribute('title', currentMainPannel + 1 > pannels.length - 1 ? 'Allez vers ' + pannels[0] : 'Allez vers '+ pannels[currentMainPannel + 1]);
 });
 
-previousContentView.addEventListener('click', function(){
-    if(currentMainPannel == 0){
-        createMainContent(pannels[pannels.length - 1]);
-        currentMainPannel = pannels.length - 1;
-    }
-    else{
-        createMainContent(pannels[currentMainPannel - 1]);
-        --currentMainPannel;
-    }
-    previousContentView.setAttribute('title', currentMainPannel - 1 < 0 ? 'Allez vers ' + pannels[pannels.length - 1] : 'Allez vers '+ pannels[currentMainPannel - 1]);
-});
-
 function createMainContent(contentName) {
 
     /*Machine for populate the main content section*/
@@ -128,42 +111,6 @@ function removeMainContent() {
         }
 }
 
-function updateNumberOfTilesInField(){
-    let mainContentHeader = document.createElement('header');
-        mainContentHeader.textContent = "Nombre d'éléments à afficher : ";
-        mainContent.appendChild(mainContentHeader);
-
-    changeTileNumberField = document.createElement('input');
-    changeTileNumberField.setAttribute('name', 'NumberOfTilesViewer');
-    changeTileNumberField.id = 'NumberOfTilesViewer';
-    changeTileNumberField.title = 'Modify number of tiles';
-    changeTileNumberField.setAttribute('readonly', true);
-    changeTileNumberField.setAttribute('value', numberOfTiles);
-
-    mainContentHeader.appendChild(changeTileNumberField);
-
-    let divForSlider = document.createElement('div');
-        divForSlider.classList.add('tileSliderContainer');
-    let tileSlider = document.createElement('input');
-        tileSlider.setAttribute('type', 'range');
-        tileSlider.setAttribute('min', numberOfTilesRange[0]);
-        tileSlider.setAttribute('max', numberOfTilesRange[1]);
-        tileSlider.setAttribute('value', numberOfTiles)
-        tileSlider.title = 'Number of tiles slider';
-        tileSlider.setAttribute('id', 'tileSlider');
-        tileSlider.classList.add('tileSlider');
-    divForSlider.appendChild(tileSlider);
-
-    tileSlider.addEventListener('change', function(){
-        numberOfTiles = this.value;
-        refreshNumberOfTilesView();
-        createMainContent(pannels[0]);
-    });
-
-    mainContentHeader.appendChild(divForSlider);
-
-}
-
 function createGaleryTiles(numberOfTiles){
     for (let index = 0; index < numberOfTiles; index++) {
         const newLink = document.createElement("a");
@@ -172,7 +119,6 @@ function createGaleryTiles(numberOfTiles){
         const newTile = document.createElement("article");
         
         if(index <= projectsData.length-1){
-            console.log(projectsData[index]);
             newTile.appendChild(loadProjectData(projectsData[index], newLink));
         }else{
             let tileContent = document.createElement("p");
@@ -206,16 +152,9 @@ function loadProjectData(data, linkElement){
 
     return projectBlock;
 }
-function refreshNumberOfTilesView() {
-    let numberOfTilesViewer = document.getElementById('NumberOfTilesViewer');
-        numberOfTilesViewer.setAttribute('value', numberOfTiles);
-}
-
 function showGalery() {  
     removeMainContent();
     setDisplayOfMainContent('flex');
-    updateNumberOfTilesInField();
-    refreshNumberOfTilesView();
     createGaleryTiles(numberOfTiles);
 }
 
