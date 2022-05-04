@@ -16,5 +16,11 @@
         "projectLink": "https://lindakeisea.fr/",
         "projectDescription": "Création d'un blog de lecture et d'écriture. Ajout des statistiques Google Site Kit. Paramétrages de l'affichage, gestion des utilisateurs avec formulaire d'adhésion au site. Prise en compte du certificat SSL pour accroître la sécurité du site.",
         "projectLargeImage": "./img/projects/Large_lindakeisea.png"
+    },
+    {
+        "projectName": "Learn Suap",
+        "projectLink": "https://learnsuap.netlify.app/",
+        "projectDescription": "Création d'un quizz interactif sur le thème du secours d'urgence aux personnes.",
+        "projectLargeImage": "./img/projects/Large_LearnSuap.png"
     }
 ]

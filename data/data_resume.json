@@ -123,6 +123,9 @@
             "content" :
                 [
                     {
+                        "content": "Création d'application Rest. Utilisation de Redux, ESlint, Prettier, Router, Styled Component."
+                    },
+                    {
                         "content": "Méthodologie, recherche d'informations, documentation technique, diagrammes UML, clean code."
                     },
                     {
