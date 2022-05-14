@@ -172,7 +172,6 @@ function createGaleryTiles(numberOfTiles){
         const newTile = document.createElement("article");
         
         if(index <= projectsData.length-1){
-            console.log(projectsData[index]);
             newTile.appendChild(loadProjectData(projectsData[index], newLink));
         }else{
             let tileContent = document.createElement("p");
@@ -188,6 +187,11 @@ function createGaleryTiles(numberOfTiles){
    
 }
 
+function refreshNumberOfTilesView() {
+    let numberOfTilesViewer = document.getElementById('NumberOfTilesViewer');
+        numberOfTilesViewer.setAttribute('value', numberOfTiles);
+}
+
 function loadProjectData(data, linkElement){
     let projectBlock = document.createElement('div');
     let projectTitle = document.createElement('h1');
@@ -201,14 +205,23 @@ function loadProjectData(data, linkElement){
     projectBlock.appendChild(projectThumbnail);
     projectBlock.appendChild(projectTitle);
     projectBlock.appendChild(projectDescription);
+    loadTags(data.tags, projectBlock);
     linkElement.setAttribute('href', data.projectLink);
     linkElement.setAttribute('target', '_blank');
 
     return projectBlock;
 }
-function refreshNumberOfTilesView() {
-    let numberOfTilesViewer = document.getElementById('NumberOfTilesViewer');
-        numberOfTilesViewer.setAttribute('value', numberOfTiles);
+function loadTags(tags, parentElement){
+    let tagsRow = document.createElement('aside');
+        tagsRow.classList.add('tagRow');
+    tags.map((tagName, tagIndex) =>{
+        let tagItem = document.createElement('div');
+            tagItem.classList.add('tagItem');
+            tagItem.innerText = tagName;
+        tagsRow.appendChild(tagItem);
+    });
+
+    parentElement.appendChild(tagsRow);
 }
 
 function showGalery() {  

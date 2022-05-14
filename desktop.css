@@ -177,9 +177,9 @@ article
     color: white;
     display: block;
     min-width: 180px;
-    min-height: 400px;
+    min-height: 500px;
     max-width: 450px;
-    max-height: 400px;
+    max-height: 500px;
     margin: 2.5%;
     padding: 1em;
    
@@ -209,6 +209,36 @@ article h1, h1{
     text-decoration: none;
     
 }
+.tagRow{
+    border-top: 1px solid gray;
+    width: 80%;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.tagItem {
+    margin: 2px;
+    color: rgb(0, 0, 0); 
+    font-size: 12px; 
+    line-height: 17px; 
+    padding: 9px; 
+    border-radius: 8px; 
+    font-family: Georgia, serif; 
+    font-weight: normal; 
+    text-decoration: none; 
+    font-style: normal; 
+    font-variant: normal; 
+    text-transform: none; 
+    background-image: linear-gradient(to right, rgb(158, 127, 2) 0%, rgb(196, 157, 2) 38%, rgb(170, 137, 2) 100%); 
+    box-shadow: rgb(0, 0, 0) 5px 7px 18px 0px; 
+    border: 0px solid rgb(28, 110, 164); 
+    display: inline-block;
+}
+.tagItem:hover {
+background: #9E7F02; }
+.tagItem:active {
+background: #AA8902; }
 footer
 {
     display: flex;

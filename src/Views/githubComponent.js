@@ -1,5 +1,5 @@
 const githubProfileLink = "https://api.github.com/users/DGouron";
-const showConsoleDebug = true;
+const showConsoleDebug = false;
 
 fetch(githubProfileLink)
     .then(reponse => reponse.json())
