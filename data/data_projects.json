@@ -1,26 +1,30 @@
 [
-        {
+    {
         "projectName": "Arkas Dev - Portfolio",
         "projectLink": "https://arkasdev.wixsite.com/home",
         "projectDescription": "Site de présentation de mes travaux dans le jeux vidéo: création de menu/UI, gameplay multijoueurs, heatmap en temps réel, API REST, etc.",
-        "projectLargeImage": "./img/projects/Large_ArkasDev.jpg"
+        "projectLargeImage": "./img/projects/Large_ArkasDev.jpg",
+        "tags": [""]
     },
     {
         "projectName": "Print Message Visualizer",
         "projectLink": "https://www.unrealengine.com/marketplace/en-US/product/print-message-visualizer",
         "projectDescription": "Plugin Unreal Engine 4 fait en C++. PMV est un outil qui permet de traquer en temps réel, de sauvegarder et de comparer des données de jeu. Par exemple les points de passage des joueurs, les morts, etc. Parfais pour le debug d'un jeu multijoueur.",
-        "projectLargeImage": "./img/projects/Large_PMV.jpg"
+        "projectLargeImage": "./img/projects/Large_PMV.jpg",
+        "tags": [""]
     },
     {
         "projectName": "Linda Keisea",
         "projectLink": "https://lindakeisea.fr/",
         "projectDescription": "Création d'un blog de lecture et d'écriture. Ajout des statistiques Google Site Kit. Paramétrages de l'affichage, gestion des utilisateurs avec formulaire d'adhésion au site. Prise en compte du certificat SSL pour accroître la sécurité du site.",
-        "projectLargeImage": "./img/projects/Large_lindakeisea.png"
+        "projectLargeImage": "./img/projects/Large_lindakeisea.png",
+        "tags": [""]
     },
     {
         "projectName": "Learn Suap",
         "projectLink": "https://learnsuap.netlify.app/",
         "projectDescription": "Création d'un quizz interactif sur le thème du secours d'urgence aux personnes.",
-        "projectLargeImage": "./img/projects/Large_LearnSuap.png"
+        "projectLargeImage": "./img/projects/Large_LearnSuap.png",
+        "tags": [""]
     }
 ]
