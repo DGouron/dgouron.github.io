@@ -26,5 +26,12 @@
         "projectDescription": "Création d'un quizz interactif sur le thème du secours d'urgence aux personnes.",
         "projectLargeImage": "./img/projects/Large_LearnSuap.png",
         "tags": ["React", "Redux", "Styled Component", "Router"]
+    },
+    {
+        "projectName": "To-do list",
+        "projectLink": "https://dgouron-todolist.netlify.app/",
+        "projectDescription": "Création d'une To-do list et clonage de la page principale du site Todoist.",
+        "projectLargeImage": "./img/projects/Large_ToDoList.png",
+        "tags": ["React"]
     }
 ]
